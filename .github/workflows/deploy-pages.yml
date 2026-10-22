@@ -1,0 +1,41 @@
+name: Deploy public website
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout public files
+        uses: actions/checkout@v6
+      - name: Reject patient-data file types
+        shell: bash
+        run: |
+          if find . -path './.git' -prune -o -type f \( -iname '*.xlsx' -o -iname '*.xls' -o -iname '*.csv' \) -print -quit | grep -q .; then
+            echo 'Patient-data file types are not permitted in the public website repository.' >&2
+            exit 1
+          fi
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+      - name: Upload website
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: .
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
