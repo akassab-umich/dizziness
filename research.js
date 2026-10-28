@@ -36,7 +36,7 @@
     $('score-dialog-body').innerHTML=`<p>${esc(s.model)}</p><div class="explanation-totals"><div>Net points · ranking score<strong>${pts(score.points)}</strong></div><div>Available positive points<strong>${Number(score.available.toFixed(3))} pts</strong></div></div>${cards.join('')||'<p>No rules for this category.</p>'}`;
     if(!dialog.open)dialog.showModal();
   }
-  for(const id of ['score-list','trained-score-list'])$(id).addEventListener('click',e=>{const b=e.target.closest('[data-category]');if(b)explain(b.dataset.category,b.dataset.model);});
+  for(const id of ['score-list'])$(id).addEventListener('click',e=>{const b=e.target.closest('[data-category]');if(b)explain(b.dataset.category,b.dataset.model);});
   $('close-score-dialog').addEventListener('click',()=>{openCategory=null;dialog.close();});
   dialog.addEventListener('cancel',()=>{openCategory=null;});dialog.addEventListener('close',()=>{openCategory=null;});
   document.addEventListener('nebula:change',()=>{if(openCategory&&dialog.open)explain(openCategory);});

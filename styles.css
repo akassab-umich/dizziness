@@ -116,7 +116,7 @@ summary { cursor:pointer; padding:10px 0; font-weight:600; }
 .case-detail > span { white-space:nowrap; }
 .patient-strip label { display:grid; gap:5px; color:#3d5058; font-size:12px; font-weight:600; }
 .questionnaire-grid { display:grid; grid-template-columns:minmax(180px,230px) minmax(310px,1fr) minmax(480px,600px); gap:12px; min-height:0; flex:1; }
-.score-comparison { display:grid; grid-template-columns:1fr 1fr; grid-template-rows:minmax(0,1fr) auto; gap:8px; min-height:0; min-width:0; }
+.score-comparison { display:grid; grid-template-columns:1fr; grid-template-rows:minmax(0,1fr) auto; gap:8px; min-height:0; min-width:0; }
 .score-comparison .score-panel { grid-column:auto; padding:clamp(6px,1.1vh,10px); overflow:hidden; }
 .score-comparison .score-panel h2 { display:flex; flex:none; flex-wrap:wrap; align-items:center; gap:5px; margin-bottom:clamp(2px,.7vh,5px); font-size:clamp(12px,1.8vh,16px); }
 .model-date { padding:2px 5px; border-radius:3px; color:var(--um-blue); background:var(--um-maize-light); font-size:clamp(8px,1.2vh,10px); font-weight:600; white-space:nowrap; }

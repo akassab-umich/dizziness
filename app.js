@@ -66,9 +66,9 @@
   function scoreAnswers() {
     return window.NebulaModel.score(state.rules, state.answers);
   }
-  function activeRules(model='default') { return model === 'trained' ? window.NEBULA_NOTES.rules : window.NEBULA_TRAINED.rules; }
+  function activeRules(model='default') { return window.NEBULA_NOTES.rules; }
   function renderScores() {
-    for(const model of ['default','trained']) {
+    for(const model of ['default']) {
     const scores = window.NebulaModel.score(activeRules(model),state.answers);
     const rankedScores = Object.entries(scores).sort(([categoryA, scoreA], [categoryB, scoreB]) =>
       scoreB.points - scoreA.points || categoryA.localeCompare(categoryB, undefined, { sensitivity: "base" })
@@ -115,7 +115,7 @@
   $("new-questionnaire").addEventListener("click", resetQuestionnaire); $("export-json").addEventListener("click", exportCase);
   window.NebulaApp = {
     loadCase: (value) => { state.answers=clone(value.answers); state.current=0; state.loadedCaseId=value.caseId;state.recorded=value.recorded;state.sources=value.sources;els.patientId.value=value.caseId; $('patient-age').value=value.age??''; $('patient-sex').value=value.sex; renderQuestion(); },
-    snapshot: (model='default') => clone({ answers:state.answers, rules:activeRules(model), configuredRules:state.rules, model:model==='trained'?'AI Model After Notes':'AI Model' }), downloadJson
+    snapshot: (model='default') => clone({ answers:state.answers, rules:activeRules(model), configuredRules:state.rules, model:'Machine Learning Model' }), downloadJson
   };
   renderQuestion();
 })();

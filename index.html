@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Dizziness Triage scoring platform." />
   <title>Dizziness Triage</title>
-  <link rel="stylesheet" href="styles.css?v=site-39" />
+  <link rel="stylesheet" href="styles.css?v=site-42" />
 </head>
 <body class="auth-locked">
   <section id="access-gate" class="access-gate" aria-labelledby="access-title">
@@ -39,7 +39,7 @@
             <h2 id="question-prompt"></h2><div id="answer-options" class="answer-options"></div>
             <div class="question-controls"><button id="previous-question">Previous</button><button id="clear-answer">Clear answer</button><span></span><button id="next-question" class="primary">Next</button></div>
           </section>
-          <aside class="score-comparison"><section class="score-panel panel"><h2>AI Model <span class="model-date">Before notes</span></h2><div id="score-list"></div></section><section class="score-panel panel"><h2>AI Model After Notes <span class="model-date">October 28, 2026</span></h2><div id="trained-score-list"></div></section></aside>
+          <aside class="score-comparison"><section class="score-panel panel"><h2>Machine Learning Model</h2><div id="score-list"></div></section></aside>
         </div>
         <section id="question-review" class="question-review" hidden aria-label="Question viewer">
           <div id="review-cards" class="review-cards"></div>
@@ -50,9 +50,9 @@
   </div>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
   <dialog id="score-dialog" aria-labelledby="score-dialog-title"><header><div><p class="eyebrow">Score breakdown</p><h2 id="score-dialog-title"></h2></div><button id="close-score-dialog">Close ×</button></header><div id="score-dialog-body"></div><p class="hint">A transparent review of the selected scorecard—not a diagnosis or advice to change answers.</p></dialog>
-  <script src="questionnaire-data.js?v=site-36"></script><script src="model-core.js?v=site-41"></script><script src="trained-model.js?v=site-36"></script>
-  <script src="notes-model.js?v=site-41"></script>
-  <script src="app.js?v=site-41"></script><script src="research.js?v=site-41"></script><script src="question-viewer.js?v=site-36"></script>
+  <script src="questionnaire-data.js?v=site-36"></script><script src="model-core.js?v=site-42"></script>
+  <script src="notes-model.js?v=site-42"></script>
+  <script src="app.js?v=site-42"></script><script src="research.js?v=site-42"></script><script src="question-viewer.js?v=site-36"></script>
   <script src="case-import.js?v=1"></script>
 </body>
 </html>
