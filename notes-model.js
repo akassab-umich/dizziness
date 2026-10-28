@@ -1,7 +1,7 @@
 window.NEBULA_NOTES = {
-  "version": "workshop-notes-2026-10-28",
-  "basedOnVersion": 6,
-  "method": "Manual workshop-note adjustments to the existing AI model; no retraining",
+  "version": "meeting-2-2026-10-28",
+  "basedOnVersion": "workshop-notes-2026-10-28",
+  "method": "Manual Meeting 1 and Meeting 2 adjustments to existing AI weights; no retraining",
   "scoringMode": "net-points",
   "rules": [
     {
@@ -64,7 +64,7 @@ window.NEBULA_NOTES = {
       "category": "BPPV",
       "questionId": "259371",
       "answer": "rolling over",
-      "weight": 4,
+      "weight": 8,
       "editable": true,
       "source": "Adaptive sparse GNN distillation"
     },
@@ -72,7 +72,7 @@ window.NEBULA_NOTES = {
       "category": "BPPV",
       "questionId": "259371",
       "answer": "getting into or out of bed",
-      "weight": 4,
+      "weight": 8,
       "editable": true,
       "source": "Adaptive sparse GNN distillation"
     },
@@ -104,7 +104,7 @@ window.NEBULA_NOTES = {
       "category": "Neuritis",
       "questionId": "259361",
       "answer": "Sudden",
-      "weight": 18,
+      "weight": 25,
       "editable": true,
       "source": "Adaptive sparse GNN distillation"
     },
@@ -319,7 +319,7 @@ window.NEBULA_NOTES = {
       "category": "Third Window",
       "questionId": "259369",
       "answer": "Seconds",
-      "weight": 41,
+      "weight": 25,
       "editable": true,
       "source": "Adaptive sparse GNN distillation"
     },
@@ -327,7 +327,7 @@ window.NEBULA_NOTES = {
       "category": "Third Window",
       "questionId": "259372",
       "answer": "blowing your nose",
-      "weight": 9,
+      "weight": 13,
       "editable": true,
       "source": "Adaptive sparse GNN distillation"
     },
@@ -335,7 +335,7 @@ window.NEBULA_NOTES = {
       "category": "Third Window",
       "questionId": "259372",
       "answer": "loud sounds",
-      "weight": 22,
+      "weight": 26,
       "editable": true,
       "source": "Adaptive sparse GNN distillation"
     },
@@ -343,7 +343,7 @@ window.NEBULA_NOTES = {
       "category": "Third Window",
       "questionId": "259372",
       "answer": "lifting or straining",
-      "weight": 6,
+      "weight": 10,
       "editable": true,
       "source": "Adaptive sparse GNN distillation"
     },
@@ -351,7 +351,7 @@ window.NEBULA_NOTES = {
       "category": "Third Window",
       "questionId": "259372",
       "answer": "coughing",
-      "weight": 6,
+      "weight": 10,
       "editable": true,
       "source": "Adaptive sparse GNN distillation"
     },
@@ -887,7 +887,7 @@ window.NEBULA_NOTES = {
       "category": "Bilateral",
       "questionId": "259356",
       "answer": "dizziness",
-      "weight": 7,
+      "weight": -6,
       "editable": true,
       "source": "Adaptive sparse GNN distillation"
     },
@@ -895,7 +895,7 @@ window.NEBULA_NOTES = {
       "category": "Bilateral",
       "questionId": "259356",
       "answer": "imbalance",
-      "weight": 6,
+      "weight": 12,
       "editable": true,
       "source": "Adaptive sparse GNN distillation"
     },
@@ -1037,6 +1037,41 @@ window.NEBULA_NOTES = {
       "answer": "any kind of head movement",
       "weight": 4,
       "source": "Workshop notes 2026-10-28"
+    },
+    {
+      "category": "Bilateral",
+      "questionId": "259415",
+      "answer": "Yes, hearing loss in the right ear only",
+      "weight": -10,
+      "source": "Meeting 2 notes 2026-10-28"
+    },
+    {
+      "category": "Bilateral",
+      "questionId": "259415",
+      "answer": "Yes, hearing loss in the left ear only",
+      "weight": -10,
+      "source": "Meeting 2 notes 2026-10-28"
+    },
+    {
+      "category": "Bilateral",
+      "questionId": "259361",
+      "answer": "Gradual",
+      "weight": 10,
+      "source": "Meeting 2 notes 2026-10-28"
+    },
+    {
+      "category": "Bilateral",
+      "questionId": "259361",
+      "answer": "Sudden",
+      "weight": -10,
+      "source": "Meeting 2 notes 2026-10-28"
+    },
+    {
+      "category": "Neuritis",
+      "questionId": "259361",
+      "answer": "Gradual",
+      "weight": -10,
+      "source": "Meeting 2 notes 2026-10-28"
     }
   ],
   "changes": [
@@ -1239,6 +1274,248 @@ window.NEBULA_NOTES = {
       "before": 0,
       "after": 4,
       "why": "Add a modest four points per selected posture/movement."
+    },
+    {
+      "category": "BPPV",
+      "questionId": "259371",
+      "answer": "rolling over",
+      "before": 4,
+      "after": 8,
+      "why": "Give these positional triggers more points than the other movements."
+    },
+    {
+      "category": "BPPV",
+      "questionId": "259371",
+      "answer": "getting into or out of bed",
+      "before": 4,
+      "after": 8,
+      "why": "Give these positional triggers more points than the other movements."
+    },
+    {
+      "category": "Third Window",
+      "questionId": "259369",
+      "answer": "Seconds",
+      "before": 41,
+      "after": 25,
+      "why": "Reduce the large seconds-duration weight from 41 to 25."
+    },
+    {
+      "category": "Third Window",
+      "questionId": "259372",
+      "answer": "blowing your nose",
+      "before": 9,
+      "after": 13,
+      "why": "Redistribute four points from the seconds rule to each existing trigger; total positive Third Window points stay unchanged."
+    },
+    {
+      "category": "Third Window",
+      "questionId": "259372",
+      "answer": "loud sounds",
+      "before": 22,
+      "after": 26,
+      "why": "Redistribute four points from the seconds rule to each existing trigger; total positive Third Window points stay unchanged."
+    },
+    {
+      "category": "Third Window",
+      "questionId": "259372",
+      "answer": "lifting or straining",
+      "before": 6,
+      "after": 10,
+      "why": "Redistribute four points from the seconds rule to each existing trigger; total positive Third Window points stay unchanged."
+    },
+    {
+      "category": "Third Window",
+      "questionId": "259372",
+      "answer": "coughing",
+      "before": 6,
+      "after": 10,
+      "why": "Redistribute four points from the seconds rule to each existing trigger; total positive Third Window points stay unchanged."
+    },
+    {
+      "category": "Bilateral",
+      "questionId": "259415",
+      "answer": "Yes, hearing loss in the right ear only",
+      "before": 0,
+      "after": -10,
+      "why": "Hearing loss in only one ear subtracts from Bilateral."
+    },
+    {
+      "category": "Bilateral",
+      "questionId": "259415",
+      "answer": "Yes, hearing loss in the left ear only",
+      "before": 0,
+      "after": -10,
+      "why": "Hearing loss in only one ear subtracts from Bilateral."
+    },
+    {
+      "category": "Bilateral",
+      "questionId": "259356",
+      "answer": "dizziness",
+      "before": 7,
+      "after": -6,
+      "why": "Dizziness alone subtracts from Bilateral."
+    },
+    {
+      "category": "Bilateral",
+      "questionId": "259356",
+      "answer": "imbalance",
+      "before": 6,
+      "after": 12,
+      "why": "Imbalance alone supports Bilateral more than combined dizziness and imbalance."
+    },
+    {
+      "category": "Bilateral",
+      "questionId": "259361",
+      "answer": "Gradual",
+      "before": 0,
+      "after": 10,
+      "why": "Gradual onset adds support for Bilateral."
+    },
+    {
+      "category": "Bilateral",
+      "questionId": "259361",
+      "answer": "Sudden",
+      "before": 0,
+      "after": -10,
+      "why": "Sudden onset subtracts from Bilateral."
+    },
+    {
+      "category": "Neuritis",
+      "questionId": "259361",
+      "answer": "Sudden",
+      "before": 18,
+      "after": 25,
+      "why": "Increase the existing sudden-onset support."
+    },
+    {
+      "category": "Neuritis",
+      "questionId": "259361",
+      "answer": "Gradual",
+      "before": 0,
+      "after": -10,
+      "why": "Use the opposite onset direction to Bilateral."
+    }
+  ],
+  "meeting2Changes": [
+    {
+      "category": "BPPV",
+      "questionId": "259371",
+      "answer": "rolling over",
+      "before": 4,
+      "after": 8,
+      "why": "Give these positional triggers more points than the other movements."
+    },
+    {
+      "category": "BPPV",
+      "questionId": "259371",
+      "answer": "getting into or out of bed",
+      "before": 4,
+      "after": 8,
+      "why": "Give these positional triggers more points than the other movements."
+    },
+    {
+      "category": "Third Window",
+      "questionId": "259369",
+      "answer": "Seconds",
+      "before": 41,
+      "after": 25,
+      "why": "Reduce the large seconds-duration weight from 41 to 25."
+    },
+    {
+      "category": "Third Window",
+      "questionId": "259372",
+      "answer": "blowing your nose",
+      "before": 9,
+      "after": 13,
+      "why": "Redistribute four points from the seconds rule to each existing trigger; total positive Third Window points stay unchanged."
+    },
+    {
+      "category": "Third Window",
+      "questionId": "259372",
+      "answer": "loud sounds",
+      "before": 22,
+      "after": 26,
+      "why": "Redistribute four points from the seconds rule to each existing trigger; total positive Third Window points stay unchanged."
+    },
+    {
+      "category": "Third Window",
+      "questionId": "259372",
+      "answer": "lifting or straining",
+      "before": 6,
+      "after": 10,
+      "why": "Redistribute four points from the seconds rule to each existing trigger; total positive Third Window points stay unchanged."
+    },
+    {
+      "category": "Third Window",
+      "questionId": "259372",
+      "answer": "coughing",
+      "before": 6,
+      "after": 10,
+      "why": "Redistribute four points from the seconds rule to each existing trigger; total positive Third Window points stay unchanged."
+    },
+    {
+      "category": "Bilateral",
+      "questionId": "259415",
+      "answer": "Yes, hearing loss in the right ear only",
+      "before": 0,
+      "after": -10,
+      "why": "Hearing loss in only one ear subtracts from Bilateral."
+    },
+    {
+      "category": "Bilateral",
+      "questionId": "259415",
+      "answer": "Yes, hearing loss in the left ear only",
+      "before": 0,
+      "after": -10,
+      "why": "Hearing loss in only one ear subtracts from Bilateral."
+    },
+    {
+      "category": "Bilateral",
+      "questionId": "259356",
+      "answer": "dizziness",
+      "before": 7,
+      "after": -6,
+      "why": "Dizziness alone subtracts from Bilateral."
+    },
+    {
+      "category": "Bilateral",
+      "questionId": "259356",
+      "answer": "imbalance",
+      "before": 6,
+      "after": 12,
+      "why": "Imbalance alone supports Bilateral more than combined dizziness and imbalance."
+    },
+    {
+      "category": "Bilateral",
+      "questionId": "259361",
+      "answer": "Gradual",
+      "before": 0,
+      "after": 10,
+      "why": "Gradual onset adds support for Bilateral."
+    },
+    {
+      "category": "Bilateral",
+      "questionId": "259361",
+      "answer": "Sudden",
+      "before": 0,
+      "after": -10,
+      "why": "Sudden onset subtracts from Bilateral."
+    },
+    {
+      "category": "Neuritis",
+      "questionId": "259361",
+      "answer": "Sudden",
+      "before": 18,
+      "after": 25,
+      "why": "Increase the existing sudden-onset support."
+    },
+    {
+      "category": "Neuritis",
+      "questionId": "259361",
+      "answer": "Gradual",
+      "before": 0,
+      "after": -10,
+      "why": "Use the opposite onset direction to Bilateral."
     }
   ]
 };
