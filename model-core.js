@@ -7,7 +7,7 @@
   'use strict';
   const norm = v => String(v ?? '').trim().toLowerCase().replace(/[.’]/g, ' ').replace(/[^a-z0-9]+/g, ' ').trim();
   const values = v => (Array.isArray(v) ? v : v == null ? [] : [v]).map(norm);
-  const matched = (r, a) => values(a[r.questionId]).includes(norm(r.answer));
+  const matched = (r, a) => values(a[r.questionId]).includes(norm(r.answer)) && !(r.unless && values(a[r.unless.questionId]).some(v => r.unless.answers.map(norm).includes(v)));
   function score(rules, answers) {
     const out = {};
     for (const r of rules) {
