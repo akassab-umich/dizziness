@@ -1,5 +1,5 @@
 window.NEBULA_NOTES = {
-  "version": "meeting-2-2026-10-28",
+  "version": "meeting-2-severity-2026-10-28",
   "basedOnVersion": "workshop-notes-2026-10-28",
   "method": "Manual Meeting 1 and Meeting 2 adjustments to existing AI weights; no retraining",
   "scoringMode": "net-points",
@@ -1072,6 +1072,48 @@ window.NEBULA_NOTES = {
       "answer": "Gradual",
       "weight": -10,
       "source": "Meeting 2 notes 2026-10-28"
+    },
+    {
+      "category": "Neuritis",
+      "questionId": "259366",
+      "answer": "mild",
+      "weight": 12,
+      "source": "Meeting 2 notes 2026-10-28"
+    },
+    {
+      "category": "Neuritis",
+      "questionId": "259366",
+      "answer": "moderate",
+      "weight": 6,
+      "source": "Meeting 2 notes 2026-10-28"
+    },
+    {
+      "category": "Neuritis",
+      "questionId": "259366",
+      "answer": "severe",
+      "weight": 0,
+      "source": "Meeting 2 notes 2026-10-28"
+    },
+    {
+      "category": "Bilateral",
+      "questionId": "259366",
+      "answer": "mild",
+      "weight": 0,
+      "source": "Meeting 2 notes 2026-10-28"
+    },
+    {
+      "category": "Bilateral",
+      "questionId": "259366",
+      "answer": "moderate",
+      "weight": 6,
+      "source": "Meeting 2 notes 2026-10-28"
+    },
+    {
+      "category": "Bilateral",
+      "questionId": "259366",
+      "answer": "severe",
+      "weight": 12,
+      "source": "Meeting 2 notes 2026-10-28"
     }
   ],
   "changes": [
@@ -1394,6 +1436,54 @@ window.NEBULA_NOTES = {
       "before": 0,
       "after": -10,
       "why": "Use the opposite onset direction to Bilateral."
+    },
+    {
+      "category": "Neuritis",
+      "questionId": "259366",
+      "answer": "mild",
+      "before": 0,
+      "after": 12,
+      "why": "More support for mild symptoms; moderate receives the midpoint of mild and severe."
+    },
+    {
+      "category": "Neuritis",
+      "questionId": "259366",
+      "answer": "moderate",
+      "before": 0,
+      "after": 6,
+      "why": "More support for mild symptoms; moderate receives the midpoint of mild and severe."
+    },
+    {
+      "category": "Neuritis",
+      "questionId": "259366",
+      "answer": "severe",
+      "before": 0,
+      "after": 0,
+      "why": "More support for mild symptoms; moderate receives the midpoint of mild and severe."
+    },
+    {
+      "category": "Bilateral",
+      "questionId": "259366",
+      "answer": "mild",
+      "before": 0,
+      "after": 0,
+      "why": "More support for severe symptoms; moderate receives the midpoint of mild and severe."
+    },
+    {
+      "category": "Bilateral",
+      "questionId": "259366",
+      "answer": "moderate",
+      "before": 0,
+      "after": 6,
+      "why": "More support for severe symptoms; moderate receives the midpoint of mild and severe."
+    },
+    {
+      "category": "Bilateral",
+      "questionId": "259366",
+      "answer": "severe",
+      "before": 0,
+      "after": 12,
+      "why": "More support for severe symptoms; moderate receives the midpoint of mild and severe."
     }
   ],
   "meeting2Changes": [
@@ -1516,6 +1606,54 @@ window.NEBULA_NOTES = {
       "before": 0,
       "after": -10,
       "why": "Use the opposite onset direction to Bilateral."
+    },
+    {
+      "category": "Neuritis",
+      "questionId": "259366",
+      "answer": "mild",
+      "before": 0,
+      "after": 12,
+      "why": "More support for mild symptoms; moderate receives the midpoint of mild and severe."
+    },
+    {
+      "category": "Neuritis",
+      "questionId": "259366",
+      "answer": "moderate",
+      "before": 0,
+      "after": 6,
+      "why": "More support for mild symptoms; moderate receives the midpoint of mild and severe."
+    },
+    {
+      "category": "Neuritis",
+      "questionId": "259366",
+      "answer": "severe",
+      "before": 0,
+      "after": 0,
+      "why": "More support for mild symptoms; moderate receives the midpoint of mild and severe."
+    },
+    {
+      "category": "Bilateral",
+      "questionId": "259366",
+      "answer": "mild",
+      "before": 0,
+      "after": 0,
+      "why": "More support for severe symptoms; moderate receives the midpoint of mild and severe."
+    },
+    {
+      "category": "Bilateral",
+      "questionId": "259366",
+      "answer": "moderate",
+      "before": 0,
+      "after": 6,
+      "why": "More support for severe symptoms; moderate receives the midpoint of mild and severe."
+    },
+    {
+      "category": "Bilateral",
+      "questionId": "259366",
+      "answer": "severe",
+      "before": 0,
+      "after": 12,
+      "why": "More support for severe symptoms; moderate receives the midpoint of mild and severe."
     }
   ]
 };
