@@ -39,9 +39,10 @@
   const conditionMet = (question) => !question.showWhen || answerValues(state.answers[question.showWhen.questionId]).map(normalized).includes(normalized(question.showWhen.answer));
   const visibleQuestions = () => questions.filter(conditionMet);
   const currentQuestion = () => { const visible = visibleQuestions(); state.current = Math.max(0, Math.min(state.current, visible.length - 1)); return visible[state.current]; };
+  const hasScoringEffect = (id) => activeRules().some(rule => rule.weight !== 0 && (rule.questionId === id || rule.unless?.questionId === id));
 
   function renderQuestionList() {
-    els.list.innerHTML = visibleQuestions().map((question, index) => `<button class="question-link ${index === state.current ? "active" : ""} ${isAnswered(question) ? "answered" : ""}" data-index="${index}"><span>${isAnswered(question) ? "✓" : "○"}</span><b>${String(index + 1).padStart(2, "0")}</b><em>${escapeHtml(question.prompt)}</em></button>`).join("");
+    els.list.innerHTML = visibleQuestions().map((question, index) => `<button class="question-link ${index === state.current ? "active" : ""} ${isAnswered(question) ? "answered" : ""}" data-index="${index}"><span>${isAnswered(question) ? "✓" : "○"}</span><b class="${hasScoringEffect(question.id)?'question-scored':'question-unscored'}" title="${hasScoringEffect(question.id)?'Affects at least one class':'No scoring effect'}">${String(index + 1).padStart(2, "0")}</b><em>${escapeHtml(question.prompt)}</em></button>`).join("");
     els.list.querySelector(".active")?.scrollIntoView({ block: "nearest" });
   }
   function inputMarkup(question, value) {
@@ -114,6 +115,7 @@
   els.clearAnswer.addEventListener("click", () => { delete state.answers[currentQuestion().id]; questions.filter((item) => item.showWhen && !conditionMet(item)).forEach((item) => delete state.answers[item.id]); renderQuestion(); });
   $("new-questionnaire").addEventListener("click", resetQuestionnaire); $("export-json").addEventListener("click", exportCase);
   window.NebulaApp = {
+    hasScoringEffect,
     loadCase: (value) => { state.answers=clone(value.answers); state.current=0; state.loadedCaseId=value.caseId;state.recorded=value.recorded;state.sources=value.sources;els.patientId.value=value.caseId; $('patient-age').value=value.age??''; $('patient-sex').value=value.sex; renderQuestion(); },
     snapshot: (model='default') => clone({ answers:state.answers, rules:activeRules(model), configuredRules:state.rules, model:'Machine Learning Model' }), downloadJson
   };

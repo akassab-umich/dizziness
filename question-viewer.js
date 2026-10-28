@@ -12,7 +12,8 @@
     else content=`<p class="review-value ${selected.length?'':'review-blank'}">${selected.length?escape(answers[q.id]):'Not answered'}</p>`;
     const el=document.createElement('article');el.className='review-card panel';el.tabIndex=0;el.dataset.questionId=q.id;el.dataset.questionIndex=index;
     el.setAttribute('aria-label',`Question ${index+1}`);
-    el.innerHTML=`<p class="review-number">Question ${index+1}</p><h2>${escape(q.prompt)}</h2>${content}`;
+    const scored=window.NebulaApp.hasScoringEffect(q.id);
+    el.innerHTML=`<p class="review-number">Question <b class="${scored?'question-scored':'question-unscored'}" title="${scored?'Affects at least one class':'No scoring effect'}">${index+1}</b></p><h2>${escape(q.prompt)}</h2>${content}`;
     return el;
   }
   function render(preserveAnchor=false){
