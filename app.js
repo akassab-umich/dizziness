@@ -76,9 +76,11 @@
     const barScale=Math.max(100,...rankedScores.map(([,score])=>Math.abs(score.points)));
     $(model==='default'?'score-list':'trained-score-list').innerHTML = rankedScores.map(([category, score]) => `<button type="button" class="score-row score-button" data-model="${model}" data-category="${escapeHtml(category)}" aria-label="Explain ${escapeHtml(category)} ${model} score"><div class="score-label"><span class="score-class-label">${escapeHtml(category)}</span><span><b class="score-value ${score.points > 0 ? "positive" : score.points < 0 ? "negative" : "zero"}">${score.points >= 0 ? "+" : ""}${Number(score.points.toFixed(3))} pts</b></span></div><div class="score-track" aria-hidden="true"><i class="${score.points < 0 ? "negative" : "positive"}" style="width:${Math.abs(score.points)/barScale*50}%"></i></div></button>`).join("");
     }
+    for(const row of document.querySelectorAll('.score-button'))if((state.recorded||[]).includes(row.dataset.category)){const tag=document.createElement('small');tag.textContent=' ✓ Recorded';row.querySelector('.score-class-label').append(tag);}
     document.dispatchEvent(new CustomEvent('nebula:change'));
   }
   function setAnswerFromControl(target) {
+    if(state.loadedCaseId)els.patientId.value=state.loadedCaseId+'-modified';
     const question = currentQuestion();
     if (question.kind === "multi") {
       const inputs = [...els.options.querySelectorAll('input[type="checkbox"]')];
@@ -91,7 +93,7 @@
     questions.filter((item) => item.showWhen && !conditionMet(item)).forEach((item) => delete state.answers[item.id]);
     renderQuestion();
   }
-  function resetQuestionnaire() { state.answers = {}; state.current = 0; els.patientId.value = ""; $("patient-age").value = ""; $("patient-sex").value = ""; renderQuestion(); document.dispatchEvent(new Event('nebula:case-reset')); }
+  function resetQuestionnaire() { state.answers = {}; state.current = 0; state.recorded=[];state.sources=[];state.loadedCaseId=null;els.patientId.value = ""; $("patient-age").value = ""; $("patient-sex").value = ""; renderQuestion(); document.dispatchEvent(new Event('nebula:case-reset')); }
   function downloadJson(value, filename) { const url = URL.createObjectURL(new Blob([JSON.stringify(value, null, 2)], { type: "application/json" })); const anchor = document.createElement("a"); anchor.href = url; anchor.download = filename; anchor.click(); setTimeout(() => URL.revokeObjectURL(url), 0); }
   function exportCase() {
     const ageInput=$("patient-age"), age=ageInput.value===''?null:Number(ageInput.value);
@@ -99,7 +101,7 @@
     let patientId = clean(els.patientId.value) || `CASE-${Date.now()}`;
     els.patientId.value=patientId;
     const now = new Date(), stamp = now.toISOString().replace(/[-:]/g, "").slice(0, 15), safeId = patientId.replace(/[^a-z0-9_-]/gi, "_");
-    downloadJson({ format:"nebula-patient-case",version:1,questionnaire_revision:defaults.questionnaireRevision,patient: { anonymous_id:patientId,age,sex:$("patient-sex").value||null,recorded_labels:[] },answers:clone(state.answers) }, `${safeId}_${stamp}.json`);
+    downloadJson({ format:"nebula-patient-case",version:1,questionnaire_revision:defaults.questionnaireRevision,patient: { anonymous_id:patientId,age,sex:$("patient-sex").value||null,recorded_labels:state.recorded||[] },Sources:state.sources||[],answers:clone(state.answers) }, `${safeId}_${stamp}.json`);
   }
   let toastTimer;
   function showToast(message, error = false) { clearTimeout(toastTimer); els.toast.textContent = message; els.toast.classList.toggle("error", error); els.toast.classList.add("show"); toastTimer = setTimeout(() => els.toast.classList.remove("show"), 3200); }
@@ -112,6 +114,7 @@
   els.clearAnswer.addEventListener("click", () => { delete state.answers[currentQuestion().id]; questions.filter((item) => item.showWhen && !conditionMet(item)).forEach((item) => delete state.answers[item.id]); renderQuestion(); });
   $("new-questionnaire").addEventListener("click", resetQuestionnaire); $("export-json").addEventListener("click", exportCase);
   window.NebulaApp = {
+    loadCase: (value) => { state.answers=clone(value.answers); state.current=0; state.loadedCaseId=value.caseId;state.recorded=value.recorded;state.sources=value.sources;els.patientId.value=value.caseId; $('patient-age').value=value.age??''; $('patient-sex').value=value.sex; renderQuestion(); },
     snapshot: (model='default') => clone({ answers:state.answers, rules:activeRules(model), configuredRules:state.rules, model:model==='trained'?'AI-Tuned Model':'Baseline Model' }), downloadJson
   };
   renderQuestion();
