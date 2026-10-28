@@ -581,6 +581,14 @@ window.NEBULA_NOTES = {
     },
     {
       "category": "PPPD",
+      "questionId": "259363",
+      "answer": "Yes",
+      "weight": 15,
+      "editable": true,
+      "source": "Adaptive sparse GNN distillation"
+    },
+    {
+      "category": "PPPD",
       "questionId": "259372",
       "answer": "car rides",
       "weight": 1,
@@ -720,6 +728,14 @@ window.NEBULA_NOTES = {
       "questionId": "259381",
       "answer": "panic feeling or sudden need to leave a place",
       "weight": 13,
+      "editable": true,
+      "source": "Adaptive sparse GNN distillation"
+    },
+    {
+      "category": "PPPD",
+      "questionId": "259363",
+      "answer": "No",
+      "weight": -15,
       "editable": true,
       "source": "Adaptive sparse GNN distillation"
     },
@@ -996,20 +1012,6 @@ window.NEBULA_NOTES = {
     },
     {
       "category": "PPPD",
-      "questionId": "PPPD_AWAKE_50",
-      "answer": "Yes",
-      "weight": 15,
-      "source": "Workshop notes 2026-10-28"
-    },
-    {
-      "category": "PPPD",
-      "questionId": "PPPD_AWAKE_50",
-      "answer": "No",
-      "weight": -15,
-      "source": "Workshop notes 2026-10-28"
-    },
-    {
-      "category": "PPPD",
       "questionId": "259371",
       "answer": "lying down",
       "weight": 4,
@@ -1203,32 +1205,8 @@ window.NEBULA_NOTES = {
       "questionId": "259363",
       "answer": "No",
       "before": -100,
-      "after": 0,
-      "why": "Replace the 24-hour requirement with a new waking-time question. Historical responses cannot be converted."
-    },
-    {
-      "category": "PPPD",
-      "questionId": "259363",
-      "answer": "Yes",
-      "before": 15,
-      "after": 0,
-      "why": "Replace the 24-hour requirement with a new waking-time question. Historical responses cannot be converted."
-    },
-    {
-      "category": "PPPD",
-      "questionId": "PPPD_AWAKE_50",
-      "answer": "Yes",
-      "before": 0,
-      "after": 15,
-      "why": "Preserve the old positive amount with revised wording."
-    },
-    {
-      "category": "PPPD",
-      "questionId": "PPPD_AWAKE_50",
-      "answer": "No",
-      "before": 0,
       "after": -15,
-      "why": "Reduce the exclusion from -100 to a modest -15, applied only to an actual new answer."
+      "why": "Reduce the original 24-hour question penalty from -100 to -15; preserve its wording and original answers."
     },
     {
       "category": "PPPD",
@@ -1262,15 +1240,5 @@ window.NEBULA_NOTES = {
       "after": 4,
       "why": "Add a modest four points per selected posture/movement."
     }
-  ],
-  "newQuestion": {
-    "id": "PPPD_AWAKE_50",
-    "kind": "single",
-    "prompt": "Are your symptoms present more than 50% of the time when you are awake?",
-    "options": [
-      "Yes",
-      "No"
-    ]
-  }
+  ]
 };
-(function(){ const q=window.NEBULA_NOTES.newQuestion; const qs=window.NEBULA_DATA.questions; if(!qs.some(x=>x.id===q.id)){const i=qs.findIndex(x=>x.id==="259363");qs.splice(i+1,0,q);} })();
