@@ -20,6 +20,7 @@
     try { const value = JSON.parse(localStorage.getItem(RULES_KEY)); return Array.isArray(value?.rules) ? value.rules.map(normalizeRule).filter(Boolean) : clone(defaultRules); }
     catch { return clone(defaultRules); }
   }
+  const L=window.NebulaLogistic;
   const state = { current: 0, answers: {}, rules: clone(defaultRules), draftRules: [], selectedRule: null, editingRule: null };
   state.draftRules = clone(state.rules);
 
@@ -67,17 +68,15 @@
   function scoreAnswers() {
     return window.NebulaModel.score(state.rules, state.answers);
   }
-  function activeRules(model='default') { return window.NEBULA_NOTES.rules; }
+  function activeRules(model='default') { return window.NEBULA_BANDS.rules; }
   function renderScores() {
-    for(const model of ['default']) {
-    const scores = window.NebulaModel.score(activeRules(model),state.answers);
-    const rankedScores = Object.entries(scores).sort(([categoryA, scoreA], [categoryB, scoreB]) =>
-      scoreB.points - scoreA.points || categoryA.localeCompare(categoryB, undefined, { sensitivity: "base" })
-    );
-    const barScale=Math.max(100,...rankedScores.map(([,score])=>Math.abs(score.points)));
-    $(model==='default'?'score-list':'trained-score-list').innerHTML = rankedScores.map(([category, score]) => `<button type="button" class="score-row score-button" data-model="${model}" data-category="${escapeHtml(category)}" aria-label="Explain ${escapeHtml(category)} ${model} score"><div class="score-label"><span class="score-class-label">${escapeHtml(category)}</span><span><b class="score-value ${score.points > 0 ? "positive" : score.points < 0 ? "negative" : "zero"}">${score.points >= 0 ? "+" : ""}${Number(score.points.toFixed(3))} pts</b></span></div><div class="score-track" aria-hidden="true"><i class="${score.points < 0 ? "negative" : "positive"}" style="width:${Math.abs(score.points)/barScale*50}%"></i></div></button>`).join("");
-    }
-    for(const row of document.querySelectorAll('.score-button'))if((state.recorded||[]).includes(row.dataset.category)){const tag=document.createElement('small');tag.textContent=' ✓ Recorded';row.querySelector('.score-class-label').append(tag);}
+    const scores=window.NebulaModel.score(activeRules(),state.answers);
+    const ranked=Object.entries(scores).sort(([a,x],[b,y])=>y.points-x.points||a.localeCompare(b));
+    const scale=Math.max(100,...ranked.map(([,v])=>Math.abs(v.points)));
+    $('score-list').innerHTML=ranked.map(([c,v])=>`<button type="button" class="score-row score-button" data-model="points" data-category="${escapeHtml(c)}" aria-label="Explain ${escapeHtml(c)} points"><div class="score-label"><span class="score-class-label">${escapeHtml(c)}${(state.recorded||[]).includes(c)?'<small> ✓ Recorded</small>':''}</span><span><b class="score-value ${v.points>0?'positive':v.points<0?'negative':'zero'}">${v.points>=0?'+':''}${Number(v.points.toFixed(3))} pts</b></span></div><div class="score-track" aria-hidden="true"><i class="${v.points<0?'negative':'positive'}" style="width:${Math.abs(v.points)/scale*50}%"></i></div></button>`).join('');
+    const estimates=L.predict(state.answers);
+    const rankedL=Object.entries(estimates).sort(([a,x],[b,y])=>(y.trained?1:0)-(x.trained?1:0)||(y.answered?y.estimate:-1)-(x.answered?x.estimate:-1)||a.localeCompare(b));
+    $('logistic-score-list').innerHTML=rankedL.map(([c,v])=>`<button type="button" class="score-row score-button" data-model="logistic" data-category="${escapeHtml(c)}" aria-label="Explain ${escapeHtml(c)} support"><div class="score-label"><span class="score-class-label">${escapeHtml(c)}${(state.recorded||[]).includes(c)?'<small> ✓ Recorded</small>':''}</span><span><b class="score-value">${v.trained&&v.answered?v.estimate.toFixed(1)+'%':'—'}</b></span></div><div class="score-track support-track" aria-hidden="true"><i class="positive" style="width:${v.trained&&v.answered?v.estimate:0}%"></i></div></button>`).join('');
     document.dispatchEvent(new CustomEvent('nebula:change'));
   }
   function setAnswerFromControl(target) {
@@ -117,7 +116,7 @@
   window.NebulaApp = {
     hasScoringEffect,
     loadCase: (value) => { state.answers=clone(value.answers); state.current=0; state.loadedCaseId=value.caseId;state.recorded=value.recorded;state.sources=value.sources;els.patientId.value=value.caseId; $('patient-age').value=value.age??''; $('patient-sex').value=value.sex; renderQuestion(); },
-    snapshot: (model='default') => clone({ answers:state.answers, rules:activeRules(model), configuredRules:state.rules, model:'Machine Learning Model' }), downloadJson
+    snapshot: (model='points') => clone({ answers:state.answers, rules:activeRules(model), configuredRules:state.rules, model:'Tuned Evidence Model', support:L.predict(state.answers) }), downloadJson
   };
   renderQuestion();
 })();

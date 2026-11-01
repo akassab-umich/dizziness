@@ -236,3 +236,11 @@ body.reviewing { overflow:hidden; }
 @media(max-height:500px){
   .reviewing .app-brand img { display:none; }
 }
+
+/* Side-by-side research scorecards */
+.score-comparison{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:minmax(0,1fr);gap:8px}
+.questionnaire-grid{grid-template-columns:minmax(140px,190px) minmax(280px,1fr) minmax(530px,1.6fr)}
+.score-comparison #logistic-score-list{display:grid;grid-auto-rows:minmax(0,1fr);flex:1;min-height:0}
+.support-track i{margin-left:0;width:0}
+@media(max-width:1150px){.questionnaire-grid{grid-template-columns:minmax(280px,1fr) minmax(400px,1fr)}.question-list-panel{display:none}.score-comparison{grid-column:auto}}
+@media(max-width:760px){.questionnaire-grid{grid-template-columns:1fr}.score-comparison{grid-column:auto;min-height:260px}.score-comparison .score-panel{min-height:250px}}

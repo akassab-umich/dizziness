@@ -6,7 +6,9 @@
   const dialog=$('score-dialog');let openCategory=null,openModel='default';
   function explain(category,model=openModel){
     openCategory=category;openModel=model;
-    const s=A.snapshot(model),score=M.score(s.rules,s.answers)[category],groups=new Map(),cards=[];
+    const s=A.snapshot(model);
+    if(model==='logistic'){const p=s.support[category];$('score-dialog-title').textContent=category;$('score-dialog-body').innerHTML=p.trained?`<p>Learned Support Model</p><div class="explanation-totals"><div>Model support<strong>${p.answered?p.estimate.toFixed(1)+'%':'Awaiting relevant answers'}</strong></div><div>Learned starting score<strong>${p.basePoints.toFixed(2)} pts</strong></div><div>Current total<strong>${p.points.toFixed(2)} pts</strong></div></div><p class="hint">Each matching answer adds or subtracts points. The total is converted to model support; this percentage is not a validated diagnosis probability.</p><table class="answer-comparison"><thead><tr><th>Answer rule</th><th>Learned points</th></tr></thead><tbody>${p.contributions.filter(r=>Math.abs(r.points)>0.00001).map(r=>`<tr><td>Q${esc(r.questionId)} · ${esc(r.answer)}</td><td>${pts(r.points)}</td></tr>`).join('')||'<tr><td colspan="2">No matching rules yet.</td></tr>'}</tbody></table>`:'<p>No labeled examples are available for this class.</p>';if(!dialog.open)dialog.showModal();return;}
+    const score=M.score(s.rules,s.answers)[category],groups=new Map(),cards=[];
     s.rules.filter(r=>r.category===category).forEach(r=>{if(!groups.has(r.questionId))groups.set(r.questionId,[]);groups.get(r.questionId).push(r);});
     for(const[id,rules]of groups){
       const q=D.questions.find(q=>q.id===id),raw=s.answers[id],actual=Array.isArray(raw)?raw:raw==null||raw===''?[]:[raw];
@@ -36,7 +38,7 @@
     $('score-dialog-body').innerHTML=`<p>${esc(s.model)}</p><div class="explanation-totals"><div>Net points · ranking score<strong>${pts(score.points)}</strong></div><div>Available positive points<strong>${Number(score.available.toFixed(3))} pts</strong></div></div>${cards.join('')||'<p>No rules for this category.</p>'}`;
     if(!dialog.open)dialog.showModal();
   }
-  for(const id of ['score-list'])$(id).addEventListener('click',e=>{const b=e.target.closest('[data-category]');if(b)explain(b.dataset.category,b.dataset.model);});
+  for(const id of ['score-list','logistic-score-list'])$(id).addEventListener('click',e=>{const b=e.target.closest('[data-category]');if(b)explain(b.dataset.category,b.dataset.model);});
   $('close-score-dialog').addEventListener('click',()=>{openCategory=null;dialog.close();});
   dialog.addEventListener('cancel',()=>{openCategory=null;});dialog.addEventListener('close',()=>{openCategory=null;});
   document.addEventListener('nebula:change',()=>{if(openCategory&&dialog.open)explain(openCategory);});
