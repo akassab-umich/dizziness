@@ -1,0 +1,12 @@
+data/
+private-results/
+patient-cases/
+*.xlsx
+*.xls
+*.csv
+*.pt
+*.pth
+__pycache__/
+*.pyc
+.venv/
+node_modules/
