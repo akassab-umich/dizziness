@@ -24,7 +24,7 @@ Open http://127.0.0.1:8765/. Use the project access code. You can answer questio
 
 Start with `web/app.js` to understand question navigation and scoring. `web/case-import.js` maps patient JSON into answers. `web/model-core.js` computes points. `web/research.js` builds the explanation dialogs. `web/question-viewer.js` handles the second viewer.
 
-The website uses **Model v1**, the optimized integer points model in `web/band-model.js`.
+The website uses **Model**, the optimized integer points model in `web/band-model.js`.
 
 Model definition files are generated artifacts. Edit their training tools or expert rule sources rather than manually reformatting their arrays.
 

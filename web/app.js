@@ -312,7 +312,7 @@
       clone({
         answers: state.answers,
         rules: activeRules(model),
-        model: "Model v1",
+        model: "Model",
       }),
     downloadJson,
   };

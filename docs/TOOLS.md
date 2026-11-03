@@ -10,7 +10,7 @@ python3 tools/extract_patients.py --help
 
 This is the local Wolverine-compatible extractor. It keeps source workbook, worksheet and row references. Its duplicate matching includes submission time, age, sex, and structured responses; conflicting demographics require review and explicit corrections. Never assume matching answers alone prove identity.
 
-## Model v1
+## Model
 
 ```bash
 node tools/export_band_training.cjs /absolute/path/to/cases
