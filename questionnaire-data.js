@@ -1,6 +1,6 @@
 window.NEBULA_DATA = {
   "version": 4,
-  "questionnaireRevision": "km2-source-options-v3",
+  "questionnaireRevision": "2026-11-02-removed-12-questions",
   "sourceWorkbook": "OTO Dizziness Questionnaire -Nebula cloud 5-9-241_KM2.xlsx",
   "questions": [
     {
@@ -27,23 +27,6 @@ window.NEBULA_DATA = {
         "sensation of rocking or swaying",
         "sensation of tilting",
         "dizziness upon standing"
-      ]
-    },
-    {
-      "id": "259358",
-      "prompt": "Briefly state the problem you are seeking help for:",
-      "kind": "text",
-      "options": []
-    },
-    {
-      "id": "259359",
-      "prompt": "How many other health care providers have you seen for your problem of dizziness and/or imbalance?",
-      "kind": "single",
-      "options": [
-        "0",
-        "1-2",
-        "3-4",
-        "5 or more"
       ]
     },
     {
@@ -89,15 +72,6 @@ window.NEBULA_DATA = {
       ]
     },
     {
-      "id": "259365",
-      "prompt": "Do your current symptoms come on suddenly or gradually?",
-      "kind": "single",
-      "options": [
-        "Suddenly",
-        "Gradually or slowly"
-      ]
-    },
-    {
       "id": "259366",
       "prompt": "How would you rate your symptoms?",
       "kind": "single",
@@ -113,17 +87,6 @@ window.NEBULA_DATA = {
       "kind": "single",
       "options": [
         "Only 1 episode",
-        "2-4 episodes",
-        "5-9 episodes",
-        "10 or more episodes"
-      ]
-    },
-    {
-      "id": "259368",
-      "prompt": "How many episodes have you had in the last 6 months?",
-      "kind": "single",
-      "options": [
-        "0-1 episodes",
         "2-4 episodes",
         "5-9 episodes",
         "10 or more episodes"
@@ -203,12 +166,6 @@ window.NEBULA_DATA = {
       ]
     },
     {
-      "id": "259373",
-      "prompt": "Is there anything else you know of that will trigger your symptoms or make your symptoms worse?",
-      "kind": "text",
-      "options": []
-    },
-    {
       "id": "259374",
       "prompt": "How would you describe your balance? Please check all that apply.",
       "kind": "multi",
@@ -223,21 +180,6 @@ window.NEBULA_DATA = {
     {
       "id": "259375",
       "prompt": "Have you ever fallen? A fall is defined as a fall to the ground or onto a piece of furniture or other object.",
-      "kind": "single",
-      "options": [
-        "Yes",
-        "No"
-      ]
-    },
-    {
-      "id": "259376",
-      "prompt": "If you have fallen, how many falls have you had in the past year?",
-      "kind": "numeric",
-      "options": []
-    },
-    {
-      "id": "259377",
-      "prompt": "If you have fallen, were you injured?",
       "kind": "single",
       "options": [
         "Yes",
@@ -332,12 +274,6 @@ window.NEBULA_DATA = {
       ]
     },
     {
-      "id": "259388",
-      "prompt": "If you have experienced headaches in your lifetime, how would you describe them?",
-      "kind": "text",
-      "options": []
-    },
-    {
       "id": "259389",
       "prompt": "Please check all of the following that you have experienced.",
       "kind": "multi",
@@ -424,40 +360,6 @@ window.NEBULA_DATA = {
       "prompt": "If yes, please explain/specify the type of ear surgery that was performed and the date:",
       "kind": "text",
       "options": []
-    },
-    {
-      "id": "259424",
-      "prompt": "Have you undergone Magnetic Resonance Imaging (MRI) or CT scan of your head that was abnormal?",
-      "kind": "single",
-      "options": [
-        "No",
-        "Yes",
-        "I don't know"
-      ]
-    },
-    {
-      "id": "259425",
-      "prompt": "Have you ever had vestibular testing performed? Some types of testing are VNG with air or water in your ears, Rotary Chair, VEMP, ECoG, or vHIT.",
-      "kind": "single",
-      "options": [
-        "No",
-        "Yes"
-      ]
-    },
-    {
-      "id": "259426",
-      "prompt": "If yes, where and when (approximately):",
-      "kind": "text",
-      "options": []
-    },
-    {
-      "id": "260448",
-      "prompt": "I lost all or some of my hearing after a spinning attack of dizziness",
-      "kind": "single",
-      "options": [
-        "Yes",
-        "No"
-      ]
     },
     {
       "id": "260450",

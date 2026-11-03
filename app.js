@@ -115,7 +115,7 @@
   $("new-questionnaire").addEventListener("click", resetQuestionnaire); $("export-json").addEventListener("click", exportCase);
   window.NebulaApp = {
     hasScoringEffect,
-    loadCase: (value) => { state.answers=clone(value.answers); state.current=0; state.loadedCaseId=value.caseId;state.recorded=value.recorded;state.sources=value.sources;els.patientId.value=value.caseId; $('patient-age').value=value.age??''; $('patient-sex').value=value.sex; renderQuestion(); },
+    loadCase: (value) => { state.answers=window.NebulaModel.sanitize(value.answers,questions); state.current=0; state.loadedCaseId=value.caseId;state.recorded=value.recorded;state.sources=value.sources;els.patientId.value=value.caseId; $('patient-age').value=value.age??''; $('patient-sex').value=value.sex; renderQuestion(); },
     snapshot: (model='points') => clone({ answers:state.answers, rules:activeRules(model), configuredRules:state.rules, model:'Tuned Evidence Model', support:L.predict(state.answers) }), downloadJson
   };
   renderQuestion();
