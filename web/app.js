@@ -18,7 +18,6 @@
       .replace(/[^a-z0-9]+/g, " ")
       .trim();
   const questions = clone(defaults.questions);
-  const supportModel = window.NebulaLogistic;
   const state = { current: 0, answers: {} };
 
   const gate = byId("access-gate"),
@@ -169,19 +168,6 @@
           `<button type="button" class="score-row score-button" data-model="points" data-category="${escapeHtml(c)}" aria-label="Explain ${escapeHtml(c)} points"><div class="score-label"><span class="score-class-label">${escapeHtml(c)}${(state.recorded || []).includes(c) ? "<small> ✓ Recorded</small>" : ""}</span><span><b class="score-value ${v.points > 0 ? "positive" : v.points < 0 ? "negative" : "zero"}">${v.points >= 0 ? "+" : ""}${Number(v.points.toFixed(3))} pts</b></span></div><div class="score-track" aria-hidden="true"><i class="${v.points < 0 ? "negative" : "positive"}" style="width:${(Math.abs(v.points) / scale) * 50}%"></i></div></button>`,
       )
       .join("");
-    const estimates = supportModel.predict(state.answers);
-    const rankedL = Object.entries(estimates).sort(
-      ([a, x], [b, y]) =>
-        (y.trained ? 1 : 0) - (x.trained ? 1 : 0) ||
-        (y.answered ? y.estimate : -1) - (x.answered ? x.estimate : -1) ||
-        a.localeCompare(b),
-    );
-    byId("logistic-score-list").innerHTML = rankedL
-      .map(
-        ([c, v]) =>
-          `<button type="button" class="score-row score-button" data-model="logistic" data-category="${escapeHtml(c)}" aria-label="Explain ${escapeHtml(c)} support"><div class="score-label"><span class="score-class-label">${escapeHtml(c)}${(state.recorded || []).includes(c) ? "<small> ✓ Recorded</small>" : ""}</span><span><b class="score-value">${v.trained && v.answered ? v.estimate.toFixed(1) + "%" : "—"}</b></span></div><div class="score-track support-track" aria-hidden="true"><i class="positive" style="width:${v.trained && v.answered ? v.estimate : 0}%"></i></div></button>`,
-      )
-      .join("");
     document.dispatchEvent(new CustomEvent("nebula:change"));
   }
   function setAnswerFromControl(target) {
@@ -326,8 +312,7 @@
       clone({
         answers: state.answers,
         rules: activeRules(model),
-        model: "Tuned Evidence Model",
-        support: supportModel.predict(state.answers),
+        model: "Model v1",
       }),
     downloadJson,
   };

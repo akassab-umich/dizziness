@@ -1181,12 +1181,6 @@ body.reviewing {
       1.6fr
     );
 }
-.score-comparison #logistic-score-list {
-  display: grid;
-  grid-auto-rows: minmax(0, 1fr);
-  flex: 1;
-  min-height: 0;
-}
 .support-track i {
   margin-left: 0;
   width: 0;
@@ -1214,3 +1208,9 @@ body.reviewing {
     min-height: 250px;
   }
 }
+
+/* A single points scorecard. */
+.score-comparison { grid-template-columns: minmax(0, 1fr); }
+.questionnaire-grid { grid-template-columns: minmax(140px,190px) minmax(280px,1fr) minmax(300px,420px); }
+@media (max-width:1150px) { .questionnaire-grid { grid-template-columns:minmax(280px,1fr) minmax(280px,360px); } }
+@media (max-width:760px) { .questionnaire-grid { grid-template-columns:1fr; } }

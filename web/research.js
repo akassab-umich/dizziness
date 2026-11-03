@@ -17,7 +17,7 @@
           })[c],
       );
   const formatPoints = (v) =>
-    (v > 0 ? "+" : "") + Number(v.toFixed(3)) + " formatPoints";
+    (v > 0 ? "+" : "") + Number(v.toFixed(3)) + " pts";
   const dialog = byId("score-dialog");
   let openCategory = null,
     openModel = "default";
@@ -25,24 +25,6 @@
     openCategory = category;
     openModel = model;
     const s = app.snapshot(model);
-    if (model === "logistic") {
-      const p = s.support[category];
-      byId("score-dialog-title").textContent = category;
-      byId("score-dialog-body").innerHTML = p.trained
-        ? `<p>Learned Support Model</p><div class="explanation-totals"><div>Model support<strong>${p.answered ? p.estimate.toFixed(1) + "%" : "Awaiting relevant answers"}</strong></div><div>Learned starting score<strong>${p.basePoints.toFixed(2)} formatPoints</strong></div><div>Current total<strong>${p.points.toFixed(2)} formatPoints</strong></div></div><p class="hint">Each matching answer adds or subtracts points. The total is converted to model support; this percentage is not a validated diagnosis probability.</p><table class="answer-comparison"><thead><tr><th>Answer rule</th><th>Learned points</th></tr></thead><tbody>${
-            p.contributions
-              .filter((r) => Math.abs(r.points) > 0.00001)
-              .map(
-                (r) =>
-                  `<tr><td>Q${escapeHtml(r.questionId)} · ${escapeHtml(r.answer)}</td><td>${formatPoints(r.points)}</td></tr>`,
-              )
-              .join("") ||
-            '<tr><td colspan="2">No matching rules yet.</td></tr>'
-          }</tbody></table>`
-        : "<p>No labeled examples are available for this class.</p>";
-      if (!dialog.open) dialog.showModal();
-      return;
-    }
     const score = scoring.score(s.rules, s.answers)[category],
       groups = new Map(),
       cards = [];
@@ -60,6 +42,7 @@
           : raw == null || raw === ""
             ? []
             : [raw];
+      if (!q) continue; // Retired questions are not part of the explanation.
       const expected = new Map();
       rules.forEach((r) => {
         const key = scoring.norm(r.answer);
@@ -142,7 +125,7 @@
       `<p>${escapeHtml(s.model)}</p><div class="explanation-totals"><div>Net points · ranking score<strong>${formatPoints(score.points)}</strong></div><div>Available positive points<strong>${Number(score.available.toFixed(3))} formatPoints</strong></div></div>${cards.join("") || "<p>No rules for this category.</p>"}`;
     if (!dialog.open) dialog.showModal();
   }
-  for (const id of ["score-list", "logistic-score-list"])
+  for (const id of ["score-list"])
     byId(id).addEventListener("click", (e) => {
       const b = e.target.closest("[data-category]");
       if (b) explain(b.dataset.category, b.dataset.model);

@@ -3,7 +3,7 @@
 1. Clone this repository and create a branch for your change.
 2. Run the website using the command in README.md.
 3. Edit the relevant file in `web/` or tool in `tools/`.
-4. Check the changed behavior with manual answers and a local case JSON. Check both scorecards, both question viewers, reset, export and re-import when affected.
+4. Check the changed behavior with manual answers and a local case JSON. Check the points scorecard, both question viewers, reset, export and re-import when affected.
 5. Run `node tools/check_site.cjs`. Review `git diff` and `git status`. Keep patient files and credentials out of the commit.
 6. Open a pull request explaining the behavior change and how you checked it.
 

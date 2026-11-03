@@ -22,12 +22,9 @@ Open http://127.0.0.1:8765/. Use the project access code. You can answer questio
 | `data/` | Your local patient files; ignored by Git |
 | `private-results/` | Local training inputs and patient results; ignored by Git |
 
-Start with `web/app.js` to understand question navigation and scoring. `web/case-import.js` maps patient JSON into answers. `web/model-core.js` computes points. `web/logistic-runtime.js` computes model support. `web/research.js` builds the explanation dialogs. `web/question-viewer.js` handles the second viewer.
+Start with `web/app.js` to understand question navigation and scoring. `web/case-import.js` maps patient JSON into answers. `web/model-core.js` computes points. `web/research.js` builds the explanation dialogs. `web/question-viewer.js` handles the second viewer.
 
-The two scorecards use the same answers:
-
-- **Tuned Evidence Model:** optimized integer answer points in `web/band-model.js`.
-- **Learned Support Model:** constrained logistic regression in `web/logistic-model.js`, using approved features in `web/neural-spec.js`. The `neural` filename is retained for compatibility; this active model has no neural hidden layers.
+The website uses **Model v1**, the optimized integer points model in `web/band-model.js`.
 
 Model definition files are generated artifacts. Edit their training tools or expert rule sources rather than manually reformatting their arrays.
 
