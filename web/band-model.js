@@ -1,6 +1,6 @@
 window.NEBULA_BANDS = {
-  "version": "point-bands-2026-10-31",
-  "name": "Experimental Points Model",
+  "version": "point-bands-2026-11-04",
+  "name": "Model",
   "method": "Class-balanced ordinal mixed-integer optimization with expert sign constraints",
   "thresholds": [
     30,
@@ -21,7 +21,7 @@ window.NEBULA_BANDS = {
       "category": "BPPV",
       "questionId": "259364",
       "answer": "Yes",
-      "weight": 11,
+      "weight": 16,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -29,7 +29,7 @@ window.NEBULA_BANDS = {
       "category": "BPPV",
       "questionId": "259369",
       "answer": "Seconds",
-      "weight": 1,
+      "weight": 31,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -37,7 +37,7 @@ window.NEBULA_BANDS = {
       "category": "BPPV",
       "questionId": "259369",
       "answer": "Minutes",
-      "weight": 60,
+      "weight": 92,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -45,7 +45,7 @@ window.NEBULA_BANDS = {
       "category": "BPPV",
       "questionId": "259370",
       "answer": "once a day",
-      "weight": 7,
+      "weight": 4,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -69,7 +69,7 @@ window.NEBULA_BANDS = {
       "category": "BPPV",
       "questionId": "259371",
       "answer": "lying down",
-      "weight": 11,
+      "weight": 29,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -77,7 +77,7 @@ window.NEBULA_BANDS = {
       "category": "BPPV",
       "questionId": "259371",
       "answer": "rolling over",
-      "weight": 24,
+      "weight": 33,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -85,14 +85,6 @@ window.NEBULA_BANDS = {
       "category": "BPPV",
       "questionId": "259371",
       "answer": "getting into or out of bed",
-      "weight": 26,
-      "editable": true,
-      "source": "Experimental ordinal integer score optimization"
-    },
-    {
-      "category": "BPPV",
-      "questionId": "259371",
-      "answer": "sitting up",
       "weight": 2,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
@@ -100,8 +92,16 @@ window.NEBULA_BANDS = {
     {
       "category": "BPPV",
       "questionId": "259371",
+      "answer": "sitting up",
+      "weight": 1,
+      "editable": true,
+      "source": "Experimental ordinal integer score optimization"
+    },
+    {
+      "category": "BPPV",
+      "questionId": "259371",
       "answer": "reaching or bending",
-      "weight": 37,
+      "weight": 5,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -109,7 +109,7 @@ window.NEBULA_BANDS = {
       "category": "BPPV",
       "questionId": "259362",
       "answer": "No",
-      "weight": 15,
+      "weight": 1,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -117,7 +117,7 @@ window.NEBULA_BANDS = {
       "category": "Neuritis",
       "questionId": "259361",
       "answer": "Sudden",
-      "weight": 23,
+      "weight": 2,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -125,7 +125,7 @@ window.NEBULA_BANDS = {
       "category": "Neuritis",
       "questionId": "259362",
       "answer": "Yes",
-      "weight": 25,
+      "weight": 70,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -133,7 +133,7 @@ window.NEBULA_BANDS = {
       "category": "Neuritis",
       "questionId": "259367",
       "answer": "Only 1 episode",
-      "weight": 24,
+      "weight": 69,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -141,7 +141,7 @@ window.NEBULA_BANDS = {
       "category": "Neuritis",
       "questionId": "259371",
       "answer": "walking in the dark",
-      "weight": 23,
+      "weight": 47,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -165,7 +165,7 @@ window.NEBULA_BANDS = {
       "category": "Neuritis",
       "questionId": "260451",
       "answer": "No",
-      "weight": -21,
+      "weight": -69,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -197,7 +197,7 @@ window.NEBULA_BANDS = {
       "category": "Meniere's",
       "questionId": "259381",
       "answer": "Nausea or vomiting",
-      "weight": 2,
+      "weight": 23,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -205,7 +205,7 @@ window.NEBULA_BANDS = {
       "category": "Meniere's",
       "questionId": "259417",
       "answer": "Yes, right ear only",
-      "weight": 10,
+      "weight": 25,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -237,7 +237,7 @@ window.NEBULA_BANDS = {
       "category": "Meniere's",
       "questionId": "259416",
       "answer": "Yes, right ear only",
-      "weight": 16,
+      "weight": 4,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -245,7 +245,7 @@ window.NEBULA_BANDS = {
       "category": "Meniere's",
       "questionId": "259416",
       "answer": "Yes, left ear only",
-      "weight": 7,
+      "weight": 1,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -285,7 +285,7 @@ window.NEBULA_BANDS = {
       "category": "Meniere's",
       "questionId": "259400",
       "answer": "no",
-      "weight": -8,
+      "weight": -40,
       "editable": true,
       "source": "Experimental ordinal integer score optimization",
       "unless": {
@@ -300,15 +300,7 @@ window.NEBULA_BANDS = {
       "category": "Meniere's",
       "questionId": "259416",
       "answer": "No",
-      "weight": -20,
-      "editable": true,
-      "source": "Experimental ordinal integer score optimization"
-    },
-    {
-      "category": "Meniere's",
-      "questionId": "259417",
-      "answer": "No",
-      "weight": 0,
+      "weight": -41,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -324,7 +316,7 @@ window.NEBULA_BANDS = {
       "category": "Meniere's",
       "questionId": "260450",
       "answer": "none of the above",
-      "weight": -4,
+      "weight": -19,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -332,7 +324,7 @@ window.NEBULA_BANDS = {
       "category": "Third Window",
       "questionId": "259369",
       "answer": "Seconds",
-      "weight": 50,
+      "weight": 40,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -377,14 +369,6 @@ window.NEBULA_BANDS = {
       "source": "Experimental ordinal integer score optimization"
     },
     {
-      "category": "Third Window",
-      "questionId": "259421",
-      "answer": "No",
-      "weight": 0,
-      "editable": true,
-      "source": "Experimental ordinal integer score optimization"
-    },
-    {
       "category": "Migraine",
       "questionId": "259369",
       "answer": "Hours",
@@ -396,7 +380,7 @@ window.NEBULA_BANDS = {
       "category": "Migraine",
       "questionId": "259369",
       "answer": "Days",
-      "weight": 3,
+      "weight": 38,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -412,7 +396,7 @@ window.NEBULA_BANDS = {
       "category": "Migraine",
       "questionId": "259372",
       "answer": "hot bath or shower",
-      "weight": 6,
+      "weight": 22,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -420,7 +404,7 @@ window.NEBULA_BANDS = {
       "category": "Migraine",
       "questionId": "259372",
       "answer": "menstrual cycle",
-      "weight": 13,
+      "weight": 39,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -452,7 +436,7 @@ window.NEBULA_BANDS = {
       "category": "Migraine",
       "questionId": "259385",
       "answer": "Yes",
-      "weight": 10,
+      "weight": 2,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -468,14 +452,6 @@ window.NEBULA_BANDS = {
       "category": "Migraine",
       "questionId": "259387",
       "answer": "Yes",
-      "weight": 6,
-      "editable": true,
-      "source": "Experimental ordinal integer score optimization"
-    },
-    {
-      "category": "Migraine",
-      "questionId": "259389",
-      "answer": "increased sensitivity to light during a headache",
       "weight": 3,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
@@ -483,15 +459,7 @@ window.NEBULA_BANDS = {
     {
       "category": "Migraine",
       "questionId": "259389",
-      "answer": "increased sensitivity to sound during a headache",
-      "weight": 36,
-      "editable": true,
-      "source": "Experimental ordinal integer score optimization"
-    },
-    {
-      "category": "Migraine",
-      "questionId": "259389",
-      "answer": "increased sensitivity to smell during a headache",
+      "answer": "increased sensitivity to light during a headache",
       "weight": 1,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
@@ -499,8 +467,24 @@ window.NEBULA_BANDS = {
     {
       "category": "Migraine",
       "questionId": "259389",
+      "answer": "increased sensitivity to sound during a headache",
+      "weight": 67,
+      "editable": true,
+      "source": "Experimental ordinal integer score optimization"
+    },
+    {
+      "category": "Migraine",
+      "questionId": "259389",
+      "answer": "increased sensitivity to smell during a headache",
+      "weight": 3,
+      "editable": true,
+      "source": "Experimental ordinal integer score optimization"
+    },
+    {
+      "category": "Migraine",
+      "questionId": "259389",
       "answer": "headaches that happen when you are feeling dizzy or off balance",
-      "weight": 16,
+      "weight": 3,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -516,7 +500,7 @@ window.NEBULA_BANDS = {
       "category": "Migraine",
       "questionId": "259389",
       "answer": "headaches where the pain throbs or pulses",
-      "weight": 12,
+      "weight": 41,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -524,7 +508,7 @@ window.NEBULA_BANDS = {
       "category": "Migraine",
       "questionId": "260450",
       "answer": "changes in the weather",
-      "weight": 1,
+      "weight": 22,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -540,7 +524,7 @@ window.NEBULA_BANDS = {
       "category": "Migraine",
       "questionId": "260450",
       "answer": "certain beverages",
-      "weight": 2,
+      "weight": 1,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -548,7 +532,7 @@ window.NEBULA_BANDS = {
       "category": "Migraine",
       "questionId": "259363",
       "answer": "No",
-      "weight": 13,
+      "weight": 44,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -564,7 +548,7 @@ window.NEBULA_BANDS = {
       "category": "Migraine",
       "questionId": "259384",
       "answer": "No",
-      "weight": -9,
+      "weight": -16,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -572,7 +556,7 @@ window.NEBULA_BANDS = {
       "category": "Migraine",
       "questionId": "259386",
       "answer": "No",
-      "weight": -17,
+      "weight": -85,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -580,7 +564,7 @@ window.NEBULA_BANDS = {
       "category": "Migraine",
       "questionId": "260450",
       "answer": "none of the above",
-      "weight": -18,
+      "weight": -23,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -596,7 +580,7 @@ window.NEBULA_BANDS = {
       "category": "PPPD",
       "questionId": "259363",
       "answer": "Yes",
-      "weight": 2,
+      "weight": 1,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -612,7 +596,7 @@ window.NEBULA_BANDS = {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "reading",
-      "weight": 16,
+      "weight": 21,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -620,7 +604,7 @@ window.NEBULA_BANDS = {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "stress, nerves, or anxiety",
-      "weight": 1,
+      "weight": 2,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -628,7 +612,7 @@ window.NEBULA_BANDS = {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "windshield wipers",
-      "weight": 18,
+      "weight": 17,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -636,7 +620,7 @@ window.NEBULA_BANDS = {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "supermarket aisles, malls, or tunnels",
-      "weight": 14,
+      "weight": 15,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -644,7 +628,7 @@ window.NEBULA_BANDS = {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "restaurants or movie theaters",
-      "weight": 21,
+      "weight": 24,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -684,7 +668,7 @@ window.NEBULA_BANDS = {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "working on the computer",
-      "weight": 33,
+      "weight": 29,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -732,7 +716,7 @@ window.NEBULA_BANDS = {
       "category": "PPPD",
       "questionId": "259381",
       "answer": "heart racing",
-      "weight": 33,
+      "weight": 60,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -748,151 +732,7 @@ window.NEBULA_BANDS = {
       "category": "PPPD",
       "questionId": "259363",
       "answer": "No",
-      "weight": -36,
-      "editable": true,
-      "source": "Experimental ordinal integer score optimization"
-    },
-    {
-      "category": "Neurological Other",
-      "questionId": "259374",
-      "answer": "unsteady when sitting",
-      "weight": 6,
-      "editable": true,
-      "source": "Experimental ordinal integer score optimization"
-    },
-    {
-      "category": "Neurological Other",
-      "questionId": "259374",
-      "answer": "unsteady when standing",
-      "weight": 6,
-      "editable": true,
-      "source": "Experimental ordinal integer score optimization"
-    },
-    {
-      "category": "Neurological Other",
-      "questionId": "259374",
-      "answer": "unsteady when walking",
-      "weight": 6,
-      "editable": true,
-      "source": "Experimental ordinal integer score optimization"
-    },
-    {
-      "category": "Neurological Other",
-      "questionId": "259374",
-      "answer": "stumbling or falling when walking",
-      "weight": 6,
-      "editable": true,
-      "source": "Experimental ordinal integer score optimization"
-    },
-    {
-      "category": "Neurological Other",
-      "questionId": "259375",
-      "answer": "Yes",
-      "weight": 25,
-      "editable": true,
-      "source": "Experimental ordinal integer score optimization"
-    },
-    {
-      "category": "Neurological Other",
-      "questionId": "259380",
-      "answer": "tripped",
-      "weight": 6,
-      "editable": true,
-      "source": "Experimental ordinal integer score optimization"
-    },
-    {
-      "category": "Neurological Other",
-      "questionId": "259380",
-      "answer": "slipped",
-      "weight": 6,
-      "editable": true,
-      "source": "Experimental ordinal integer score optimization"
-    },
-    {
-      "category": "Neurological Other",
-      "questionId": "259380",
-      "answer": "fainted or light-headed",
-      "weight": 6,
-      "editable": true,
-      "source": "Experimental ordinal integer score optimization"
-    },
-    {
-      "category": "Neurological Other",
-      "questionId": "259380",
-      "answer": "I'm not sure why I fell",
-      "weight": 6,
-      "editable": true,
-      "source": "Experimental ordinal integer score optimization"
-    },
-    {
-      "category": "Neurological Other",
-      "questionId": "259382",
-      "answer": "Stroke",
-      "weight": 3,
-      "editable": true,
-      "source": "Experimental ordinal integer score optimization"
-    },
-    {
-      "category": "Neurological Other",
-      "questionId": "259382",
-      "answer": "anxiety or depression",
-      "weight": 3,
-      "editable": true,
-      "source": "Experimental ordinal integer score optimization"
-    },
-    {
-      "category": "Neurological Other",
-      "questionId": "259382",
-      "answer": "cancer",
-      "weight": 3,
-      "editable": true,
-      "source": "Experimental ordinal integer score optimization"
-    },
-    {
-      "category": "Neurological Other",
-      "questionId": "259382",
-      "answer": "ongoing numbness or tingling",
-      "weight": 3,
-      "editable": true,
-      "source": "Experimental ordinal integer score optimization"
-    },
-    {
-      "category": "Neurological Other",
-      "questionId": "259382",
-      "answer": "motion sickness",
-      "weight": 3,
-      "editable": true,
-      "source": "Experimental ordinal integer score optimization"
-    },
-    {
-      "category": "Neurological Other",
-      "questionId": "259382",
-      "answer": "history of COVID infection",
-      "weight": 3,
-      "editable": true,
-      "source": "Experimental ordinal integer score optimization"
-    },
-    {
-      "category": "Neurological Other",
-      "questionId": "259382",
-      "answer": "Diabetes",
-      "weight": 3,
-      "editable": true,
-      "source": "Experimental ordinal integer score optimization"
-    },
-    {
-      "category": "Neurological Other",
-      "questionId": "259382",
-      "answer": "High blood pressure",
-      "weight": 3,
-      "editable": true,
-      "source": "Experimental ordinal integer score optimization"
-    },
-    {
-      "category": "Neurological Other",
-      "questionId": "259382",
-      "answer": "seizures",
-      "weight": 3,
+      "weight": -68,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -908,7 +748,7 @@ window.NEBULA_BANDS = {
       "category": "Bilateral",
       "questionId": "259356",
       "answer": "imbalance",
-      "weight": 1,
+      "weight": 10,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -932,7 +772,7 @@ window.NEBULA_BANDS = {
       "category": "Bilateral",
       "questionId": "259362",
       "answer": "No",
-      "weight": 36,
+      "weight": 39,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -940,23 +780,7 @@ window.NEBULA_BANDS = {
       "category": "Bilateral",
       "questionId": "259381",
       "answer": "Vision \"jumping\" or \"bouncing\" when walking or riding",
-      "weight": 47,
-      "editable": true,
-      "source": "Experimental ordinal integer score optimization"
-    },
-    {
-      "category": "Concussion",
-      "questionId": "260452",
-      "answer": "Yes",
-      "weight": 100,
-      "editable": true,
-      "source": "Experimental ordinal integer score optimization"
-    },
-    {
-      "category": "Concussion",
-      "questionId": "260452",
-      "answer": "No",
-      "weight": -100,
+      "weight": 56,
       "editable": true,
       "source": "Experimental ordinal integer score optimization"
     },
@@ -964,35 +788,35 @@ window.NEBULA_BANDS = {
       "category": "BPPV",
       "questionId": "259369",
       "answer": "Hours",
-      "weight": -86,
+      "weight": -94,
       "source": "Experimental ordinal integer score optimization"
     },
     {
       "category": "BPPV",
       "questionId": "259362",
       "answer": "Yes",
-      "weight": -84,
+      "weight": -58,
       "source": "Experimental ordinal integer score optimization"
     },
     {
       "category": "Neuritis",
       "questionId": "259416",
       "answer": "Yes, right ear only",
-      "weight": -1,
+      "weight": -94,
       "source": "Experimental ordinal integer score optimization"
     },
     {
       "category": "Neuritis",
       "questionId": "259416",
       "answer": "Yes, left ear only",
-      "weight": -99,
+      "weight": -100,
       "source": "Experimental ordinal integer score optimization"
     },
     {
       "category": "Neuritis",
       "questionId": "259381",
       "answer": "Nausea or vomiting",
-      "weight": 1,
+      "weight": 23,
       "source": "Experimental ordinal integer score optimization"
     },
     {
@@ -1013,14 +837,14 @@ window.NEBULA_BANDS = {
       "category": "Bilateral",
       "questionId": "259374",
       "answer": "stumbling or falling when walking",
-      "weight": 11,
+      "weight": 25,
       "source": "Experimental ordinal integer score optimization"
     },
     {
       "category": "Migraine",
       "questionId": "259369",
       "answer": "Seconds",
-      "weight": -1,
+      "weight": -3,
       "source": "Experimental ordinal integer score optimization"
     },
     {
@@ -1076,61 +900,47 @@ window.NEBULA_BANDS = {
       "category": "Bilateral",
       "questionId": "259361",
       "answer": "Sudden",
-      "weight": -35,
+      "weight": -40,
       "source": "Experimental ordinal integer score optimization"
     },
     {
       "category": "Neuritis",
       "questionId": "259361",
       "answer": "Gradual",
-      "weight": -3,
+      "weight": -22,
       "source": "Experimental ordinal integer score optimization"
     },
     {
       "category": "Neuritis",
       "questionId": "259366",
       "answer": "mild",
-      "weight": 76,
-      "source": "Experimental ordinal integer score optimization"
-    },
-    {
-      "category": "Neuritis",
-      "questionId": "259366",
-      "answer": "moderate",
-      "weight": 25,
-      "source": "Experimental ordinal integer score optimization"
-    },
-    {
-      "category": "Neuritis",
-      "questionId": "259366",
-      "answer": "severe",
-      "weight": 0,
-      "source": "Experimental ordinal integer score optimization"
-    },
-    {
-      "category": "Bilateral",
-      "questionId": "259366",
-      "answer": "mild",
-      "weight": 0,
-      "source": "Experimental ordinal integer score optimization"
-    },
-    {
-      "category": "Bilateral",
-      "questionId": "259366",
-      "answer": "moderate",
-      "weight": 13,
-      "source": "Experimental ordinal integer score optimization"
-    },
-    {
-      "category": "Bilateral",
-      "questionId": "259366",
-      "answer": "severe",
       "weight": 24,
+      "source": "Experimental ordinal integer score optimization"
+    },
+    {
+      "category": "Neuritis",
+      "questionId": "259366",
+      "answer": "moderate",
+      "weight": 49,
+      "source": "Experimental ordinal integer score optimization"
+    },
+    {
+      "category": "Bilateral",
+      "questionId": "259366",
+      "answer": "moderate",
+      "weight": 1,
+      "source": "Experimental ordinal integer score optimization"
+    },
+    {
+      "category": "Bilateral",
+      "questionId": "259366",
+      "answer": "severe",
+      "weight": 6,
       "source": "Experimental ordinal integer score optimization"
     }
   ],
   "fit": {
-    "patients": 65,
+    "patients": 75,
     "evaluation": "training data only",
     "unrecordedLabels": "proxy negatives; not verified absence",
     "perRuleMagnitudeLimit": 100

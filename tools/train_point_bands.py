@@ -129,6 +129,26 @@ def fit_category(X, y, prior, limit, seconds):
         ),
         options={"time_limit": seconds, "mip_rel_gap": 0.0},
     )
+    fixed_band_refinement = False
+    refinement_bounds = bounds
+    if second.x is None:
+        # Keep the feasible first-pass bands fixed while refining point magnitudes.
+        # This preserves the primary fit without needing to rediscover all bands.
+        fixed_low, fixed_high = low.copy(), high.copy()
+        indicators = np.rint(first.x[d : d + 3 * n])
+        fixed_low[d : d + 3 * n] = indicators
+        fixed_high[d : d + 3 * n] = indicators
+        refinement_bounds = Bounds(fixed_low, fixed_high)
+        fixed_band_refinement = True
+        second = milp(
+            second_c,
+            integrality=integer,
+            bounds=refinement_bounds,
+            constraints=LinearConstraint(
+                csr_matrix(np.asarray(rows)), np.array(lhs), np.array(rhs)
+            ),
+            options={"time_limit": seconds, "mip_rel_gap": 0.0},
+        )
     chosen = second if second.x is not None else first
     third = None
     if second.x is not None:
@@ -139,7 +159,7 @@ def fit_category(X, y, prior, limit, seconds):
         third = milp(
             third_c,
             integrality=integer,
-            bounds=bounds,
+            bounds=refinement_bounds,
             constraints=LinearConstraint(
                 csr_matrix(np.asarray(rows)), np.array(lhs), np.array(rhs)
             ),
@@ -167,7 +187,8 @@ def fit_category(X, y, prior, limit, seconds):
         "primaryObjective": float(first.fun) / (2 * y.sum() * (~y).sum()),
         "primaryDualBound": float(first.mip_dual_bound) / (2 * y.sum() * (~y).sum()),
         "integerObjectiveScale": int(2 * y.sum() * (~y).sum()),
-        "secondaryOptimal": second.status == 0,
+        "secondaryOptimal": second.status == 0 and not fixed_band_refinement,
+        "fixedBandRefinement": fixed_band_refinement,
         "secondaryStatus": int(second.status),
         "secondaryGap": float(second.mip_gap) if second.x is not None else None,
         "secondaryDistance": float(second.fun) if second.x is not None else None,
@@ -177,7 +198,11 @@ def fit_category(X, y, prior, limit, seconds):
                 np.maximum(0, (X @ weights)[~y] - 29).max(),
             )
         ),
-        "tertiaryOptimal": third.status == 0 if third is not None else False,
+        "tertiaryOptimal": (
+            (third.status == 0 and not fixed_band_refinement)
+            if third is not None
+            else False
+        ),
         "tertiaryGap": (
             float(third.mip_gap) if third is not None and third.x is not None else None
         ),
@@ -192,6 +217,7 @@ def fit_category(X, y, prior, limit, seconds):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--seconds", type=float, default=90)
+    parser.add_argument("--version", default="point-bands-2026-11-04")
     parser.add_argument("--max-points", type=int, default=100)
     parser.add_argument(
         "--only",
@@ -237,8 +263,8 @@ def main():
         r["weight"] = int(w)
         r["source"] = "Experimental ordinal integer score optimization"
     model = {
-        "version": "point-bands-2026-10-31",
-        "name": "Experimental Points Model",
+        "version": args.version,
+        "name": "Model",
         "method": "Class-balanced ordinal mixed-integer optimization with expert sign constraints",
         "thresholds": list(THRESHOLDS),
         "trainedCategories": [c for c, a in audits.items() if a["trained"]],

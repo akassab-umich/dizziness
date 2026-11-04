@@ -5,6 +5,15 @@
       .toLowerCase()
       .replace(/[^a-z0-9]+/g, " ")
       .trim();
+  const supportedLabels = new Set([
+    "BPPV",
+    "Bilateral",
+    "Meniere's",
+    "Migraine",
+    "Neuritis",
+    "PPPD",
+    "Third Window",
+  ]);
   function parse(value, questions, filename = "case.json") {
     if (
       value?.format === "nebula-patient-case" &&
@@ -27,7 +36,9 @@
         caseId: value.patient.anonymous_id || filename.replace(/\.json$/i, ""),
         age: value.patient.age,
         sex: value.patient.sex || "",
-        recorded: value.patient.recorded_labels || [],
+        recorded: (value.patient.recorded_labels || []).filter((label) =>
+          supportedLabels.has(label),
+        ),
         sources: value.Sources || [],
         issues: [],
       };
@@ -98,6 +109,7 @@
       VMigraine: "Migraine",
       Menieres: "Meniere's",
       NeuritisHypofunction: "Neuritis",
+      NeuritisHypo: "Neuritis",
       ScCD: "Third Window",
       "Bilateral wkns": "Bilateral",
     };
@@ -114,12 +126,17 @@
           .includes(norm(q.showWhen.answer))
       )
         delete answers[q.id];
+    const recorded = (value.Diagnoses || [])
+      .map((v) => labels[v] || v)
+      .filter((label) => supportedLabels.has(label));
+    if ((value.Diagnoses || []).length && !recorded.length)
+      throw Error("This case has no diagnosis with current scoring rules.");
     return {
       answers,
       caseId: filename.replace(/\.json$/i, ""),
       age,
       sex: { female: "Female", male: "Male" }[norm(value.Gender)] || "",
-      recorded: (value.Diagnoses || []).map((v) => labels[v] || v),
+      recorded,
       sources: value.Sources,
       issues,
     };

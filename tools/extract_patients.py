@@ -127,13 +127,10 @@ def extract(path, modified=None, corrections=None):
         records,
         key=lambda r: (r["Sources"][0]["SheetName"], r["Sources"][0]["StartRow"]),
     ):
+        # Project identity rule: a complete identical questionnaire is one patient.
+        # Submission time, diagnosis tab and demographics do not split a match.
         key = json.dumps(
-            [
-                r["Submitted"],
-                r["Gender"],
-                r["Age"],
-                [(x["Question"], x["Answers"]) for x in r["Responses"]],
-            ],
+            sorted((x["Question"], sorted(x["Answers"])) for x in r["Responses"]),
             ensure_ascii=False,
         )
         if key in merged:

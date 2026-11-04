@@ -17,3 +17,8 @@ assert(scoring.score(window.NEBULA_BANDS.rules, answers).Bilateral.points < 0);
 const retired = new Set(['259358','259359','259365','259368','259373','259376','259377','259388','259424','259425','259426','260448']);
 assert(window.NEBULA_DATA.questions.every(question => !retired.has(question.id)));
 console.log('PASS: browser syntax, points model and retired questions.');
+
+const importer = require(path.join(web, 'case-import.js'));
+const synthetic = { Responses: [], Sources: [{ SheetName: 'NeuritisHypo (13)' }], Age: 45, Gender: 'Male', Diagnoses: ['NeuritisHypo','SchwannomaHypo'] };
+assert.deepEqual(importer.parse(synthetic,window.NEBULA_DATA.questions).recorded,['Neuritis']);
+assert.throws(() => importer.parse({...synthetic,Diagnoses:['SchwannomaHypo']},window.NEBULA_DATA.questions), /no diagnosis with current scoring rules/);

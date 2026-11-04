@@ -7,9 +7,9 @@ const root = path.resolve(__dirname, ".."),
   I = require("../web/case-import.js");
 global.window = {};
 require("../web/questionnaire-data.js");
-require("../web/notes-model.js");
+require("../web/band-model.js");
 const D = window.NEBULA_DATA,
-  prior = window.NEBULA_NOTES;
+  prior = window.NEBULA_BANDS;
 const folder = path.resolve(process.argv[2] || path.join(root, "data/cases"));
 const files = fs
   .readdirSync(folder, { recursive: true })
@@ -25,15 +25,23 @@ const cases = files.map((file) => {
     hits: prior.rules.map((r) => Number(M.matched(r, p.answers))),
   };
 });
-const categories = [...new Set(prior.rules.map((r) => r.category))].sort();
-if (
-  !cases.length ||
-  cases.some(
-    (p) =>
-      !p.recorded.length || p.recorded.some((c) => !categories.includes(c)),
-  )
-)
-  throw Error("Missing or unknown labels");
+// Only classes represented by eligible cases participate in this training run.
+const categories = [
+  ...new Set(cases.flatMap((patient) => patient.recorded)),
+].sort();
+const questionIds = new Set(D.questions.map((question) => question.id));
+prior.rules = prior.rules.filter(
+  (rule) =>
+    categories.includes(rule.category) &&
+    questionIds.has(rule.questionId) &&
+    rule.weight !== 0,
+);
+for (const patient of cases)
+  patient.hits = prior.rules.map((rule) =>
+    Number(M.matched(rule, patient.answers)),
+  );
+if (!cases.length || cases.some((patient) => !patient.recorded.length))
+  throw Error("Missing supported labels");
 if (prior.rules.some((r) => !Number.isInteger(r.weight)))
   throw Error("Prior must contain integer weights");
 const payload = {
