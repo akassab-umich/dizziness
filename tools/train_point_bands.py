@@ -37,7 +37,7 @@ def ordinal_loss(scores, positive):
     )
 
 
-def fit_category(X, y, prior, limit, seconds):
+def fit_category(X, y, prior, limit, seconds, relative_change=0.25):
     n, d = X.shape
     if not y.any() or y.all():
         return prior.copy(), {
@@ -45,8 +45,13 @@ def fit_category(X, y, prior, limit, seconds):
             "reason": "No positive/negative contrast",
         }
     varying = np.any(X != X[0], axis=0)
-    lower = np.where(prior > 0, 1, np.where(prior < 0, -limit, 0)).astype(float)
-    upper = np.where(prior > 0, limit, np.where(prior < 0, -1, 0)).astype(float)
+    magnitude = np.abs(prior)
+    allowance = np.maximum(1, np.floor(magnitude * relative_change)).astype(int)
+    minimum = np.maximum(1, magnitude - allowance)
+    # Positive weights can grow modestly. Penalties never exceed the anchor.
+    maximum = np.where(prior < 0, magnitude, np.minimum(limit, magnitude + allowance))
+    lower = np.where(prior > 0, minimum, np.where(prior < 0, -maximum, 0)).astype(float)
+    upper = np.where(prior > 0, maximum, np.where(prior < 0, -minimum, 0)).astype(float)
     # No data can identify constant features; retain these expert weights.
     lower[~varying] = prior[~varying]
     upper[~varying] = prior[~varying]
@@ -219,12 +224,15 @@ def main():
     parser.add_argument("--seconds", type=float, default=90)
     parser.add_argument("--version", default="point-bands-2026-11-04")
     parser.add_argument("--max-points", type=int, default=100)
+    parser.add_argument("--relative-change", type=float, default=0.25)
     parser.add_argument(
         "--only",
         nargs="+",
         help="Refine selected classes from a matching existing audit",
     )
     args = parser.parse_args()
+    if not 0 <= args.relative_change <= 1:
+        raise ValueError("Relative change must be between zero and one")
     raw = (ROOT / "private-results/training-input.json").read_bytes()
     data = json.loads(raw)
     cases = data["cases"]
@@ -241,6 +249,7 @@ def main():
         if (
             saved["inputSHA256"] != hashlib.sha256(raw).hexdigest()
             or saved["settings"]["max_points"] != args.max_points
+            or saved["settings"].get("relative_change") != args.relative_change
         ):
             raise ValueError("Cannot resume against different inputs or constraints")
         if any(c not in data["categories"] for c in args.only):
@@ -255,7 +264,7 @@ def main():
         print(f"Fitting {category}: {y.sum()} recorded / {len(y)} patients", flush=True)
         prior = np.array([rules[i]["weight"] for i in ids], dtype=int)
         weights[ids], audits[category] = fit_category(
-            hits[:, ids], y, prior, args.max_points, args.seconds
+            hits[:, ids], y, prior, args.max_points, args.seconds, args.relative_change
         )
         print(json.dumps(audits[category]), flush=True)
     result = copy.deepcopy(rules)
@@ -265,7 +274,7 @@ def main():
     model = {
         "version": args.version,
         "name": "Model",
-        "method": "Class-balanced ordinal mixed-integer optimization with expert sign constraints",
+        "method": "Class-balanced integer score optimization bounded near reviewed weights",
         "thresholds": list(THRESHOLDS),
         "trainedCategories": [c for c, a in audits.items() if a["trained"]],
         "rules": result,
@@ -274,6 +283,10 @@ def main():
             "evaluation": "training data only",
             "unrecordedLabels": "proxy negatives; not verified absence",
             "perRuleMagnitudeLimit": args.max_points,
+            "anchor": "Earlier reviewed notes weights",
+            "relativeChangeAllowance": args.relative_change,
+            "minimumAllowancePoints": 1,
+            "negativeMagnitudeCannotExceedAnchor": True,
         },
     }
     (ROOT / "web/band-model.js").write_text(
