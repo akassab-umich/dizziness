@@ -8,20 +8,8 @@ const root = path.resolve(__dirname, ".."),
 global.window = {};
 require("../web/questionnaire-data.js");
 require("../web/band-model.js");
-require("../web/notes-model.js");
 const D = window.NEBULA_DATA,
   prior = JSON.parse(JSON.stringify(window.NEBULA_BANDS));
-const anchor = window.NEBULA_NOTES;
-const ruleKey = (rule) =>
-  JSON.stringify([rule.category, rule.questionId, rule.answer]);
-const anchors = new Map(anchor.rules.map((rule) => [ruleKey(rule), rule]));
-for (const rule of prior.rules) {
-  const original = anchors.get(ruleKey(rule));
-  if (!original || Math.sign(original.weight) !== Math.sign(rule.weight))
-    throw Error("Missing or incompatible reviewed weight");
-  rule.weight = original.weight;
-}
-prior.version = anchor.version || anchor.name;
 const folder = path.resolve(process.argv[2] || path.join(root, "data/cases"));
 const files = fs
   .readdirSync(folder, { recursive: true })

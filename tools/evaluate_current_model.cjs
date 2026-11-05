@@ -25,11 +25,7 @@ for (const rule of model.rules) {
     Math.sign(rule.weight),
     Math.sign(previous.get(byKey(rule)).weight),
   );
-  assert(Math.abs(rule.weight) <= 100);
-  const anchor = previous.get(byKey(rule)).weight;
-  const allowance = Math.max(1, Math.floor(Math.abs(anchor) * 0.25));
-  assert(Math.abs(rule.weight - anchor) <= allowance);
-  if (anchor < 0) assert(Math.abs(rule.weight) <= Math.abs(anchor));
+  assert(Math.abs(rule.weight) <= 25);
 }
 const cases = input.cases;
 const classes = input.categories;
