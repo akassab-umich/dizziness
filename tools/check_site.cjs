@@ -56,9 +56,14 @@ assert.throws(
   /no diagnosis with current scoring rules/,
 );
 
-assert(
-  window.NEBULA_BANDS.rules.every(
-    (rule) => Number.isInteger(rule.weight) && Math.abs(rule.weight) <= 25,
-  ),
-  "Each answer contribution must be an integer within -25 to +25",
+const questionKinds = new Map(
+  window.NEBULA_DATA.questions.map((question) => [question.id, question.kind]),
 );
+for (const rule of window.NEBULA_BANDS.rules) {
+  const magnitude = Math.abs(rule.weight);
+  const maximum = questionKinds.get(rule.questionId) === "multi" ? 10 : 30;
+  assert(
+    Number.isInteger(rule.weight) && magnitude >= 5 && magnitude <= maximum,
+    `Out-of-bounds answer weight: ${rule.category}, Q${rule.questionId}, ${rule.answer}`,
+  );
+}

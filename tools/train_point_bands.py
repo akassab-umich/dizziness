@@ -37,9 +37,11 @@ def ordinal_loss(scores, positive):
     )
 
 
-def fit_category(X, y, prior, limit, seconds):
+def fit_category(X, y, prior, limit, seconds, minimum=5, rule_limits=None):
     n, d = X.shape
-    prior = np.clip(prior, -limit, limit)
+    limits = np.full(d, limit) if rule_limits is None else np.asarray(rule_limits)
+    signs = np.sign(prior)
+    prior = signs * np.clip(np.abs(prior), minimum, limits)
     if not y.any() or y.all():
         return prior.copy(), {
             "trained": False,
@@ -47,8 +49,8 @@ def fit_category(X, y, prior, limit, seconds):
         }
     varying = np.any(X != X[0], axis=0)
     # Weights are free within the cap, subject only to their approved direction.
-    lower = np.where(prior > 0, 1, np.where(prior < 0, -limit, 0)).astype(float)
-    upper = np.where(prior > 0, limit, np.where(prior < 0, -1, 0)).astype(float)
+    lower = np.where(prior > 0, minimum, np.where(prior < 0, -limits, 0)).astype(float)
+    upper = np.where(prior > 0, limits, np.where(prior < 0, -minimum, 0)).astype(float)
     size = d + 3 * n + d + n + 1
     low = np.r_[lower, np.zeros(3 * n + d + n + 1)]
     high = np.r_[upper, np.ones(3 * n), np.full(d + n + 1, np.inf)]
@@ -208,7 +210,7 @@ def fit_category(X, y, prior, limit, seconds):
         "seconds": round(time.monotonic() - started, 2),
         "changedRules": int(np.count_nonzero(weights != prior)),
         "constantRules": int((~varying).sum()),
-        "weightsAtBound": int(np.count_nonzero(varying & (np.abs(weights) == limit))),
+        "weightsAtBound": int(np.count_nonzero(varying & (np.abs(weights) == limits))),
     }
     return weights, info
 
@@ -217,7 +219,9 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--seconds", type=float, default=90)
     parser.add_argument("--version", default="point-bands-2026-11-04")
-    parser.add_argument("--max-points", type=int, default=25)
+    parser.add_argument("--max-points", type=int, default=30)
+    parser.add_argument("--checkbox-max", type=int, default=10)
+    parser.add_argument("--min-points", type=int, default=5)
     parser.add_argument(
         "--only",
         nargs="+",
@@ -229,17 +233,30 @@ def main():
     cases = data["cases"]
     rules = data["rules"]
     weights = np.array([r["weight"] for r in rules], dtype=int)
-    if not 1 <= args.max_points <= 25:
-        raise ValueError("Point cap must be between 1 and 25")
+    if not (args.min_points == 5 and args.checkbox_max == 10 and args.max_points == 30):
+        raise ValueError(
+            "Use magnitudes 5–30 for single-choice and 5–10 for checkboxes"
+        )
+    question_kinds = {q["id"]: q["kind"] for q in data["questions"]}
+    rule_limits = np.array(
+        [
+            (
+                args.checkbox_max
+                if question_kinds[r["questionId"]] == "multi"
+                else args.max_points
+            )
+            for r in rules
+        ]
+    )
     hits = np.array([p["hits"] for p in cases], dtype=int)
     audits = {}
     if args.only:
         saved = json.loads(
             (ROOT / "private-results/optimization-audit.json").read_text()
         )
-        if (
-            saved["inputSHA256"] != hashlib.sha256(raw).hexdigest()
-            or saved["settings"]["max_points"] != args.max_points
+        if saved["inputSHA256"] != hashlib.sha256(raw).hexdigest() or any(
+            saved["settings"].get(key) != getattr(args, key)
+            for key in ["max_points", "checkbox_max", "min_points"]
         ):
             raise ValueError("Cannot resume against different inputs or constraints")
         if any(c not in data["categories"] for c in args.only):
@@ -254,7 +271,13 @@ def main():
         print(f"Fitting {category}: {y.sum()} recorded / {len(y)} patients", flush=True)
         prior = np.array([rules[i]["weight"] for i in ids], dtype=int)
         weights[ids], audits[category] = fit_category(
-            hits[:, ids], y, prior, args.max_points, args.seconds
+            hits[:, ids],
+            y,
+            prior,
+            args.max_points,
+            args.seconds,
+            args.min_points,
+            rule_limits[ids],
         )
         print(json.dumps(audits[category]), flush=True)
     result = copy.deepcopy(rules)
@@ -264,7 +287,7 @@ def main():
     model = {
         "version": args.version,
         "name": "Model",
-        "method": "Class-balanced integer score optimization with a 25-point per-rule cap",
+        "method": "Class-balanced integer score optimization with question-type-specific point bounds",
         "thresholds": list(THRESHOLDS),
         "trainedCategories": [c for c, a in audits.items() if a["trained"]],
         "rules": result,
@@ -273,6 +296,9 @@ def main():
             "evaluation": "training data only",
             "unrecordedLabels": "proxy negatives; not verified absence",
             "perRuleMagnitudeLimit": args.max_points,
+            "checkboxMagnitudeLimit": args.checkbox_max,
+            "minimumRuleMagnitude": args.min_points,
+            "boundsApplyTo": "Each scored answer option, per class",
         },
     }
     (ROOT / "web/band-model.js").write_text(

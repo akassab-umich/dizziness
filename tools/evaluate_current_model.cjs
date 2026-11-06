@@ -25,7 +25,12 @@ for (const rule of model.rules) {
     Math.sign(rule.weight),
     Math.sign(previous.get(byKey(rule)).weight),
   );
-  assert(Math.abs(rule.weight) <= 25);
+  const question = input.questions.find(
+    (question) => question.id === rule.questionId,
+  );
+  assert(question);
+  assert(Math.abs(rule.weight) >= 5);
+  assert(Math.abs(rule.weight) <= (question.kind === "multi" ? 10 : 30));
 }
 const cases = input.cases;
 const classes = input.categories;
