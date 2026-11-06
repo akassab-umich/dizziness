@@ -36,3 +36,7 @@ Run `node tools/evaluate_current_model.cjs` after training to validate the integ
 The solver records time limits and optimality gaps in its private audit. If unrestricted point-distance refinement finds no feasible result in time, it fixes the first-pass band assignments and refines the weights within those bands. This preserves the primary fit but does not prove a globally best distance or smallest weight change.
 
 Each scored answer contribution must have magnitude at least 5 points. Single-choice options can range from +5 to +30 or -30 to -5. Checkbox options can range from +5 to +10 or -10 to -5. Positive/negative directions remain fixed, and weights otherwise learn freely within these bounds. These bounds apply to each option for each class, not to the sum across several selections or the total class score. Unscored options stay unscored; unanswered questions do not receive points. The 30/40/51 research bands remain unchanged.
+
+Rules may also switch off at exactly zero. Weights of magnitude 1–4 are never allowed. Original clinical direction is stored separately as `direction` so a zeroed rule can be considered in later training without forgetting its permitted sign. The exporter retains these dormant rules; only originally unscored links remain excluded.
+
+Run `python3 tools/test_optional_zero.py` to check that harmful rules can turn off and that dormant rules can reactivate only in their stored clinical direction.

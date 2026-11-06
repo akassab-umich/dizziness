@@ -10,6 +10,7 @@ require("../web/questionnaire-data.js");
 require("../web/band-model.js");
 const D = window.NEBULA_DATA,
   prior = JSON.parse(JSON.stringify(window.NEBULA_BANDS));
+for (const rule of prior.rules) rule.direction ??= Math.sign(rule.weight);
 const folder = path.resolve(process.argv[2] || path.join(root, "data/cases"));
 const files = fs
   .readdirSync(folder, { recursive: true })
@@ -34,7 +35,7 @@ prior.rules = prior.rules.filter(
   (rule) =>
     categories.includes(rule.category) &&
     questionIds.has(rule.questionId) &&
-    rule.weight !== 0,
+    rule.direction !== 0,
 );
 for (const patient of cases)
   patient.hits = prior.rules.map((rule) =>

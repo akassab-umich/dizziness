@@ -21,15 +21,16 @@ const previous = new Map(input.rules.map((rule) => [byKey(rule), rule]));
 assert.equal(model.rules.length, input.rules.length);
 for (const rule of model.rules) {
   assert(Number.isInteger(rule.weight));
-  assert.equal(
-    Math.sign(rule.weight),
-    Math.sign(previous.get(byKey(rule)).weight),
-  );
+  const direction =
+    previous.get(byKey(rule)).direction ??
+    Math.sign(previous.get(byKey(rule)).weight);
+  assert.equal(rule.direction, direction);
+  assert(rule.weight === 0 || Math.sign(rule.weight) === direction);
   const question = input.questions.find(
     (question) => question.id === rule.questionId,
   );
   assert(question);
-  assert(Math.abs(rule.weight) >= 5);
+  assert(rule.weight === 0 || Math.abs(rule.weight) >= 5);
   assert(Math.abs(rule.weight) <= (question.kind === "multi" ? 10 : 30));
 }
 const cases = input.cases;

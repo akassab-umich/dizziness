@@ -15,7 +15,7 @@ for (const name of ["questionnaire-data", "band-model"]) {
 }
 const scoring = require(path.join(web, "model-core.js"));
 const answers = { 259356: "dizziness" };
-assert(scoring.score(window.NEBULA_BANDS.rules, answers).Bilateral.points < 0);
+assert(scoring.score(window.NEBULA_BANDS.rules, answers).Bilateral.points <= 0);
 const retired = new Set([
   "259358",
   "259359",
@@ -61,9 +61,15 @@ const questionKinds = new Map(
 );
 for (const rule of window.NEBULA_BANDS.rules) {
   const magnitude = Math.abs(rule.weight);
+  assert([1, -1].includes(rule.direction));
+  assert(
+    rule.weight === 0 || Math.sign(rule.weight) === rule.direction,
+    "Clinical direction changed",
+  );
   const maximum = questionKinds.get(rule.questionId) === "multi" ? 10 : 30;
   assert(
-    Number.isInteger(rule.weight) && magnitude >= 5 && magnitude <= maximum,
+    Number.isInteger(rule.weight) &&
+      (magnitude === 0 || (magnitude >= 5 && magnitude <= maximum)),
     `Out-of-bounds answer weight: ${rule.category}, Q${rule.questionId}, ${rule.answer}`,
   );
 }

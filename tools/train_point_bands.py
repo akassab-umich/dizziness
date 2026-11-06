@@ -37,24 +37,32 @@ def ordinal_loss(scores, positive):
     )
 
 
-def fit_category(X, y, prior, limit, seconds, minimum=5, rule_limits=None):
+def fit_category(
+    X, y, prior, limit, seconds, minimum=5, rule_limits=None, directions=None
+):
     n, d = X.shape
     limits = np.full(d, limit) if rule_limits is None else np.asarray(rule_limits)
-    signs = np.sign(prior)
-    prior = signs * np.clip(np.abs(prior), minimum, limits)
+    directions = np.sign(prior) if directions is None else np.asarray(directions)
+    if np.any(np.abs(directions) != 1):
+        raise ValueError(
+            "Each candidate rule needs its original positive/negative direction"
+        )
+    # Semi-integer magnitudes are exactly zero OR an integer in [minimum, limit].
+    # Signed feature columns preserve direction even when a rule is switched off.
+    X = X * directions
+    prior = np.where(prior == 0, 0, np.clip(np.abs(prior), minimum, limits))
     if not y.any() or y.all():
-        return prior.copy(), {
+        return prior.copy() * directions, {
             "trained": False,
             "reason": "No positive/negative contrast",
         }
     varying = np.any(X != X[0], axis=0)
-    # Weights are free within the cap, subject only to their approved direction.
-    lower = np.where(prior > 0, minimum, np.where(prior < 0, -limits, 0)).astype(float)
-    upper = np.where(prior > 0, limits, np.where(prior < 0, -minimum, 0)).astype(float)
+    lower = np.full(d, minimum, dtype=float)
+    upper = limits.astype(float)
     size = d + 3 * n + d + n + 1
     low = np.r_[lower, np.zeros(3 * n + d + n + 1)]
     high = np.r_[upper, np.ones(3 * n), np.full(d + n + 1, np.inf)]
-    integer = np.r_[np.ones(d + 3 * n), np.zeros(d + n + 1)]
+    integer = np.r_[np.full(d, 3), np.ones(3 * n), np.zeros(d + n + 1)]
     c = np.zeros(size)
     rows, lhs, rhs = [], [], []
 
@@ -64,7 +72,8 @@ def fit_category(X, y, prior, limit, seconds, minimum=5, rule_limits=None):
         rhs.append(hi)
 
     for i in range(n):
-        min_s, max_s = float(X[i] @ lower), float(X[i] @ upper)
+        min_s = float(np.minimum(X[i], 0) @ upper)
+        max_s = float(np.maximum(X[i], 0) @ upper)
         for j, t in enumerate(THRESHOLDS):
             b_idx = d + 3 * i + j
             a = np.zeros(size)
@@ -173,8 +182,8 @@ def fit_category(X, y, prior, limit, seconds, minimum=5, rule_limits=None):
     after = ordinal_loss(X @ weights, y)
     if after > ordinal_loss(X @ first_w, y) + 1e-7 or after > before + 1e-7:
         raise RuntimeError("Optimizer degraded primary band objective")
-    if np.any(np.sign(weights) != np.sign(prior)):
-        raise RuntimeError("Expert sign changed")
+    if np.any((weights != 0) & ((weights < minimum) | (weights > limits))):
+        raise RuntimeError("Invalid active weight magnitude")
     info = {
         "trained": True,
         "positiveCount": int(y.sum()),
@@ -212,7 +221,8 @@ def fit_category(X, y, prior, limit, seconds, minimum=5, rule_limits=None):
         "constantRules": int((~varying).sum()),
         "weightsAtBound": int(np.count_nonzero(varying & (np.abs(weights) == limits))),
     }
-    return weights, info
+    info["disabledRules"] = int(np.count_nonzero(weights == 0))
+    return weights * directions, info
 
 
 def main():
@@ -278,6 +288,12 @@ def main():
             args.seconds,
             args.min_points,
             rule_limits[ids],
+            np.array(
+                [
+                    rules[i].get("direction", int(np.sign(rules[i]["weight"])))
+                    for i in ids
+                ]
+            ),
         )
         print(json.dumps(audits[category]), flush=True)
     result = copy.deepcopy(rules)
@@ -298,6 +314,7 @@ def main():
             "perRuleMagnitudeLimit": args.max_points,
             "checkboxMagnitudeLimit": args.checkbox_max,
             "minimumRuleMagnitude": args.min_points,
+            "zeroAllowed": True,
             "boundsApplyTo": "Each scored answer option, per class",
         },
     }
