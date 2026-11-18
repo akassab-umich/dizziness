@@ -1,12 +1,9 @@
 window.NEBULA_BANDS = {
-  "version": "optional-zero-2026-11-06",
+  "version": "workshop-conservative-2026-11-18",
   "name": "Model",
-  "method": "Class-balanced integer score optimization with question-type-specific point bounds",
-  "thresholds": [
-    30,
-    40,
-    51
-  ],
+  "basedOnVersion": "meeting-2-severity-2026-10-28",
+  "method": "Expert-linked additive scorecard with bounded integer pairwise-ranking calibration",
+  "scoringMode": "net-points",
   "trainedCategories": [
     "BPPV",
     "Bilateral",
@@ -21,37 +18,41 @@ window.NEBULA_BANDS = {
       "category": "BPPV",
       "questionId": "259364",
       "answer": "Yes",
-      "weight": 27,
+      "weight": 15,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 15
     },
     {
       "category": "BPPV",
       "questionId": "259369",
       "answer": "Seconds",
-      "weight": 7,
+      "weight": 8,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 7
     },
     {
       "category": "BPPV",
       "questionId": "259369",
       "answer": "Minutes",
-      "weight": 10,
+      "weight": 7,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 7
     },
     {
       "category": "BPPV",
       "questionId": "259370",
       "answer": "once a day",
-      "weight": 0,
+      "weight": 8,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 7
     },
     {
       "category": "BPPV",
@@ -59,233 +60,259 @@ window.NEBULA_BANDS = {
       "answer": "several times a day",
       "weight": 5,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 7
     },
     {
       "category": "BPPV",
       "questionId": "259371",
       "answer": "looking up",
-      "weight": 5,
+      "weight": 3,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 3
     },
     {
       "category": "BPPV",
       "questionId": "259371",
       "answer": "lying down",
-      "weight": 9,
+      "weight": 4,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 3
     },
     {
       "category": "BPPV",
       "questionId": "259371",
       "answer": "rolling over",
-      "weight": 7,
+      "weight": 10,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 8
     },
     {
       "category": "BPPV",
       "questionId": "259371",
       "answer": "getting into or out of bed",
-      "weight": 8,
+      "weight": 10,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 8
     },
     {
       "category": "BPPV",
       "questionId": "259371",
       "answer": "sitting up",
-      "weight": 0,
+      "weight": 5,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 4
     },
     {
       "category": "BPPV",
       "questionId": "259371",
       "answer": "reaching or bending",
-      "weight": 0,
+      "weight": 1,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 2
     },
     {
       "category": "BPPV",
       "questionId": "259362",
       "answer": "No",
-      "weight": 5,
+      "weight": 11,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 15
     },
     {
       "category": "Neuritis",
       "questionId": "259361",
       "answer": "Sudden",
-      "weight": 11,
+      "weight": 19,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 25
     },
     {
       "category": "Neuritis",
       "questionId": "259362",
       "answer": "Yes",
-      "weight": 12,
+      "weight": 16,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 13
     },
     {
       "category": "Neuritis",
       "questionId": "259367",
       "answer": "Only 1 episode",
-      "weight": 13,
+      "weight": 20,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 20
     },
     {
       "category": "Neuritis",
       "questionId": "259371",
       "answer": "walking in the dark",
-      "weight": 10,
+      "weight": 13,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 10
     },
     {
       "category": "Neuritis",
       "questionId": "259371",
       "answer": "any kind of head movement",
-      "weight": 0,
+      "weight": 10,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 10
     },
     {
       "category": "Neuritis",
       "questionId": "260451",
       "answer": "Yes",
-      "weight": 0,
+      "weight": 10,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 12
     },
     {
       "category": "Neuritis",
       "questionId": "260451",
       "answer": "No",
-      "weight": 0,
+      "weight": -13,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": -1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": -1,
+      "anchorWeight": -13
     },
     {
       "category": "Meniere's",
       "questionId": "259369",
       "answer": "Hours",
-      "weight": 10,
+      "weight": 6,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 5
     },
     {
       "category": "Meniere's",
       "questionId": "259369",
       "answer": "Days",
-      "weight": 0,
+      "weight": 5,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 5
     },
     {
       "category": "Meniere's",
       "questionId": "259369",
       "answer": "Days and can last continuously for weeks",
-      "weight": 0,
+      "weight": 4,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 5
     },
     {
       "category": "Meniere's",
       "questionId": "259381",
       "answer": "Nausea or vomiting",
+      "weight": 19,
+      "editable": true,
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 16
+    },
+    {
+      "category": "Meniere's",
+      "questionId": "259417",
+      "answer": "Yes, right ear only",
       "weight": 10,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
-    },
-    {
-      "category": "Meniere's",
-      "questionId": "259417",
-      "answer": "Yes, right ear only",
-      "weight": 11,
-      "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 9
     },
     {
       "category": "Meniere's",
       "questionId": "259417",
       "answer": "Yes, left ear only",
-      "weight": 5,
+      "weight": 10,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 8
     },
     {
       "category": "Meniere's",
       "questionId": "259418",
       "answer": "Yes, right ear only",
-      "weight": 25,
+      "weight": 20,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 16
     },
     {
       "category": "Meniere's",
       "questionId": "259418",
       "answer": "Yes, left ear only",
-      "weight": 16,
+      "weight": 20,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 16
     },
     {
       "category": "Meniere's",
       "questionId": "259416",
       "answer": "Yes, right ear only",
-      "weight": 5,
+      "weight": 12,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 16
     },
     {
       "category": "Meniere's",
       "questionId": "259416",
       "answer": "Yes, left ear only",
-      "weight": 24,
+      "weight": 15,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 16
     },
     {
       "category": "Meniere's",
       "questionId": "260450",
       "answer": "changes in the weather",
-      "weight": 10,
+      "weight": 6,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 5
     },
     {
       "category": "Meniere's",
@@ -293,34 +320,37 @@ window.NEBULA_BANDS = {
       "answer": "certain foods",
       "weight": 5,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 5
     },
     {
       "category": "Meniere's",
       "questionId": "260450",
       "answer": "certain beverages",
-      "weight": 5,
+      "weight": 4,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 4
     },
     {
       "category": "Meniere's",
       "questionId": "259363",
       "answer": "No",
-      "weight": 12,
+      "weight": 10,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 13
     },
     {
       "category": "Meniere's",
       "questionId": "259400",
       "answer": "no",
-      "weight": -20,
+      "weight": -8,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
+      "source": "Conservative recalibration of final October workshop points",
       "unless": {
         "questionId": "259416",
         "answers": [
@@ -328,16 +358,28 @@ window.NEBULA_BANDS = {
           "Yes, left ear only"
         ]
       },
-      "direction": -1
+      "direction": -1,
+      "anchorWeight": -8
     },
     {
       "category": "Meniere's",
       "questionId": "259416",
       "answer": "No",
+      "weight": -15,
+      "editable": true,
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": -1,
+      "anchorWeight": -16
+    },
+    {
+      "category": "Meniere's",
+      "questionId": "259417",
+      "answer": "No",
       "weight": 0,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": -1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 0,
+      "anchorWeight": 0
     },
     {
       "category": "Meniere's",
@@ -345,8 +387,9 @@ window.NEBULA_BANDS = {
       "answer": "No",
       "weight": -13,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": -1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": -1,
+      "anchorWeight": -13
     },
     {
       "category": "Meniere's",
@@ -354,152 +397,179 @@ window.NEBULA_BANDS = {
       "answer": "none of the above",
       "weight": -5,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": -1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": -1,
+      "anchorWeight": -4
     },
     {
       "category": "Third Window",
       "questionId": "259369",
       "answer": "Seconds",
-      "weight": 10,
+      "weight": 29,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 25
     },
     {
       "category": "Third Window",
       "questionId": "259372",
       "answer": "blowing your nose",
-      "weight": 10,
+      "weight": 13,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 13
     },
     {
       "category": "Third Window",
       "questionId": "259372",
       "answer": "loud sounds",
-      "weight": 10,
+      "weight": 26,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 26
     },
     {
       "category": "Third Window",
       "questionId": "259372",
       "answer": "lifting or straining",
-      "weight": 5,
+      "weight": 7,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 10
     },
     {
       "category": "Third Window",
       "questionId": "259372",
       "answer": "coughing",
-      "weight": 0,
+      "weight": 7,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 10
     },
     {
       "category": "Third Window",
       "questionId": "259421",
       "answer": "Yes",
-      "weight": 30,
+      "weight": 28,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 25
+    },
+    {
+      "category": "Third Window",
+      "questionId": "259421",
+      "answer": "No",
+      "weight": 0,
+      "editable": true,
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 0,
+      "anchorWeight": 0
     },
     {
       "category": "Migraine",
       "questionId": "259369",
       "answer": "Hours",
-      "weight": 6,
+      "weight": 4,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 4
     },
     {
       "category": "Migraine",
       "questionId": "259369",
       "answer": "Days",
-      "weight": 0,
+      "weight": 1,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 2
     },
     {
       "category": "Migraine",
       "questionId": "259369",
       "answer": "Days and can last continuously for weeks",
-      "weight": 8,
+      "weight": 4,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 4
     },
     {
       "category": "Migraine",
       "questionId": "259372",
       "answer": "hot bath or shower",
-      "weight": 0,
+      "weight": 4,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 4
     },
     {
       "category": "Migraine",
       "questionId": "259372",
       "answer": "menstrual cycle",
-      "weight": 0,
+      "weight": 5,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 4
     },
     {
       "category": "Migraine",
       "questionId": "259372",
       "answer": "exercise",
-      "weight": 0,
+      "weight": 4,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 4
     },
     {
       "category": "Migraine",
       "questionId": "259383",
       "answer": "Yes",
-      "weight": 9,
+      "weight": 7,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 7
     },
     {
       "category": "Migraine",
       "questionId": "259384",
       "answer": "Yes",
-      "weight": 0,
+      "weight": 13,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 13
     },
     {
       "category": "Migraine",
       "questionId": "259385",
       "answer": "Yes",
-      "weight": 6,
+      "weight": 9,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 7
     },
     {
       "category": "Migraine",
       "questionId": "259386",
       "answer": "Yes",
-      "weight": 10,
+      "weight": 9,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 12
     },
     {
       "category": "Migraine",
@@ -507,563 +577,659 @@ window.NEBULA_BANDS = {
       "answer": "Yes",
       "weight": 13,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 13
     },
     {
       "category": "Migraine",
       "questionId": "259389",
       "answer": "increased sensitivity to light during a headache",
-      "weight": 8,
+      "weight": 3,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 3
     },
     {
       "category": "Migraine",
       "questionId": "259389",
       "answer": "increased sensitivity to sound during a headache",
-      "weight": 10,
+      "weight": 3,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 3
     },
     {
       "category": "Migraine",
       "questionId": "259389",
       "answer": "increased sensitivity to smell during a headache",
-      "weight": 5,
+      "weight": 4,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 3
     },
     {
       "category": "Migraine",
       "questionId": "259389",
       "answer": "headaches that happen when you are feeling dizzy or off balance",
-      "weight": 5,
+      "weight": 4,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 3
     },
     {
       "category": "Migraine",
       "questionId": "259389",
       "answer": "certain foods or beverages increase the chance of getting a headache",
-      "weight": 0,
+      "weight": 1,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 1
     },
     {
       "category": "Migraine",
       "questionId": "259389",
       "answer": "headaches where the pain throbs or pulses",
-      "weight": 8,
+      "weight": 4,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 3
     },
     {
       "category": "Migraine",
       "questionId": "260450",
       "answer": "changes in the weather",
-      "weight": 7,
+      "weight": 5,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 4
     },
     {
       "category": "Migraine",
       "questionId": "260450",
       "answer": "certain foods",
-      "weight": 0,
+      "weight": 2,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 2
     },
     {
       "category": "Migraine",
       "questionId": "260450",
       "answer": "certain beverages",
-      "weight": 0,
+      "weight": 2,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 2
     },
     {
       "category": "Migraine",
       "questionId": "259363",
       "answer": "No",
-      "weight": 0,
+      "weight": 5,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 7
     },
     {
       "category": "Migraine",
       "questionId": "259383",
       "answer": "No",
-      "weight": -5,
+      "weight": -13,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": -1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": -1,
+      "anchorWeight": -13
     },
     {
       "category": "Migraine",
       "questionId": "259384",
       "answer": "No",
-      "weight": 0,
+      "weight": -12,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": -1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": -1,
+      "anchorWeight": -13
     },
     {
       "category": "Migraine",
       "questionId": "259386",
       "answer": "No",
-      "weight": -5,
+      "weight": -4,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": -1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": -1,
+      "anchorWeight": -6
     },
     {
       "category": "Migraine",
       "questionId": "260450",
       "answer": "none of the above",
-      "weight": 0,
+      "weight": -8,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": -1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": -1,
+      "anchorWeight": -6
     },
     {
       "category": "PPPD",
       "questionId": "259361",
       "answer": "Gradual",
-      "weight": 20,
+      "weight": 11,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 15
     },
     {
       "category": "PPPD",
       "questionId": "259363",
       "answer": "Yes",
-      "weight": 14,
+      "weight": 11,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 15
     },
     {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "car rides",
-      "weight": 0,
+      "weight": 2,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 1
     },
     {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "reading",
-      "weight": 8,
+      "weight": 2,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 1
     },
     {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "stress, nerves, or anxiety",
-      "weight": 9,
+      "weight": 3,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 3
     },
     {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "windshield wipers",
-      "weight": 5,
+      "weight": 2,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 1
     },
     {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "supermarket aisles, malls, or tunnels",
-      "weight": 7,
+      "weight": 2,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 2
     },
     {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "restaurants or movie theaters",
-      "weight": 10,
+      "weight": 3,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 3
     },
     {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "turning your head while walking",
-      "weight": 0,
+      "weight": 3,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 2
     },
     {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "large crowds/social gatherings",
-      "weight": 0,
+      "weight": 1,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 1
     },
     {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "watching TV",
-      "weight": 0,
+      "weight": 1,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 1
     },
     {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "walking on carpeting with a complex pattern",
-      "weight": 9,
+      "weight": 2,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 2
     },
     {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "working on the computer",
-      "weight": 8,
+      "weight": 2,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 1
     },
     {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "traffic",
-      "weight": 0,
+      "weight": 1,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 1
     },
     {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "movement of things around you",
-      "weight": 0,
+      "weight": 2,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 1
     },
     {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "your own movement",
-      "weight": 0,
+      "weight": 3,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 2
     },
     {
       "category": "PPPD",
       "questionId": "259374",
       "answer": "unsteady when standing",
-      "weight": 7,
+      "weight": 12,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 13
     },
     {
       "category": "PPPD",
       "questionId": "259374",
       "answer": "unsteady when walking",
-      "weight": 0,
+      "weight": 10,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 9
     },
     {
       "category": "PPPD",
       "questionId": "259381",
       "answer": "heart racing",
-      "weight": 10,
+      "weight": 16,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 13
     },
     {
       "category": "PPPD",
       "questionId": "259381",
       "answer": "panic feeling or sudden need to leave a place",
-      "weight": 9,
+      "weight": 11,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 13
     },
     {
       "category": "PPPD",
       "questionId": "259363",
       "answer": "No",
-      "weight": -10,
+      "weight": -15,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": -1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": -1,
+      "anchorWeight": -15
     },
     {
       "category": "Bilateral",
       "questionId": "259356",
       "answer": "dizziness",
-      "weight": -25,
+      "weight": -7,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": -1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": -1,
+      "anchorWeight": -6
     },
     {
       "category": "Bilateral",
       "questionId": "259356",
       "answer": "imbalance",
-      "weight": 0,
+      "weight": 11,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 12
     },
     {
       "category": "Bilateral",
       "questionId": "259356",
       "answer": "dizziness and imbalance",
-      "weight": 0,
+      "weight": 4,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 6
     },
     {
       "category": "Bilateral",
       "questionId": "259371",
       "answer": "any kind of head movement",
-      "weight": 10,
+      "weight": 18,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 19
     },
     {
       "category": "Bilateral",
       "questionId": "259362",
       "answer": "No",
-      "weight": 22,
+      "weight": 21,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 19
     },
     {
       "category": "Bilateral",
       "questionId": "259381",
       "answer": "Vision \"jumping\" or \"bouncing\" when walking or riding",
-      "weight": 10,
+      "weight": 24,
       "editable": true,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 19
     },
     {
       "category": "BPPV",
       "questionId": "259369",
       "answer": "Hours",
-      "weight": -5,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": -1
+      "weight": -7,
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": -1,
+      "anchorWeight": -7
     },
     {
       "category": "BPPV",
       "questionId": "259362",
       "answer": "Yes",
-      "weight": -10,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": -1
+      "weight": -15,
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": -1,
+      "anchorWeight": -15
     },
     {
       "category": "Neuritis",
       "questionId": "259416",
       "answer": "Yes, right ear only",
-      "weight": -30,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": -1
+      "weight": -10,
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": -1,
+      "anchorWeight": -10
     },
     {
       "category": "Neuritis",
       "questionId": "259416",
       "answer": "Yes, left ear only",
-      "weight": -30,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": -1
+      "weight": -13,
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": -1,
+      "anchorWeight": -10
     },
     {
       "category": "Neuritis",
       "questionId": "259381",
       "answer": "Nausea or vomiting",
-      "weight": 5,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "weight": 12,
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 12
     },
     {
       "category": "Bilateral",
       "questionId": "259374",
       "answer": "unsteady when standing",
-      "weight": 5,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "weight": 4,
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 6
     },
     {
       "category": "Bilateral",
       "questionId": "259374",
       "answer": "unsteady when walking",
-      "weight": 0,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "weight": 4,
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 6
     },
     {
       "category": "Bilateral",
       "questionId": "259374",
       "answer": "stumbling or falling when walking",
-      "weight": 10,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "weight": 7,
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 6
     },
     {
       "category": "Migraine",
       "questionId": "259369",
       "answer": "Seconds",
-      "weight": 0,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": -1
+      "weight": -5,
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": -1,
+      "anchorWeight": -4
     },
     {
       "category": "PPPD",
       "questionId": "259371",
       "answer": "lying down",
-      "weight": 0,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "weight": 4,
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 4
     },
     {
       "category": "PPPD",
       "questionId": "259371",
       "answer": "sitting up",
-      "weight": 0,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "weight": 4,
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 4
     },
     {
       "category": "PPPD",
       "questionId": "259371",
       "answer": "standing up",
-      "weight": 5,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "weight": 4,
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 4
     },
     {
       "category": "PPPD",
       "questionId": "259371",
       "answer": "any kind of head movement",
-      "weight": 0,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "weight": 4,
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 4
     },
     {
       "category": "Bilateral",
       "questionId": "259415",
       "answer": "Yes, hearing loss in the right ear only",
-      "weight": -14,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": -1
+      "weight": -13,
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": -1,
+      "anchorWeight": -10
     },
     {
       "category": "Bilateral",
       "questionId": "259415",
       "answer": "Yes, hearing loss in the left ear only",
-      "weight": -28,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": -1
+      "weight": -9,
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": -1,
+      "anchorWeight": -10
     },
     {
       "category": "Bilateral",
       "questionId": "259361",
       "answer": "Gradual",
-      "weight": 22,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "weight": 10,
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 10
     },
     {
       "category": "Bilateral",
       "questionId": "259361",
       "answer": "Sudden",
-      "weight": -5,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": -1
+      "weight": -11,
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": -1,
+      "anchorWeight": -10
     },
     {
       "category": "Neuritis",
       "questionId": "259361",
       "answer": "Gradual",
-      "weight": 0,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": -1
+      "weight": -7,
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": -1,
+      "anchorWeight": -10
     },
     {
       "category": "Neuritis",
       "questionId": "259366",
       "answer": "mild",
-      "weight": 18,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "weight": 12,
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 12
     },
     {
       "category": "Neuritis",
       "questionId": "259366",
       "answer": "moderate",
-      "weight": 27,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "weight": 6,
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 6
+    },
+    {
+      "category": "Neuritis",
+      "questionId": "259366",
+      "answer": "severe",
+      "weight": 0,
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 0,
+      "anchorWeight": 0
+    },
+    {
+      "category": "Bilateral",
+      "questionId": "259366",
+      "answer": "mild",
+      "weight": 0,
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 0,
+      "anchorWeight": 0
     },
     {
       "category": "Bilateral",
       "questionId": "259366",
       "answer": "moderate",
-      "weight": 7,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "weight": 6,
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 6
     },
     {
       "category": "Bilateral",
       "questionId": "259366",
       "answer": "severe",
-      "weight": 10,
-      "source": "Experimental ordinal integer score optimization",
-      "direction": 1
+      "weight": 12,
+      "source": "Conservative recalibration of final October workshop points",
+      "direction": 1,
+      "anchorWeight": 12
     }
   ],
+  "constraints": {
+    "radiusFraction": 0.25,
+    "minimumRadius": 1,
+    "zeroRulesFrozen": true,
+    "unobservedRulesFrozen": true,
+    "signsPreserved": true,
+    "positiveBudgetRange": [
+      0.75,
+      1.25
+    ],
+    "classMeanSupportGuard": true,
+    "workshopOrderingsPreserved": true
+  },
   "fit": {
-    "patients": 75,
-    "evaluation": "training data only",
-    "unrecordedLabels": "proxy negatives; not verified absence",
-    "perRuleMagnitudeLimit": 30,
-    "checkboxMagnitudeLimit": 10,
-    "minimumRuleMagnitude": 5,
-    "zeroAllowed": true,
-    "boundsApplyTo": "Each scored answer option, per class"
+    "patients": 84,
+    "diagnoses": 91,
+    "sourceWorkbook": "AI data  pull._11.13.xlsx",
+    "evaluation": "Training data only; unrecorded diagnoses are not confirmed negatives",
+    "inputSHA256": "046108592ce9f3aa46539ad3004a58a8267beec3b5a396976215d258c7010ab4",
+    "objectiveBefore": 0.017529896749148004,
+    "objectiveAfter": 0.012726577666508745,
+    "acceptedMoves": 80,
+    "method": "Deterministic bounded local search; not a claim of global optimality"
   }
 };

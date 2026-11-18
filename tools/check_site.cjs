@@ -59,17 +59,72 @@ assert.throws(
 const questionKinds = new Map(
   window.NEBULA_DATA.questions.map((question) => [question.id, question.kind]),
 );
-for (const rule of window.NEBULA_BANDS.rules) {
-  const magnitude = Math.abs(rule.weight);
-  assert([1, -1].includes(rule.direction));
-  assert(
-    rule.weight === 0 || Math.sign(rule.weight) === rule.direction,
-    "Clinical direction changed",
+const model = window.NEBULA_BANDS;
+if (model.constraints?.radiusFraction === 0.25) {
+  require(path.join(web, "notes-model.js"));
+  const key = (rule) =>
+    JSON.stringify([
+      rule.category,
+      rule.questionId,
+      rule.answer,
+      rule.unless || null,
+    ]);
+  const anchors = new Map(
+    window.NEBULA_NOTES.rules.map((rule) => [key(rule), rule]),
   );
-  const maximum = questionKinds.get(rule.questionId) === "multi" ? 10 : 30;
-  assert(
-    Number.isInteger(rule.weight) &&
-      (magnitude === 0 || (magnitude >= 5 && magnitude <= maximum)),
-    `Out-of-bounds answer weight: ${rule.category}, Q${rule.questionId}, ${rule.answer}`,
+  assert.equal(model.basedOnVersion, window.NEBULA_NOTES.version);
+  for (const rule of model.rules) {
+    const anchor = anchors.get(key(rule));
+    assert(anchor, "New scoring link was not in the workshop model");
+    assert(
+      questionKinds.has(rule.questionId),
+      "Rule references a retired question",
+    );
+    assert.equal(rule.anchorWeight, anchor.weight);
+    assert.equal(rule.direction, Math.sign(anchor.weight));
+    assert.equal(Math.sign(rule.weight), Math.sign(anchor.weight));
+    assert(Number.isInteger(rule.weight));
+    const radius = Math.max(1, Math.round(Math.abs(anchor.weight) * 0.25));
+    assert(
+      Math.abs(rule.weight - anchor.weight) <= radius,
+      "Workshop bound exceeded",
+    );
+    if (anchor.weight === 0 || anchor.weight === -100)
+      assert.equal(rule.weight, anchor.weight);
+    assert(model.trainedCategories.includes(rule.category));
+  }
+  for (const category of ["Neuritis", "Bilateral"]) {
+    const weight = (answer) =>
+      model.rules.find(
+        (r) =>
+          r.category === category &&
+          r.questionId === "259366" &&
+          r.answer === answer,
+      ).weight;
+    assert.equal(2 * weight("moderate"), weight("mild") + weight("severe"));
+    if (category === "Neuritis")
+      assert(
+        weight("mild") >= weight("moderate") &&
+          weight("moderate") >= weight("severe"),
+      );
+    else
+      assert(
+        weight("severe") >= weight("moderate") &&
+          weight("moderate") >= weight("mild"),
+      );
+  }
+  console.log(
+    "PASS: workshop rule identities, integer bounds, zeros and clinical directions.",
   );
+} else {
+  for (const rule of model.rules) {
+    const magnitude = Math.abs(rule.weight);
+    assert([1, -1].includes(rule.direction));
+    assert(rule.weight === 0 || Math.sign(rule.weight) === rule.direction);
+    const maximum = questionKinds.get(rule.questionId) === "multi" ? 10 : 30;
+    assert(
+      Number.isInteger(rule.weight) &&
+        (magnitude === 0 || (magnitude >= 5 && magnitude <= maximum)),
+    );
+  }
 }

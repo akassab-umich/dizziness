@@ -2,7 +2,7 @@
 
 Website: https://akassab-umich.github.io/dizziness/
 
-This is the main repository for the app. It contains the browser code, model definitions, and tools for processing and training locally. The old `dizziness-source` repository contains earlier experiments and is retained as a legacy archive.
+This is the main repository for the app. It contains the browser code, model definitions, and tools for processing and training locally. Earlier experiments are retained in local archives outside this public repository.
 
 ## Start here
 
@@ -14,17 +14,17 @@ Open http://127.0.0.1:8765/. Use the project access code. You can answer questio
 
 ## Where to find things
 
-| Folder | Purpose |
-| --- | --- |
-| `web/` | Website deployed by GitHub Pages |
-| `tools/` | Local extraction, feature preparation, and model training |
-| `docs/` | Model descriptions and development guide |
-| `data/` | Your local patient files; ignored by Git |
+| Folder             | Purpose                                                   |
+| ------------------ | --------------------------------------------------------- |
+| `web/`             | Website deployed by GitHub Pages                          |
+| `tools/`           | Local extraction, feature preparation, and model training |
+| `docs/`            | Model descriptions and development guide                  |
+| `data/`            | Your local patient files; ignored by Git                  |
 | `private-results/` | Local training inputs and patient results; ignored by Git |
 
 Start with `web/app.js` to understand question navigation and scoring. `web/case-import.js` maps patient JSON into answers. `web/model-core.js` computes points. `web/research.js` builds the explanation dialogs. `web/question-viewer.js` handles the second viewer.
 
-The website uses **Model**, the optimized integer points model in `web/band-model.js`.
+The website uses **Model**, the conservatively updated workshop points model in `web/band-model.js`. Its reference weights are preserved in `web/notes-model.js`.
 
 Model definition files are generated artifacts. Edit their training tools or expert rule sources rather than manually reformatting their arrays.
 

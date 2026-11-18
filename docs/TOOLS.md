@@ -10,33 +10,30 @@ python3 tools/extract_patients.py --help
 
 This is the local Wolverine-compatible extractor. It keeps source workbook, worksheet and row references. Per the project linkage rule, identical complete question/answer sets are merged regardless of submission time, age, sex or diagnosis tab. This is an assumed patient match; conflicting demographics still require review.
 
-## Model
+## Current model: conservative workshop scorecard
 
-Build a new case folder from the sole current workbook first:
+The website uses the final October 28 workshop model, including the Meeting 1, Meeting 2, and severity changes, as its fixed reference. `web/notes-model.js` preserves that reference; `web/band-model.js` contains the updated deployed weights.
+
+The November 13 workbook is the sole patient source. The supported cohort contains 84 patients and 91 recorded diagnoses across seven classes. Other diagnosis classes remain on hold until clinical question/answer rules are supplied. Do not use unsupported-only patients as negative training examples.
+
+Prepare cases in a new local folder outside Git:
 
 ```bash
 python3 tools/prepare_supported_cases.py /absolute/path/to/workbook.xlsx /absolute/path/to/new-case-folder
+node tools/export_workshop_training.cjs /absolute/path/to/new-case-folder
+python3 tools/train_workshop_model.py
+node tools/evaluate_current_model.cjs
+node tools/check_site.cjs
 ```
 
-Then export and fit:
+Each nonzero integer rule can move by at most 25% of its workshop magnitude, rounded to the nearest whole point with a minimum radius of one point. Positive/negative directions stay unchanged. Zero rules, unobserved rules, and -100 exclusions remain fixed. Positive point totals stay within 75–125% of the workshop total. Existing expert answer links, conditional exceptions, and workshop severity/positional orderings are retained. Moderate severity remains exactly halfway between mild and severe. Rules can have magnitudes below 5 or checkbox weights above 10 when inherited from the workshop reference; the previous freely fitted model's bounds no longer apply.
 
-```bash
-node tools/export_band_training.cjs /absolute/path/to/cases
-python3 tools/train_point_bands.py --help
-```
+Training minimizes a class-balanced pairwise ranking loss with a penalty for moving away from workshop weights. Each class's mean recorded support cannot fall, and mean unrecorded support cannot rise, relative to the workshop reference on the same cohort. These are aggregate safeguards, not guarantees for each patient. Deterministic whole-number local search stops when its available moves cannot improve the objective, or at 1,000 accepted moves. It does not prove global optimality.
 
-This preserves the separate integer points optimization used for the existing Tuned Evidence Model. Its active answer links and initial weights come from `web/band-model.js`. Only represented supported classes and active rules are included. Unsupported labels must be removed and unsupported-only cases excluded before export. Running the optimizer changes `web/band-model.js`; review its output and predictions before publishing. Its research thresholds are not validated clinical rule-out thresholds.
+Missing answers contribute zero. Unrecorded diagnoses are proxy negatives, not confirmed clinical absences. Results on the same fitting cohort are descriptive training results, not validation on new patients. Raw point totals are not calibrated probabilities or established clinical rule-out thresholds.
 
-Past graph/neural experiments and historical reports remain in the legacy private repository rather than in the active app's code path.
+Local inputs, audits, and evaluation reports are written under ignored `private-results/`. Never publish them. The evaluator checks browser scoring against the exported activation matrix, signs, weight bounds, frozen rules, category budgets, and class-average support safeguards.
 
-Current training source: November 3 workbook only. The reviewed supported case set contains 75 patients and 81 recorded diagnoses across seven classes. Patient data and the exclusion audit remain outside Git.
+## Older fitting tools
 
-Run `node tools/evaluate_current_model.cjs` after training to validate the integer/sign constraints and compute a local before/after report. Its patient inputs and reports are ignored by Git.
-
-The solver records time limits and optimality gaps in its private audit. If unrestricted point-distance refinement finds no feasible result in time, it fixes the first-pass band assignments and refines the weights within those bands. This preserves the primary fit but does not prove a globally best distance or smallest weight change.
-
-Each scored answer contribution must have magnitude at least 5 points. Single-choice options can range from +5 to +30 or -30 to -5. Checkbox options can range from +5 to +10 or -10 to -5. Positive/negative directions remain fixed, and weights otherwise learn freely within these bounds. These bounds apply to each option for each class, not to the sum across several selections or the total class score. Unscored options stay unscored; unanswered questions do not receive points. The 30/40/51 research bands remain unchanged.
-
-Rules may also switch off at exactly zero. Weights of magnitude 1–4 are never allowed. Original clinical direction is stored separately as `direction` so a zeroed rule can be considered in later training without forgetting its permitted sign. The exporter retains these dormant rules; only originally unscored links remain excluded.
-
-Run `python3 tools/test_optional_zero.py` to check that harmful rules can turn off and that dormant rules can reactivate only in their stored clinical direction.
+`export_band_training.cjs` and `train_point_bands.py` preserve the previous, more freely adjusted ordinal-band experiment. They are not the current training path. Do not run them over the deployed workshop scorecard accidentally. Earlier neural/logistic experiments and patient workbooks remain in local archives outside this public repository.
