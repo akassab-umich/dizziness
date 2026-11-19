@@ -66,13 +66,16 @@
     );
     const existing = !!core.diagnoses.find((d) => d.id === state.diagnosisId)
       .modelCategory;
+    const displayed = existing ? questions.filter((q) => q.future) : questions;
     byId("assessment-reference-note").hidden = !existing;
-    byId("assessment-questions").innerHTML = questions
+    byId("assessment-count").textContent =
+      `${displayed.length} questions · ${displayed.reduce((sum, q) => sum + q.options.length, 0)} answer options`;
+    byId("assessment-questions").innerHTML = displayed
       .map(
         (q, number) => `
-      ${q.future && !questions[number - 1]?.future ? '<div class="assessment-future-heading"><h2>Proposed questions</h2><p>New questions for future implementation</p></div>' : ""}
+      ${q.future && !displayed[number - 1]?.future ? '<div class="assessment-future-heading"><h2>Proposed questions</h2><p>New questions for future implementation</p></div>' : ""}
       <article class="assessment-question panel ${q.future ? "assessment-question-future" : ""}" aria-labelledby="assessment-q-${q.id}">
-        ${q.future ? '<p class="assessment-future-label">New question — future implementation</p>' : existing ? '<p class="assessment-fixed-label">Fixed — current model</p>' : ""}
+        ${q.future ? '<p class="assessment-future-label">New question — future implementation</p>' : ""}
         <p class="eyebrow">${q.future ? "Proposed question " + Number(q.id.split("-")[1]) : "Question " + (number + 1) + " · " + escape(q.id)}</p>
         <h3 id="assessment-q-${q.id}">${escape(q.prompt)}</h3>
         ${q.kind === "multi" ? '<p class="assessment-hint">Multiple selections allowed. Rate each option separately.</p>' : ""}
@@ -134,8 +137,6 @@
     if (!diagnosis) return;
     loadDraft();
     byId("assessment-title").textContent = diagnosis.name;
-    byId("assessment-count").textContent =
-      `${questions.length} questions · ${questions.reduce((sum, q) => sum + q.options.length, 0)} answer options`;
     renderQuestions();
   });
   byId("assessment-questions").addEventListener("input", (event) => {
