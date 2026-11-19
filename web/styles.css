@@ -1210,7 +1210,44 @@ body.reviewing {
 }
 
 /* A single points scorecard. */
-.score-comparison { grid-template-columns: minmax(0, 1fr); }
-.questionnaire-grid { grid-template-columns: minmax(140px,190px) minmax(280px,1fr) minmax(300px,420px); }
-@media (max-width:1150px) { .questionnaire-grid { grid-template-columns:minmax(280px,1fr) minmax(280px,360px); } }
-@media (max-width:760px) { .questionnaire-grid { grid-template-columns:1fr; } }
+.score-comparison {
+  grid-template-columns: minmax(0, 1fr);
+}
+.questionnaire-grid {
+  grid-template-columns: minmax(140px, 190px) minmax(280px, 1fr) minmax(
+      300px,
+      420px
+    );
+}
+@media (max-width: 1150px) {
+  .questionnaire-grid {
+    grid-template-columns: minmax(280px, 1fr) minmax(280px, 360px);
+  }
+}
+@media (max-width: 760px) {
+  .questionnaire-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.assignment-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 13px;
+  border: 1px solid #bdc8cd;
+  border-radius: 4px;
+  background: #edf1f3;
+  color: var(--um-blue);
+  font-size: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.assignment-link:hover {
+  background: #e1e8eb;
+}
+.assignment-link:focus-visible {
+  outline: 2px solid var(--um-blue);
+  outline-offset: 2px;
+}

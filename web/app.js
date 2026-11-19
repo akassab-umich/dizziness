@@ -2,8 +2,6 @@
   "use strict";
   const defaults = window.NEBULA_DATA;
   if (!defaults) throw new Error("Questionnaire data did not load.");
-  const ACCESS_HASH =
-    "0f7a4f8120712df5464758e375faf9829818369c774fcedb64ed7bd3b62f5ea1";
   const ACCESS_SESSION_KEY = "nebula-access-20261028";
   const byId = (id) => document.getElementById(id);
   const clone = (value) => JSON.parse(JSON.stringify(value));
@@ -24,15 +22,6 @@
     accessForm = byId("access-form"),
     accessCode = byId("access-code"),
     accessError = byId("access-error");
-  async function sha256(value) {
-    const digest = await crypto.subtle.digest(
-      "SHA-256",
-      new TextEncoder().encode(value),
-    );
-    return [...new Uint8Array(digest)]
-      .map((byte) => byte.toString(16).padStart(2, "0"))
-      .join("");
-  }
   function unlock() {
     sessionStorage.setItem(ACCESS_SESSION_KEY, "granted");
     document.body.classList.remove("auth-locked");
@@ -42,7 +31,7 @@
   accessForm.addEventListener("submit", async (event) => {
     event.preventDefault();
     accessError.textContent = "";
-    if ((await sha256(accessCode.value)) === ACCESS_HASH) {
+    if (await window.NebulaAccess.matches(accessCode.value)) {
       accessCode.value = "";
       unlock();
     } else {
