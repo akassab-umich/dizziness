@@ -5,7 +5,7 @@ global.window = {};
 require("../web/questionnaire-data.js");
 const data = window.NEBULA_DATA;
 const questions = core.questions(data);
-assert.equal(questions.length, 33);
+assert.equal(questions.length, 45);
 const input = {
   firstName: "  Katie  ",
   diagnosisId: "labyrinthitis-hypofunction",
@@ -18,7 +18,7 @@ const output = core.exportAssessment(input);
 assert.equal(output.firstName, "Katie");
 assert.equal(output.diagnosis.id, input.diagnosisId);
 assert.equal(output.questions.length, questions.length);
-assert.equal(output.questions.flatMap((q) => q.answers).length, 144);
+assert.equal(output.questions.flatMap((q) => q.answers).length, 194);
 assert.deepEqual(
   output.questions[0].answers.map((a) => a.significance),
   [10, -10, 0, 0],
@@ -53,6 +53,16 @@ for (const diagnosis of core.diagnoses) {
     diagnosis.id,
   );
 }
+const future = output.questions.filter(
+  (q) => q.status === "future-implementation",
+);
+assert.equal(future.length, 12);
+assert.equal(future[0].questionId, "future-01");
+assert.equal(future[11].kind, "text");
+assert.deepEqual(future[11].answers, []);
+assert.equal(output.questions.filter((q) => q.status === "current").length, 33);
+assert.equal(output.proposalRevision, "future-proposals-2026-11-19");
+assert(!data.questions.some((q) => q.id.startsWith("future-")));
 console.log(
   "PASS: complete assessment exports, signed/zero ratings, bounds, names and diagnosis separation.",
 );

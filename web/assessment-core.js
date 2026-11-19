@@ -1,9 +1,13 @@
 /* Assessment data and export format. No patient data or model changes. */
 (function (root, factory) {
-  const api = factory();
+  const proposals =
+    typeof module === "object" && module.exports
+      ? require("./assessment-questions.js")
+      : root.NEBULA_ASSESSMENT_QUESTIONS;
+  const api = factory(proposals);
   if (typeof module === "object" && module.exports) module.exports = api;
   else root.NebulaAssessment = api;
-})(typeof globalThis !== "undefined" ? globalThis : this, function () {
+})(typeof globalThis !== "undefined" ? globalThis : this, function (proposals) {
   const diagnoses = [
     { id: "labyrinthitis-hypofunction", name: "Labyrinthitis Hypofunction" },
     { id: "schwannoma-hypofunction", name: "Schwannoma Hypofunction" },
@@ -12,9 +16,12 @@
     { id: "anxiety-without-pppd", name: "Anxiety without PPPD" },
   ];
   function questions(data) {
-    return data.questions.filter(
-      (q) => ["single", "multi"].includes(q.kind) && q.options.length,
-    );
+    return [
+      ...data.questions.filter(
+        (q) => ["single", "multi"].includes(q.kind) && q.options.length,
+      ),
+      ...proposals.questions.map((q) => ({ ...q, future: true })),
+    ];
   }
   function value(ratings, question, index) {
     const number = ratings[question.id]?.[index];
@@ -48,6 +55,7 @@
       firstName: name,
       diagnosis: { ...diagnosis },
       questionnaireRevision: data.questionnaireRevision,
+      proposalRevision: proposals.revision,
       exportedAt,
       scale: {
         minimum: -10,
@@ -61,6 +69,7 @@
         questionId: q.id,
         question: q.prompt,
         kind: q.kind,
+        status: q.future ? "future-implementation" : "current",
         ...(q.showWhen ? { showWhen: q.showWhen } : {}),
         answers: q.options.map((answer, index) => ({
           answer,

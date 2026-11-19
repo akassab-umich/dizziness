@@ -64,10 +64,13 @@
     byId("assessment-questions").innerHTML = questions
       .map(
         (q, number) => `
-      <article class="assessment-question panel" aria-labelledby="assessment-q-${q.id}">
-        <p class="eyebrow">Question ${number + 1} · ${escape(q.id)}</p>
+      ${q.future && !questions[number - 1]?.future ? '<div class="assessment-future-heading"><h2>Proposed questions</h2><p>New questions for future implementation</p></div>' : ""}
+      <article class="assessment-question panel ${q.future ? "assessment-question-future" : ""}" aria-labelledby="assessment-q-${q.id}">
+        ${q.future ? '<p class="assessment-future-label">New question — future implementation</p>' : ""}
+        <p class="eyebrow">${q.future ? "Proposed question " + Number(q.id.split("-")[1]) : "Question " + (number + 1) + " · " + escape(q.id)}</p>
         <h3 id="assessment-q-${q.id}">${escape(q.prompt)}</h3>
         ${q.kind === "multi" ? '<p class="assessment-hint">Multiple selections allowed. Rate each option separately.</p>' : ""}
+        ${q.kind === "text" ? '<p class="assessment-hint">Written response planned; there are no answer choices to rate.</p>' : ""}
         <div class="assessment-answer-list">${q.options
           .map((answer, index) => {
             const value = core.value(state.ratings, q, index);

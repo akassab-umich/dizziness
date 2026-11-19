@@ -36,9 +36,11 @@ Read [the tools guide](docs/TOOLS.md) before processing or retraining. Retrainin
 
 ## Assignment page
 
-Open `assessment.html`, or choose **Assignment** in the main app. Enter a first name and the same project access code, then select one of the diagnoses without scoring rules. Every existing multiple-choice question and answer is shown on one page, with an independent red-to-green significance slider centered on no effect. Numeric ratings and scale limits are hidden from the assessment interface; the underlying values are retained in the export.
+Open `assessment.html`, or choose **Assignment** in the main app. Enter a first name and the same project access code, then select one of the diagnoses without scoring rules. Every existing multiple-choice question and answer is shown on one page, followed by the 12 agreed proposed questions in maize-tinted cards labeled **New question — future implementation**. The proposed free-text question has no answer sliders. Each answer is shown with an independent red-to-green significance slider centered on no effect. Numeric ratings and scale limits are hidden from the assessment interface; the underlying values are retained in the export.
 
 Each diagnosis has a separate draft in this browser tab's session storage. Closing the tab can lose the draft; export the JSON when finished. The file is named `FirstName_Diagnosis.json` and contains the question IDs, wording, answers, signed ratings, questionnaire revision, and export time. `sliderAdjusted` distinguishes a slider that was moved (including deliberately returned to zero) from one left untouched. Assessments are downloaded locally and do not automatically alter the triage model.
+
+Exports mark each question as `current` or `future-implementation` and include the proposal revision. Proposed question IDs are local assessment identifiers, not assigned clinical question IDs. They do not appear in the patient questionnaire or model.
 
 Run `node tools/test_assessment.cjs` to check export completeness, signed ratings, filenames, and diagnosis identities.
 

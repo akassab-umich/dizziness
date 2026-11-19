@@ -252,3 +252,30 @@
     font-size: 13px;
   }
 }
+
+.assessment-future-heading {
+  margin: 36px 0 18px;
+  color: var(--um-blue);
+}
+.assessment-future-heading h2 {
+  margin: 0 0 8px;
+  font-size: 23px;
+}
+.assessment-future-heading p {
+  margin: 0;
+  font-size: 16px;
+}
+.assessment-question-future {
+  background: #fff8d9;
+  border-color: #d6ba54;
+}
+.assessment-future-label {
+  display: inline-block;
+  margin: 0 0 14px;
+  padding: 6px 10px;
+  background: var(--um-maize);
+  color: var(--um-blue);
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 4px;
+}
