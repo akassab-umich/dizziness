@@ -36,7 +36,7 @@ Read [the tools guide](docs/TOOLS.md) before processing or retraining. Retrainin
 
 ## Assignment page
 
-Open `assessment.html`, or choose **Assignment** in the main app. Enter a first name and the same project access code, then select one of the diagnoses without scoring rules. Every existing multiple-choice question and answer is shown on one page, with an independent significance slider from -10 through zero to +10.
+Open `assessment.html`, or choose **Assignment** in the main app. Enter a first name and the same project access code, then select one of the diagnoses without scoring rules. Every existing multiple-choice question and answer is shown on one page, with an independent red-to-green significance slider centered on no effect. Numeric ratings and scale limits are hidden from the assessment interface; the underlying values are retained in the export.
 
 Each diagnosis has a separate draft in this browser tab's session storage. Closing the tab can lose the draft; export the JSON when finished. The file is named `FirstName_Diagnosis.json` and contains the question IDs, wording, answers, signed ratings, questionnaire revision, and export time. `sliderAdjusted` distinguishes a slider that was moved (including deliberately returned to zero) from one left untouched. Assessments are downloaded locally and do not automatically alter the triage model.
 

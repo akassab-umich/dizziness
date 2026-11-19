@@ -19,7 +19,8 @@
   const state = { firstName: "", diagnosisId: "", ratings: {}, adjusted: {} };
   const key = () =>
     `dizziness-assessment:${data.questionnaireRevision}:${state.firstName.toLowerCase()}:${state.diagnosisId}`;
-  const signed = (number) => (number > 0 ? `+${number}` : String(number));
+  const meaning = (number) =>
+    number > 0 ? "Evidence for" : number < 0 ? "Evidence against" : "No effect";
   function saveDraft() {
     try {
       sessionStorage.setItem(
@@ -54,7 +55,7 @@
     }
     byId("draft-status").textContent = draft
       ? "Your draft for this diagnosis has been restored in this browser tab."
-      : "All sliders start at zero. Your work stays in this browser tab until you export it.";
+      : "All sliders start at the center. Your work stays in this browser tab until you export it.";
   }
   function renderQuestions() {
     byId("assessment-questions").innerHTML = questions
@@ -70,8 +71,7 @@
             const id = `rating-${q.id}-${index}`;
             return `<div class="assessment-answer">
             <label for="${id}">${escape(answer)}</label>
-            <div class="assessment-slider"><input id="${id}" type="range" min="-10" max="10" step="1" value="${value}" data-question="${q.id}" data-index="${index}" aria-label="${escape(answer)} — question ${number + 1}" aria-valuetext="${signed(value)} points" /></div>
-            <output for="${id}" id="${id}-value" class="rating-value ${value > 0 ? "positive" : value < 0 ? "negative" : "neutral"}">${signed(value)}</output>
+            <div class="assessment-slider"><input id="${id}" type="range" min="-10" max="10" step="1" value="${value}" data-question="${q.id}" data-index="${index}" aria-label="${escape(answer)} — question ${number + 1}" aria-valuetext="${meaning(value)}" /></div>
           </div>`;
           })
           .join("")}</div>
@@ -127,10 +127,7 @@
     const value = Number(input.value);
     state.ratings[q.id][index] = value;
     if (!state.adjusted[q.id].includes(index)) state.adjusted[q.id].push(index);
-    const output = byId(`${input.id}-value`);
-    output.textContent = signed(value);
-    output.className = `rating-value ${value > 0 ? "positive" : value < 0 ? "negative" : "neutral"}`;
-    input.setAttribute("aria-valuetext", `${signed(value)} points`);
+    input.setAttribute("aria-valuetext", `${meaning(value)}`);
     byId("export-status").textContent = "";
     saveDraft();
   });

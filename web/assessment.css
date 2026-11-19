@@ -113,7 +113,7 @@
 }
 .assessment-answer {
   display: grid;
-  grid-template-columns: minmax(200px, 1fr) minmax(220px, 1fr) 52px;
+  grid-template-columns: minmax(200px, 1fr) minmax(220px, 1fr);
   align-items: center;
   gap: 22px;
   padding: 16px 0;
@@ -183,21 +183,6 @@
   background: var(--um-blue);
   outline: 1px solid var(--um-blue);
 }
-.rating-value {
-  text-align: right;
-  font-size: 18px;
-  font-weight: 700;
-  font-variant-numeric: tabular-nums;
-}
-.rating-value.positive {
-  color: #15803d;
-}
-.rating-value.negative {
-  color: #b91c1c;
-}
-.rating-value.neutral {
-  color: var(--muted);
-}
 .assessment-footer {
   padding: 24px;
   border-top: 4px solid var(--um-maize);
@@ -235,7 +220,7 @@
     padding: 18px;
   }
   .assessment-answer {
-    grid-template-columns: minmax(0, 1fr) 44px;
+    grid-template-columns: minmax(0, 1fr);
     gap: 8px 16px;
   }
   .assessment-answer label {
