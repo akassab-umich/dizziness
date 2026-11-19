@@ -123,6 +123,28 @@
   line-height: 1.5;
   overflow-wrap: anywhere;
 }
+.assessment-rating {
+  min-width: 0;
+}
+.assessment-slider-labels {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 4px;
+  font-size: 14px;
+  line-height: 1.4;
+}
+.assessment-slider-labels span {
+  max-width: 47%;
+  overflow-wrap: anywhere;
+}
+.assessment-slider-labels span:first-child {
+  color: #b91c1c;
+}
+.assessment-slider-labels span:last-child {
+  color: #15803d;
+  text-align: right;
+}
 .assessment-slider {
   position: relative;
   display: flex;

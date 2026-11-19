@@ -58,6 +58,9 @@
       : "All sliders start at the center. Your work stays in this browser tab until you export it.";
   }
   function renderQuestions() {
+    const diagnosisName = escape(
+      core.diagnoses.find((d) => d.id === state.diagnosisId).name,
+    );
     byId("assessment-questions").innerHTML = questions
       .map(
         (q, number) => `
@@ -71,7 +74,10 @@
             const id = `rating-${q.id}-${index}`;
             return `<div class="assessment-answer">
             <label for="${id}">${escape(answer)}</label>
-            <div class="assessment-slider"><input id="${id}" type="range" min="-10" max="10" step="1" value="${value}" data-question="${q.id}" data-index="${index}" aria-label="${escape(answer)} — question ${number + 1}" aria-valuetext="${meaning(value)}" /></div>
+            <div class="assessment-rating">
+              <div class="assessment-slider-labels" id="${id}-direction"><span>Less likely ${diagnosisName}</span><span>More likely ${diagnosisName}</span></div>
+              <div class="assessment-slider"><input id="${id}" type="range" min="-10" max="10" step="1" value="${value}" data-question="${q.id}" data-index="${index}" aria-label="${escape(answer)} — question ${number + 1}" aria-valuetext="${meaning(value)}" aria-describedby="${id}-direction" /></div>
+            </div>
           </div>`;
           })
           .join("")}</div>
