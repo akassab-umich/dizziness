@@ -9,7 +9,7 @@
     />
     <title>Assignment · Dizziness Triage</title>
     <link rel="stylesheet" href="styles.css?v=assignment-20261119" />
-    <link rel="stylesheet" href="assessment.css?v=reference-20261119" />
+    <link rel="stylesheet" href="assessment.css?v=menu-epic-20261119" />
   </head>
   <body class="assessment-page auth-locked">
     <section
@@ -67,56 +67,78 @@
         </div>
       </header>
       <main class="assessment-main">
-        <section class="assessment-intro panel">
-          <label for="assessment-diagnosis">Select diagnosis</label>
-          <select id="assessment-diagnosis">
-            <option value="">Choose a diagnosis…</option>
-          </select>
+        <section id="assessment-menu" aria-labelledby="assessment-menu-title">
+          <h2 id="assessment-menu-title" tabindex="-1">Choose a diagnosis</h2>
           <p>
-            For each possible answer, move the slider left if it argues against
-            this diagnosis, or right if it supports it. The center means no
-            effect.
+            Select a diagnosis to begin. Download your JSON file before
+            returning to this menu. Progress is not saved on this site.
           </p>
-          <div class="assessment-scale">
-            <span>Against</span><span>No effect</span><span>For</span>
-          </div>
-          <p id="assessment-reference-note" class="assessment-hint" hidden>
-            Please rate the proposed questions for this diagnosis.
-          </p>
-          <p id="draft-status" class="assessment-hint" role="status">
-            Your work stays in this browser tab until you export it.
-          </p>
+          <div id="diagnosis-tiles" class="diagnosis-tiles"></div>
         </section>
-        <p id="assessment-empty" class="assessment-empty">
-          Choose a diagnosis to see all questions and answers.
-        </p>
-        <section
-          id="assessment-content"
-          hidden
-          aria-labelledby="assessment-title"
-        >
-          <div class="assessment-heading">
-            <h2 id="assessment-title"></h2>
-            <p id="assessment-count"></p>
-          </div>
-          <div id="assessment-questions"></div>
-          <footer class="assessment-footer panel">
-            <div>
-              <h2>Save your assessment</h2>
-              <p>Download the ratings for this diagnosis as a JSON file.</p>
+        <div id="assessment-workspace" hidden>
+          <section class="assessment-intro panel">
+            <p>
+              For each possible answer, move the slider left if it argues
+              against this diagnosis, or right if it supports it. The center
+              means no effect.
+            </p>
+            <div class="assessment-scale">
+              <span>Against</span><span>No effect</span><span>For</span>
             </div>
-            <button id="assessment-export" class="primary">Export JSON</button>
-            <p id="export-status" role="status"></p>
-          </footer>
-        </section>
+            <p id="assessment-reference-note" class="assessment-hint" hidden>
+              Please rate the proposed questions for this diagnosis.
+            </p>
+            <p id="draft-status" class="assessment-hint" role="status">
+              Progress is not saved on this site. Download your JSON file before
+              leaving.
+            </p>
+          </section>
+          <section id="assessment-content" aria-labelledby="assessment-title">
+            <div class="assessment-heading">
+              <h2 id="assessment-title"></h2>
+              <p id="assessment-count"></p>
+            </div>
+            <div id="assessment-questions"></div>
+            <footer class="assessment-footer panel">
+              <div>
+                <h2>Save your assessment</h2>
+                <p>Download the ratings for this diagnosis as a JSON file.</p>
+              </div>
+              <div class="assessment-footer-actions">
+                <button id="assessment-export" class="primary">
+                  Export JSON
+                </button>
+                <button id="assessment-back-menu">Back to main menu</button>
+              </div>
+              <p id="export-status" role="status"></p>
+            </footer>
+          </section>
+        </div>
       </main>
     </div>
+    <dialog
+      id="assessment-exit-dialog"
+      aria-labelledby="assessment-exit-title"
+      aria-describedby="assessment-exit-message"
+    >
+      <h2 id="assessment-exit-title">Before you go</h2>
+      <p id="assessment-exit-message">
+        Have you downloaded your JSON file? Your progress is not saved on this
+        site and will be cleared when you return to the main menu.
+      </p>
+      <div class="assessment-exit-actions">
+        <button id="assessment-stay" autofocus>Stay here</button>
+        <button id="assessment-confirm-exit" class="primary">
+          I downloaded my file — back to menu
+        </button>
+      </div>
+    </dialog>
     <script src="access.js?v=20261119"></script>
     <script src="questionnaire-data.js?v=20261119"></script>
     <script src="assessment-questions.js?v=20261119"></script>
     <script src="model-core.js?v=site-42"></script>
     <script src="band-model.js?v=workshop-20261118"></script>
     <script src="assessment-core.js?v=reference-20261119"></script>
-    <script src="assessment.js?v=future-only-20261119"></script>
+    <script src="assessment.js?v=menu-epic-20261119"></script>
   </body>
 </html>

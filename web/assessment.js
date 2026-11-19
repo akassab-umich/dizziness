@@ -18,47 +18,46 @@
         })[c],
     );
   const state = { firstName: "", diagnosisId: "", ratings: {}, adjusted: {} };
-  const key = () =>
-    `dizziness-assessment:${data.questionnaireRevision}:${state.firstName.toLowerCase()}:${state.diagnosisId}`;
   const meaning = (number) =>
     number > 0 ? "Evidence for" : number < 0 ? "Evidence against" : "No effect";
-  function saveDraft() {
-    try {
-      sessionStorage.setItem(
-        key(),
-        JSON.stringify({ ratings: state.ratings, adjusted: state.adjusted }),
-      );
-      byId("draft-status").textContent =
-        "Draft saved in this browser tab. Export a JSON file when you finish.";
-    } catch {
-      byId("draft-status").textContent =
-        "Draft could not be saved in this tab. Export a JSON file to keep your work.";
-    }
-  }
-  function loadDraft() {
-    let draft;
-    try {
-      draft = JSON.parse(sessionStorage.getItem(key()) || "null");
-    } catch {
-      draft = null;
-    }
+  function initializeAssessment() {
     state.ratings = {};
     state.adjusted = {};
     for (const q of questions) {
       state.ratings[q.id] = q.options.map(
         (_, i) =>
-          core.reference(state.diagnosisId, q, i, model)?.significance ??
-          core.value(draft?.ratings || {}, q, i),
+          core.reference(state.diagnosisId, q, i, model)?.significance ?? 0,
       );
-      state.adjusted[q.id] = Array.isArray(draft?.adjusted?.[q.id])
-        ? draft.adjusted[q.id].filter(
-            (i) => Number.isInteger(i) && i >= 0 && i < q.options.length,
-          )
-        : [];
+      state.adjusted[q.id] = [];
     }
-    byId("draft-status").textContent = draft
-      ? "Your draft for this diagnosis has been restored in this browser tab."
-      : "Editable sliders start at the center. Your work stays in this browser tab until you export it.";
+    byId("draft-status").textContent =
+      "Progress is not saved on this site. Download your JSON file before leaving.";
+  }
+  function startAssessment(diagnosisId) {
+    const diagnosis = core.diagnoses.find((d) => d.id === diagnosisId);
+    if (!diagnosis) return;
+    state.diagnosisId = diagnosisId;
+    initializeAssessment();
+    byId("assessment-menu").hidden = true;
+    byId("assessment-workspace").hidden = false;
+    byId("assessment-title").textContent = diagnosis.name;
+    byId("export-status").textContent = "";
+    renderQuestions();
+    byId("assessment-title").setAttribute("tabindex", "-1");
+    byId("assessment-title").focus();
+    window.scrollTo(0, 0);
+  }
+  function returnToMenu() {
+    byId("assessment-exit-dialog").close();
+    state.diagnosisId = "";
+    state.ratings = {};
+    state.adjusted = {};
+    byId("assessment-questions").replaceChildren();
+    byId("export-status").textContent = "";
+    byId("assessment-workspace").hidden = true;
+    byId("assessment-menu").hidden = false;
+    byId("assessment-menu-title").focus();
+    window.scrollTo(0, 0);
   }
   function renderQuestions() {
     const diagnosisName = escape(
@@ -73,11 +72,10 @@
     byId("assessment-questions").innerHTML = displayed
       .map(
         (q, number) => `
-      ${q.future && !displayed[number - 1]?.future ? '<div class="assessment-future-heading"><h2>Proposed questions</h2><p>New questions for future implementation</p></div>' : ""}
+      ${q.future && !displayed[number - 1]?.future ? '<div class="assessment-future-heading"><h2>Proposed questions</h2></div>' : ""}
       <article class="assessment-question panel ${q.future ? "assessment-question-future" : ""}" aria-labelledby="assessment-q-${q.id}">
-        ${q.future ? '<p class="assessment-future-label">New question — future implementation</p>' : ""}
         <p class="eyebrow">${q.future ? "Proposed question " + Number(q.id.split("-")[1]) : "Question " + (number + 1) + " · " + escape(q.id)}</p>
-        <h3 id="assessment-q-${q.id}">${escape(q.prompt)}</h3>
+        <h3 id="assessment-q-${q.id}">${escape(q.prompt)}${q.future ? ' <span class="assessment-new-note">(New Question, not yet in Epic)</span>' : ""}</h3>
         ${q.kind === "multi" ? '<p class="assessment-hint">Multiple selections allowed. Rate each option separately.</p>' : ""}
         ${q.kind === "text" ? '<p class="assessment-hint">Written response planned; there are no answer choices to rate.</p>' : ""}
         <div class="assessment-answer-list">${q.options
@@ -102,10 +100,20 @@
       .join("");
   }
   for (const diagnosis of core.diagnoses) {
-    const option = document.createElement("option");
-    option.value = diagnosis.id;
-    option.textContent = diagnosis.name;
-    byId("assessment-diagnosis").append(option);
+    const tile = document.createElement("button");
+    tile.type = "button";
+    tile.className = "diagnosis-tile";
+    const name = document.createElement("span");
+    name.textContent = diagnosis.name;
+    const detail = document.createElement("span");
+    detail.className = "diagnosis-tile-detail";
+    const count = diagnosis.modelCategory
+      ? questions.filter((q) => q.future).length
+      : questions.length;
+    detail.textContent = `${count} ${diagnosis.modelCategory ? "proposed questions" : "questions"}`;
+    tile.append(name, detail);
+    tile.addEventListener("click", () => startAssessment(diagnosis.id));
+    byId("diagnosis-tiles").append(tile);
   }
   byId("assessment-login").addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -126,19 +134,15 @@
     byId("access-gate").hidden = true;
     byId("assessment-app").hidden = false;
     document.body.classList.remove("auth-locked");
-    byId("assessment-diagnosis").focus();
+    byId("assessment-menu-title").focus();
   });
-  byId("assessment-diagnosis").addEventListener("change", (event) => {
-    state.diagnosisId = event.target.value;
-    const diagnosis = core.diagnoses.find((d) => d.id === state.diagnosisId);
-    byId("assessment-content").hidden = !diagnosis;
-    byId("assessment-empty").hidden = !!diagnosis;
-    byId("export-status").textContent = "";
-    if (!diagnosis) return;
-    loadDraft();
-    byId("assessment-title").textContent = diagnosis.name;
-    renderQuestions();
-  });
+  byId("assessment-back-menu").addEventListener("click", () =>
+    byId("assessment-exit-dialog").showModal(),
+  );
+  byId("assessment-stay").addEventListener("click", () =>
+    byId("assessment-exit-dialog").close(),
+  );
+  byId("assessment-confirm-exit").addEventListener("click", returnToMenu);
   byId("assessment-questions").addEventListener("input", (event) => {
     const input = event.target;
     if (!input.matches('input[type="range"]')) return;
@@ -150,7 +154,8 @@
     if (!state.adjusted[q.id].includes(index)) state.adjusted[q.id].push(index);
     input.setAttribute("aria-valuetext", `${meaning(value)}`);
     byId("export-status").textContent = "";
-    saveDraft();
+    byId("draft-status").textContent =
+      "Remember to download your JSON file before leaving. Progress is not saved on this site.";
   });
   byId("assessment-export").addEventListener("click", () => {
     const result = core.exportAssessment({
