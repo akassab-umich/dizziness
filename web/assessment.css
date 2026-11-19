@@ -279,3 +279,19 @@
   font-weight: 700;
   border-radius: 4px;
 }
+
+.assessment-fixed-label {
+  display: inline-block;
+  margin: 0 0 14px;
+  padding: 6px 10px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: #eaf0f6;
+  color: var(--um-blue);
+  font-size: 14px;
+  font-weight: 600;
+}
+.assessment-slider input:disabled {
+  opacity: 1;
+  cursor: default;
+}

@@ -4,80 +4,155 @@
     typeof module === "object" && module.exports
       ? require("./assessment-questions.js")
       : root.NEBULA_ASSESSMENT_QUESTIONS;
-  const api = factory(proposals);
+  const scoring =
+    typeof module === "object" && module.exports
+      ? require("./model-core.js")
+      : root.NebulaModel;
+  const api = factory(proposals, scoring);
   if (typeof module === "object" && module.exports) module.exports = api;
   else root.NebulaAssessment = api;
-})(typeof globalThis !== "undefined" ? globalThis : this, function (proposals) {
-  const diagnoses = [
-    { id: "labyrinthitis-hypofunction", name: "Labyrinthitis Hypofunction" },
-    { id: "schwannoma-hypofunction", name: "Schwannoma Hypofunction" },
-    { id: "unspecified-hypofunction", name: "Unspecified Hypofunction" },
-    { id: "cardio-orthostatic", name: "Cardiovascular / Orthostatic" },
-    { id: "anxiety-without-pppd", name: "Anxiety without PPPD" },
-  ];
-  function questions(data) {
-    return [
-      ...data.questions.filter(
-        (q) => ["single", "multi"].includes(q.kind) && q.options.length,
-      ),
-      ...proposals.questions.map((q) => ({ ...q, future: true })),
-    ];
-  }
-  function value(ratings, question, index) {
-    const number = ratings[question.id]?.[index];
-    return Number.isInteger(number) && number >= -10 && number <= 10
-      ? number
-      : 0;
-  }
-  function filename(firstName, diagnosis) {
-    const safe = (text) =>
-      text
-        .normalize("NFKD")
-        .replace(/[\u0300-\u036f]/g, "")
-        .replace(/[^a-zA-Z0-9-]+/g, "_")
-        .replace(/^_+|_+$/g, "");
-    return `${safe(firstName) || "Reviewer"}_${safe(diagnosis.name)}.json`;
-  }
-  function exportAssessment({
-    firstName,
-    diagnosisId,
-    ratings = {},
-    adjusted = {},
-    data,
-    exportedAt,
-  }) {
-    const name = firstName.trim();
-    const diagnosis = diagnoses.find((d) => d.id === diagnosisId);
-    if (!name || name.length > 80 || !diagnosis)
-      throw Error("Enter your first name and select a diagnosis.");
-    return {
-      schema: "dizziness-diagnosis-assessment-v1",
-      firstName: name,
-      diagnosis: { ...diagnosis },
-      questionnaireRevision: data.questionnaireRevision,
-      proposalRevision: proposals.revision,
-      exportedAt,
-      scale: {
-        minimum: -10,
-        maximum: 10,
-        step: 1,
-        negative: "Evidence against",
-        zero: "No effect",
-        positive: "Evidence for",
+})(
+  typeof globalThis !== "undefined" ? globalThis : this,
+  function (proposals, scoring) {
+    const diagnoses = [
+      { id: "bppv", name: "BPPV", modelCategory: "BPPV" },
+      { id: "bilateral", name: "Bilateral", modelCategory: "Bilateral" },
+      { id: "menieres", name: "Meniere’s", modelCategory: "Meniere's" },
+      { id: "migraine", name: "Migraine", modelCategory: "Migraine" },
+      { id: "neuritis", name: "Neuritis", modelCategory: "Neuritis" },
+      { id: "pppd", name: "PPPD", modelCategory: "PPPD" },
+      {
+        id: "third-window",
+        name: "Third Window",
+        modelCategory: "Third Window",
       },
-      questions: questions(data).map((q) => ({
-        questionId: q.id,
-        question: q.prompt,
-        kind: q.kind,
-        status: q.future ? "future-implementation" : "current",
-        ...(q.showWhen ? { showWhen: q.showWhen } : {}),
-        answers: q.options.map((answer, index) => ({
-          answer,
-          significance: value(ratings, q, index),
-          sliderAdjusted: adjusted[q.id]?.includes(index) || false,
+      { id: "labyrinthitis-hypofunction", name: "Labyrinthitis Hypofunction" },
+      { id: "schwannoma-hypofunction", name: "Schwannoma Hypofunction" },
+      { id: "unspecified-hypofunction", name: "Unspecified Hypofunction" },
+      { id: "cardio-orthostatic", name: "Cardiovascular / Orthostatic" },
+      { id: "anxiety-without-pppd", name: "Anxiety without PPPD" },
+    ];
+    function questions(data) {
+      return [
+        ...data.questions.filter(
+          (q) => ["single", "multi"].includes(q.kind) && q.options.length,
+        ),
+        ...proposals.questions.map((q) => ({ ...q, future: true })),
+      ];
+    }
+    function value(ratings, question, index) {
+      const number = ratings[question.id]?.[index];
+      return Number.isInteger(number) && number >= -10 && number <= 10
+        ? number
+        : 0;
+    }
+    function reference(diagnosisId, question, index, model) {
+      const diagnosis = diagnoses.find((d) => d.id === diagnosisId);
+      if (!diagnosis?.modelCategory || question.future) return null;
+      if (!model?.rules) throw Error("The current model did not load.");
+      const rules = model.rules.filter(
+        (r) =>
+          r.category === diagnosis.modelCategory &&
+          r.questionId === question.id &&
+          scoring.norm(r.answer) === scoring.norm(question.options[index]),
+      );
+      const points = rules.reduce((sum, r) => sum + r.weight, 0);
+      return {
+        significance: Math.max(-10, Math.min(10, points)),
+        modelPoints: points,
+        modelRules: rules.map((r) => ({
+          weight: r.weight,
+          ...(r.unless ? { unless: r.unless } : {}),
         })),
-      })),
+        conditional: rules.some((r) => r.unless),
+      };
+    }
+    function filename(firstName, diagnosis) {
+      const safe = (text) =>
+        text
+          .normalize("NFKD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .replace(/[^a-zA-Z0-9-]+/g, "_")
+          .replace(/^_+|_+$/g, "");
+      return `${safe(firstName) || "Reviewer"}_${safe(diagnosis.name)}.json`;
+    }
+    function exportAssessment({
+      firstName,
+      diagnosisId,
+      ratings = {},
+      adjusted = {},
+      data,
+      model,
+      exportedAt,
+    }) {
+      const name = firstName.trim();
+      const diagnosis = diagnoses.find((d) => d.id === diagnosisId);
+      if (!name || name.length > 80 || !diagnosis)
+        throw Error("Enter your first name and select a diagnosis.");
+      const output = {
+        schema: "dizziness-diagnosis-assessment-v1",
+        firstName: name,
+        diagnosis: { ...diagnosis },
+        questionnaireRevision: data.questionnaireRevision,
+        proposalRevision: proposals.revision,
+        referenceModelVersion: diagnosis.modelCategory ? model?.version : null,
+        collectionScope: diagnosis.modelCategory
+          ? "future-questions-only"
+          : "all-questions",
+        exportedAt,
+        scale: {
+          minimum: -10,
+          maximum: 10,
+          step: 1,
+          negative: "Evidence against",
+          zero: "No effect",
+          positive: "Evidence for",
+        },
+        questions: questions(data).map((q) => ({
+          questionId: q.id,
+          question: q.prompt,
+          kind: q.kind,
+          status: q.future ? "future-implementation" : "current",
+          ...(q.showWhen ? { showWhen: q.showWhen } : {}),
+          answers: q.options.map((answer, index) => {
+            const fixed = reference(diagnosisId, q, index, model);
+            return {
+              answer,
+              significance: fixed
+                ? fixed.significance
+                : value(ratings, q, index),
+              fixed: !!fixed,
+              ratingSource: fixed ? "model-reference" : "reviewer",
+              ...(fixed
+                ? {
+                    modelPoints: fixed.modelPoints,
+                    modelRules: fixed.modelRules,
+                  }
+                : {}),
+              sliderAdjusted:
+                !fixed && (adjusted[q.id]?.includes(index) || false),
+            };
+          }),
+        })),
+      };
+      output.reviewerRatings = output.questions.flatMap((q) =>
+        q.answers
+          .filter((answer) => !answer.fixed)
+          .map((answer) => ({
+            questionId: q.questionId,
+            status: q.status,
+            ...answer,
+          })),
+      );
+      return output;
+    }
+    return {
+      diagnoses,
+      questions,
+      value,
+      reference,
+      filename,
+      exportAssessment,
     };
-  }
-  return { diagnoses, questions, value, filename, exportAssessment };
-});
+  },
+);

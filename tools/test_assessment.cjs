@@ -3,6 +3,7 @@ const assert = require("node:assert/strict");
 const core = require("../web/assessment-core.js");
 global.window = {};
 require("../web/questionnaire-data.js");
+require("../web/band-model.js");
 const data = window.NEBULA_DATA;
 const questions = core.questions(data);
 assert.equal(questions.length, 45);
@@ -12,6 +13,7 @@ const input = {
   ratings: { 259356: [10, -10, 0], 259357: [3, -2] },
   adjusted: { 259356: [0, 1, 2], 259357: [0, 1] },
   data,
+  model: window.NEBULA_BANDS,
   exportedAt: "2026-11-19T12:00:00Z",
 };
 const output = core.exportAssessment(input);
@@ -63,6 +65,64 @@ assert.deepEqual(future[11].answers, []);
 assert.equal(output.questions.filter((q) => q.status === "current").length, 33);
 assert.equal(output.proposalRevision, "future-proposals-2026-11-19");
 assert(!data.questions.some((q) => q.id.startsWith("future-")));
+const existing = core.exportAssessment({
+  ...input,
+  diagnosisId: "bppv",
+  ratings: { 259364: [-10, 0], "future-02": [-8, 0] },
+  adjusted: { 259364: [0], "future-02": [0] },
+});
+assert.equal(existing.collectionScope, "future-questions-only");
+assert.equal(existing.reviewerRatings.length, 50);
+assert(
+  existing.reviewerRatings.every(
+    (r) => r.status === "future-implementation" && !r.fixed,
+  ),
+);
+const fixedYes = existing.questions.find((q) => q.questionId === "259364")
+  .answers[0];
+assert.equal(fixedYes.significance, 10);
+assert.equal(fixedYes.fixed, true);
+assert.equal(fixedYes.sliderAdjusted, false);
+assert.equal(
+  fixedYes.modelPoints,
+  window.NEBULA_BANDS.rules.find(
+    (r) =>
+      r.category === "BPPV" && r.questionId === "259364" && r.answer === "Yes",
+  ).weight,
+);
+assert.equal(
+  existing.questions.find((q) => q.questionId === "future-02").answers[0]
+    .significance,
+  -8,
+);
+const syntheticModel = {
+  rules: [
+    { category: "BPPV", questionId: "259364", answer: "No", weight: -25 },
+  ],
+};
+assert.equal(
+  core.reference(
+    "bppv",
+    data.questions.find((q) => q.id === "259364"),
+    1,
+    syntheticModel,
+  ).significance,
+  -10,
+);
+assert.equal(
+  core.reference("bppv", questions[0], 0, syntheticModel).significance,
+  0,
+);
+assert.equal(
+  core.reference(
+    "bppv",
+    questions.find((q) => q.future),
+    0,
+    syntheticModel,
+  ),
+  null,
+);
+assert.equal(output.reviewerRatings.length, 194);
 console.log(
   "PASS: complete assessment exports, signed/zero ratings, bounds, names and diagnosis separation.",
 );
