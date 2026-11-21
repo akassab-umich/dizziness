@@ -76,6 +76,7 @@
       <article class="assessment-question panel ${q.future ? "assessment-question-future" : ""}" aria-labelledby="assessment-q-${q.id}">
         <p class="eyebrow">${q.future ? "Proposed question " + Number(q.id.split("-")[1]) : "Question " + (number + 1) + " · " + escape(q.id)}</p>
         <h3 id="assessment-q-${q.id}">${escape(q.prompt)}${q.future ? ' <span class="assessment-new-note">(New Question, not yet in Epic)</span>' : ""}</h3>
+        ${core.guidance(state.diagnosisId, q) ? `<p class="assessment-katie-note">${escape(core.guidance(state.diagnosisId, q).note)}</p>` : ""}
         ${q.kind === "multi" ? '<p class="assessment-hint">Multiple selections allowed. Rate each option separately.</p>' : ""}
         ${q.kind === "text" ? '<p class="assessment-hint">Written response planned; there are no answer choices to rate.</p>' : ""}
         <div class="assessment-answer-list">${q.options
@@ -99,7 +100,9 @@
       )
       .join("");
   }
-  for (const diagnosis of core.diagnoses) {
+  for (const diagnosis of core.diagnoses.filter(
+    (diagnosis) => !diagnosis.hidden,
+  )) {
     const tile = document.createElement("button");
     tile.type = "button";
     tile.className = "diagnosis-tile";

@@ -123,6 +123,33 @@ assert.equal(
   null,
 );
 assert.equal(output.reviewerRatings.length, 194);
+// Guidance describes the listed answers without pre-filling a reviewer's ratings.
+assert.equal(output.guidanceRevision, "katie-class-suggestions-2026-11-20");
+assert.equal(output.questions.filter((q) => q.guidance).length, 6);
+for (const question of output.questions.filter((q) => q.guidance)) {
+  assert(question.guidance.answers.every((a) => a.direction === "positive"));
+  assert(question.answers.every((a) => a.significance === 0));
+  assert(
+    question.guidance.answers.every((a) =>
+      question.answers.some((r) => r.answer === a.answer),
+    ),
+  );
+}
+const cardio = data.questions.find((q) => q.id === "259369");
+assert.deepEqual(
+  core.guidance("cardio-orthostatic", cardio).answers.map((a) => a.answer),
+  ["Seconds", "Minutes"],
+);
+assert.equal(core.guidance("bppv", cardio), null);
+assert.equal(
+  core.guidance(
+    "cardio-orthostatic",
+    questions.find((q) => q.future),
+  ),
+  null,
+);
+assert.equal(core.diagnoses.filter((d) => !d.hidden).length, 11);
+assert(core.diagnoses.find((d) => d.id === "unspecified-hypofunction").hidden);
 console.log(
   "PASS: complete assessment exports, signed/zero ratings, bounds, names and diagnosis separation.",
 );
