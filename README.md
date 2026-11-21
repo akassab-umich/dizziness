@@ -46,8 +46,6 @@ Exports mark each question as `current` or `future-implementation` and include t
 
 For existing classes, model points are clipped to the hidden -10 to +10 slider range for reference. The export retains exact `modelPoints` and any conditional exceptions in `modelRules`. Fixed values ignore draft or user-supplied edits. `reviewerRatings` contains only editable responses; `collectionScope` is `future-questions-only` for existing diagnoses and `all-questions` for new diagnoses. This separates model references from new team judgments.
 
-Katie’s November 20 suggested answers are mapped by diagnosis and question ID in `assessment-core.js`. Relevant current questions show a bold red reference note. The suggestions describe positive support only; no opposite-answer penalties are inferred. Reviewer sliders remain centered and editable. Exports include the guidance revision and the suggestions shown, separately from reviewer ratings. Unspecified Hypofunction is hidden from the menu pending review; its identity remains available to preserve existing exports. Deployments do not refresh or modify assessments already open in a browser.
-
 Run `node tools/test_assessment.cjs` to check export completeness, signed ratings, filenames, and diagnosis identities.
 
 ## Docker

@@ -28,59 +28,10 @@
       },
       { id: "labyrinthitis-hypofunction", name: "Labyrinthitis Hypofunction" },
       { id: "schwannoma-hypofunction", name: "Schwannoma Hypofunction" },
-      {
-        id: "unspecified-hypofunction",
-        name: "Unspecified Hypofunction",
-        hidden: true,
-      },
+      { id: "unspecified-hypofunction", name: "Unspecified Hypofunction" },
       { id: "cardio-orthostatic", name: "Cardiovascular / Orthostatic" },
       { id: "anxiety-without-pppd", name: "Anxiety without PPPD" },
     ];
-    // Reviewed mappings from Katie's November 20 class sheets, not model weights.
-    const guidanceRevision = "katie-class-suggestions-2026-11-20";
-    const suggestions = {
-      "cardio-orthostatic": {
-        259357: ["light-headed", "sensation of rocking or swaying"],
-        259361: ["Sudden"],
-        259364: ["Yes"],
-        259369: ["Seconds", "Minutes"],
-        259371: ["sitting up"],
-        259381: ["heart racing"],
-      },
-      "schwannoma-hypofunction": {
-        259415: [
-          "Yes, hearing loss in the right ear only",
-          "Yes, hearing loss in the left ear only",
-        ],
-      },
-      "labyrinthitis-hypofunction": {
-        259361: ["Sudden"],
-        259362: ["Yes"],
-        259367: ["Only 1 episode"],
-        259371: ["walking in the dark", "any kind of head movement"],
-        260451: ["Yes"],
-        259415: [
-          "Yes, hearing loss in the right ear only",
-          "Yes, hearing loss in the left ear only",
-        ],
-      },
-    };
-    function guidance(diagnosisId, question) {
-      const suggested = suggestions[diagnosisId]?.[question.id];
-      if (!suggested || question.future) return null;
-      const answers = question.options.filter((answer) =>
-        suggested.some((text) => scoring.norm(text) === scoring.norm(answer)),
-      );
-      if (!answers.length) return null;
-      const diagnosis = diagnoses.find((d) => d.id === diagnosisId);
-      return {
-        revision: guidanceRevision,
-        source:
-          "OTO Dizziness Questionnaire -Nebula cloud New Categories KM 11_20.xlsx",
-        answers: answers.map((answer) => ({ answer, direction: "positive" })),
-        note: `Note from Ali: Katie’s November 20 Excel file suggests ${answers.map((answer) => `“${answer}”`).join(" or ")} may support ${diagnosis.name} (more likely). Please give your own judgment.`,
-      };
-    }
     function questions(data) {
       return [
         ...data.questions.filter(
@@ -144,7 +95,6 @@
         diagnosis: { ...diagnosis },
         questionnaireRevision: data.questionnaireRevision,
         proposalRevision: proposals.revision,
-        guidanceRevision,
         referenceModelVersion: diagnosis.modelCategory ? model?.version : null,
         collectionScope: diagnosis.modelCategory
           ? "future-questions-only"
@@ -163,9 +113,6 @@
           question: q.prompt,
           kind: q.kind,
           status: q.future ? "future-implementation" : "current",
-          ...(guidance(diagnosisId, q)
-            ? { guidance: guidance(diagnosisId, q) }
-            : {}),
           ...(q.showWhen ? { showWhen: q.showWhen } : {}),
           answers: q.options.map((answer, index) => {
             const fixed = reference(diagnosisId, q, index, model);
@@ -201,7 +148,6 @@
     }
     return {
       diagnoses,
-      guidance,
       questions,
       value,
       reference,
