@@ -7,6 +7,8 @@ The deterministic local search does not claim a global optimum.
 
 import hashlib
 import json
+import argparse
+import datetime as dt
 from pathlib import Path
 
 import numpy as np
@@ -39,7 +41,16 @@ def matches(rule, answers):
 
 
 def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--version", default=f"workshop-conservative-{dt.date.today().isoformat()}"
+    )
+    args = parser.parse_args()
     data = json.loads(INPUT.read_text())
+    if len(data.get("sourceWorkbooks", [])) != 1:
+        raise ValueError(
+            "Prepare training from exactly one authoritative source workbook."
+        )
     rules, cases, cats = data["rules"], data["cases"], data["categories"]
     base = np.array([r["weight"] for r in rules], dtype=int)
     ci = np.array([cats.index(r["category"]) for r in rules])
@@ -180,7 +191,7 @@ def main():
             source="Conservative recalibration of final October workshop points",
         )
     model = {
-        "version": "workshop-conservative-2026-11-18",
+        "version": args.version,
         "name": "Model",
         "basedOnVersion": data["sourceModel"],
         "method": "Expert-linked additive scorecard with bounded integer pairwise-ranking calibration",
@@ -200,7 +211,7 @@ def main():
         "fit": {
             "patients": len(cases),
             "diagnoses": int(labels.sum()),
-            "sourceWorkbook": "AI data  pull._11.13.xlsx",
+            "sourceWorkbook": data["sourceWorkbooks"][0],
             "evaluation": "Training data only; unrecorded diagnoses are not confirmed negatives",
             "inputSHA256": hashlib.sha256(INPUT.read_bytes()).hexdigest(),
             "objectiveBefore": initial,

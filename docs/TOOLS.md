@@ -14,19 +14,21 @@ This is the local Wolverine-compatible extractor. It keeps source workbook, work
 
 The website uses the final October 28 workshop model, including the Meeting 1, Meeting 2, and severity changes, as its fixed reference. `web/notes-model.js` preserves that reference; `web/band-model.js` contains the updated deployed weights.
 
-The November 13 workbook is the sole patient source. The supported cohort contains 84 patients and 91 recorded diagnoses across seven classes. Other diagnosis classes remain on hold until clinical question/answer rules are supplied. Do not use unsupported-only patients as negative training examples.
+The November 20 workbook is the sole patient source. The supported cohort contains 92 patients and 100 recorded diagnoses across seven classes. Earlier workbooks are retained for comparison, not pooled into training. New suggested class links are saved locally for review; they have no agreed point values, and Labyrinthitis references a retired question. Those classes remain outside the deployed model. Do not use unsupported-only patients as negative training examples.
 
 Prepare cases in a new local folder outside Git:
 
 ```bash
 python3 tools/prepare_supported_cases.py /absolute/path/to/workbook.xlsx /absolute/path/to/new-case-folder
 node tools/export_workshop_training.cjs /absolute/path/to/new-case-folder
-python3 tools/train_workshop_model.py
+python3 tools/train_workshop_model.py --version workshop-conservative-YYYY-MM-DD
 node tools/evaluate_current_model.cjs
 node tools/check_site.cjs
 ```
 
 Each nonzero integer rule can move by at most 25% of its workshop magnitude, rounded to the nearest whole point with a minimum radius of one point. Positive/negative directions stay unchanged. Zero rules, unobserved rules, and -100 exclusions remain fixed. Positive point totals stay within 75–125% of the workshop total. Existing expert answer links, conditional exceptions, and workshop severity/positional orderings are retained. Moderate severity remains exactly halfway between mild and severe. Rules can have magnitudes below 5 or checkbox weights above 10 when inherited from the workshop reference; the previous freely fitted model's bounds no longer apply.
+
+Training metadata records the source workbook from the imported cases and rejects mixtures of workbooks. The version can be set explicitly with `--version`.
 
 Training minimizes a class-balanced pairwise ranking loss with a penalty for moving away from workshop weights. Each class's mean recorded support cannot fall, and mean unrecorded support cannot rise, relative to the workshop reference on the same cohort. These are aggregate safeguards, not guarantees for each patient. Deterministic whole-number local search stops when its available moves cannot improve the objective, or at 1,000 accepted moves. It does not prove global optimality.
 

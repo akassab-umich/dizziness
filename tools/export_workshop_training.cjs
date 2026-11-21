@@ -37,6 +37,9 @@ for (const patient of cases)
   );
 const payload = {
   sourceModel: anchor.version,
+  sourceWorkbooks: [
+    ...new Set(cases.flatMap((p) => p.sources.map((s) => s.SourceFile))),
+  ].sort(),
   categories,
   rules,
   cases,
