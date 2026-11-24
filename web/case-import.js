@@ -15,6 +15,8 @@
     "Third Window",
     "Labyrinthitis Hypofunction",
     "Schwannoma Hypofunction",
+    "Cardiovascular / Orthostatic",
+    "Anxiety without PPPD",
   ]);
   function parse(value, questions, filename = "case.json") {
     if (
@@ -115,6 +117,8 @@
       ScCD: "Third Window",
       LabyrinthitisHypo: "Labyrinthitis Hypofunction",
       SchwannomaHypo: "Schwannoma Hypofunction",
+      Cardio_Orthostatic: "Cardiovascular / Orthostatic",
+      "Anxiety but not PPPD": "Anxiety without PPPD",
       "Bilateral wkns": "Bilateral",
     };
     const age =

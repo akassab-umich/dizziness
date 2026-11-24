@@ -24,7 +24,7 @@ Open http://127.0.0.1:8765/. Use the project access code. You can answer questio
 
 Start with `web/app.js` to understand question navigation and scoring. `web/case-import.js` maps patient JSON into answers. `web/model-core.js` computes points. `web/research.js` builds the explanation dialogs. `web/question-viewer.js` handles the second viewer.
 
-The website uses **Model** in `web/band-model.js`: the original seven scorecards unchanged, plus two clinically reviewed new-class scorecards using only current questions and shared explicit survey directions. The clinical shortlist is retained while patient data tunes point magnitudes; survey slider magnitudes are not points. Future questions do not score patients. See `docs/TOOLS.md` for the current nine-class training commands.
+The website uses **Model** in `web/band-model.js`, with eleven supported classes. The latest addition is Cardiovascular / Orthostatic and Anxiety without PPPD, using Michelle/Katie direction weights of 65%/35% and clinically bounded points. The previous nine scorecards are unchanged. Anxiety has only one recorded case, so its points remain provisional clinical priors rather than being fitted to that case. Future questions do not score patients. See `docs/TOOLS.md` for the current commands.
 
 Model definition files are generated artifacts. Edit their training tools or expert rule sources rather than manually reformatting their arrays.
 

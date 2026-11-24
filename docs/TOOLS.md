@@ -1,3 +1,29 @@
+# Current update — remaining two classes (November 24)
+
+The current model has eleven categories. The latest changes affect ONLY Cardiovascular / Orthostatic and Anxiety without PPPD. All nine previous scorecards remain byte-for-byte unchanged. Unspecified Hypofunction remains unscored. Only existing questionnaire questions enter scoring; proposed questions remain assessment-only. The Hypofunction parent/subtype workflow is not activated.
+
+Michelle's and Katie's explicit current-answer directions have weights 65% and 35%, respectively. Ali is not a voter for these two classes. Untouched centers are missing judgments. Explicit neutral participates in the weighted choice. Slider magnitudes do not become points. A clinical shortlist independently determines which directional proposals are eligible; generic or contradictory links stay neutral even if a survey gave them points. Missing Michelle responses are not invented from Katie's responses. The per-answer report records both directions and the reason for selection/neutralization.
+
+Cardio uses six existing questions: standing-related symptoms, position-change history, brief duration, arising/standing provocation, fainting/lightheadedness and palpitations. These questions do not measure orthostatic blood pressure or prove a cardiac cause. Anxiety uses four: lightheadedness, stress-related worsening, panic/palpitations and anxiety/depression history. Those do not establish a psychological cause or exclude PPPD. Chest pain and neurological symptoms are not used as generic evidence that dizziness is anxiety-related.
+
+There are 102 merged supported questionnaire profiles and 113 recorded diagnoses from the November 20 workbook. This includes only three Cardio and one Anxiety case. Cardio point adjustments stay within two points of modest clinical priors and are strongly regularized. Anxiety points are frozen at their clinical priors; the one case is evaluated descriptively, not used to tune the model. All checklist questions contribute at most ten points in total for each newly added class. Results are on the same data, not held-out validation. Unrecorded labels are proxy negatives.
+
+```bash
+node tools/export_remaining_training.cjs /absolute/path/to/november-20-all
+python3 tools/train_remaining_classes.py
+node tools/evaluate_current_model.cjs
+node tools/check_site.cjs
+node tools/test_assessment.cjs
+```
+
+The exporter writes a new local snapshot and refuses to overwrite an existing input. Preserve it before rebuilding so frozen scorecard identity remains auditable. Local input, patient scores and per-answer audits remain under ignored private-results/. Clinical references are the Barany hemodynamic orthostatic dizziness consensus (https://pmc.ncbi.nlm.nih.gov/articles/PMC9249281/) and NIMH panic-disorder information (https://www.nimh.nih.gov/health/publications/panic-disorder-when-fear-overwhelms).
+
+The two new Michelle JSONs are archived outside Git in the research data/assessments/2026-11-24 folder. `build_assessment_reviews.py` accepts ZIP and individual JSON files to update the display-only slider references and completion names. Reference marks do not initialize or overwrite an active reviewer's sliders or exports. Existing-class assessments are not restructured.
+
+---
+
+## Earlier methods — reference only
+
 # Current method — reviewed existing questions for the two new classes
 
 The original seven November 20 scorecards remain EXACTLY unchanged. Only Labyrinthitis Hypofunction and Schwannoma Hypofunction are reviewed and recalibrated. Use `train_reviewed_new_classes.py`; the two-question-only forward-selection experiment is superseded. Future/proposed questions, Cardio, Anxiety and the Hypofunction parent/subtype workflow are not activated.

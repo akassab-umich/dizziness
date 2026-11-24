@@ -125,6 +125,44 @@ if (model.sparseFit) {
     "Schwannoma Hypofunction": "schwannoma-hypofunction",
   };
   for (const rule of model.rules) {
+    if (rule.remaining) {
+      assert.deepEqual(model.remainingFit.reviewerWeights, {
+        Michelle: 0.65,
+        Katie: 0.35,
+      });
+      assert(
+        ["Cardiovascular / Orthostatic", "Anxiety without PPPD"].includes(
+          rule.category,
+        ),
+      );
+      assert(
+        rule.sourceJudgments.every((v) =>
+          ["Katie", "Michelle"].includes(v.reviewer),
+        ),
+      );
+      const tally = { "-1": 0, 0: 0, 1: 0 };
+      for (const v of rule.sourceJudgments)
+        if (v.direction !== null)
+          tally[v.direction] += model.remainingFit.reviewerWeights[v.reviewer];
+      assert(
+        tally[rule.direction] >
+          Math.max(
+            ...Object.entries(tally)
+              .filter(([s]) => Number(s) !== rule.direction)
+              .map(([, v]) => v),
+          ),
+      );
+      assert(questionKinds.has(rule.questionId));
+      assert(Number.isInteger(rule.weight));
+      assert(rule.weight === 0 || Math.sign(rule.weight) === rule.direction);
+      assert(
+        Math.abs(rule.weight) >= rule.minimum &&
+          Math.abs(rule.weight) <= rule.maximum,
+      );
+      if (rule.frozenForInsufficientCases)
+        assert.equal(Math.abs(rule.weight), rule.priorMagnitude);
+      continue;
+    }
     if (rule.consensus && model.consensusFit?.clinicalShortlistRetained) {
       require(path.join(web, "reviewed-rule-policy.js"));
       const proposal = window.NEBULA_REVIEWED_POLICY.rules.find(

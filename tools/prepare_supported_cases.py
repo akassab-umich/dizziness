@@ -17,6 +17,8 @@ SUPPORTED = {
     "ScCD",
     "LabyrinthitisHypo",
     "SchwannomaHypo",
+    "Cardio_Orthostatic",
+    "Anxiety but not PPPD",
 }
 
 

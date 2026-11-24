@@ -1251,3 +1251,18 @@ body.reviewing {
   outline: 2px solid var(--um-blue);
   outline-offset: 2px;
 }
+
+/* Keep eleven category rows readable without squeezing the score tracks. */
+.score-comparison .score-label {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+}
+.score-comparison .score-label > span:last-child {
+  width: auto;
+  white-space: nowrap;
+}
+.score-comparison .score-track {
+  flex-shrink: 0;
+  min-height: 3px;
+}

@@ -128,9 +128,9 @@ console.log(
 );
 
 const reviews = require("../web/assessment-reviews.js");
-assert.equal(reviews.length, 20);
+assert.equal(reviews.length, 22);
 assert.equal(reviews.filter((r) => r.reviewer === "Katie").length, 11);
-assert.equal(reviews.filter((r) => r.reviewer === "Michelle").length, 9);
+assert.equal(reviews.filter((r) => r.reviewer === "Michelle").length, 11);
 for (const review of reviews) {
   assert(core.diagnoses.some((d) => d.id === review.diagnosisId));
   for (const rating of review.ratings) {

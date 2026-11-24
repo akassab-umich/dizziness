@@ -1,12 +1,14 @@
 window.NEBULA_BANDS = {
-  "version": "reviewed-new-classes-2026-11-24",
+  "version": "remaining-weighted-classes-2026-11-24",
   "name": "Model",
   "basedOnVersion": "meeting-2-severity-2026-10-28",
   "method": "Original seven scorecards unchanged; clinically reviewed shared-direction current-question priors with regularized patient calibration for two new classes",
   "scoringMode": "net-points",
   "trainedCategories": [
+    "Anxiety without PPPD",
     "BPPV",
     "Bilateral",
+    "Cardiovascular / Orthostatic",
     "Labyrinthitis Hypofunction",
     "Meniere's",
     "Migraine",
@@ -1712,6 +1714,398 @@ window.NEBULA_BANDS = {
         }
       ],
       "medicalSource": "https://www.nidcd.nih.gov/health/vestibular-schwannoma-acoustic-neuroma-and-neurofibromatosis"
+    },
+    {
+      "category": "Cardiovascular / Orthostatic",
+      "questionId": "259357",
+      "answer": "light-headed",
+      "direction": 1,
+      "weight": 5,
+      "remaining": true,
+      "sourceJudgments": [
+        {
+          "reviewer": "Michelle",
+          "direction": 1,
+          "status": "rated",
+          "importance": 0.65
+        },
+        {
+          "reviewer": "Katie",
+          "direction": 1,
+          "status": "rated",
+          "importance": 0.35
+        }
+      ],
+      "medicalSource": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9249281/",
+      "source": "Clinically reviewed current question; Michelle/Katie directions weighted 65/35; no Ali vote",
+      "minimum": 5,
+      "maximum": 5,
+      "priorMagnitude": 5,
+      "frozenForInsufficientCases": false
+    },
+    {
+      "category": "Cardiovascular / Orthostatic",
+      "questionId": "259357",
+      "answer": "dizziness upon standing",
+      "direction": 1,
+      "weight": 5,
+      "remaining": true,
+      "sourceJudgments": [
+        {
+          "reviewer": "Michelle",
+          "direction": 1,
+          "status": "rated",
+          "importance": 0.65
+        },
+        {
+          "reviewer": "Katie",
+          "direction": 1,
+          "status": "rated",
+          "importance": 0.35
+        }
+      ],
+      "medicalSource": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9249281/",
+      "source": "Clinically reviewed current question; Michelle/Katie directions weighted 65/35; no Ali vote",
+      "minimum": 5,
+      "maximum": 5,
+      "priorMagnitude": 5,
+      "frozenForInsufficientCases": false
+    },
+    {
+      "category": "Cardiovascular / Orthostatic",
+      "questionId": "259364",
+      "answer": "Yes",
+      "direction": 1,
+      "weight": 5,
+      "remaining": true,
+      "sourceJudgments": [
+        {
+          "reviewer": "Michelle",
+          "direction": 1,
+          "status": "rated",
+          "importance": 0.65
+        },
+        {
+          "reviewer": "Katie",
+          "direction": 1,
+          "status": "rated",
+          "importance": 0.35
+        }
+      ],
+      "medicalSource": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9249281/",
+      "source": "Clinically reviewed current question; Michelle/Katie directions weighted 65/35; no Ali vote",
+      "minimum": 1,
+      "maximum": 5,
+      "priorMagnitude": 3,
+      "frozenForInsufficientCases": false
+    },
+    {
+      "category": "Cardiovascular / Orthostatic",
+      "questionId": "259369",
+      "answer": "Seconds",
+      "direction": 1,
+      "weight": 5,
+      "remaining": true,
+      "sourceJudgments": [
+        {
+          "reviewer": "Michelle",
+          "direction": 1,
+          "status": "rated",
+          "importance": 0.65
+        },
+        {
+          "reviewer": "Katie",
+          "direction": 1,
+          "status": "rated",
+          "importance": 0.35
+        }
+      ],
+      "medicalSource": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9249281/",
+      "source": "Clinically reviewed current question; Michelle/Katie directions weighted 65/35; no Ali vote",
+      "minimum": 5,
+      "maximum": 5,
+      "priorMagnitude": 5,
+      "frozenForInsufficientCases": false
+    },
+    {
+      "category": "Cardiovascular / Orthostatic",
+      "questionId": "259369",
+      "answer": "Minutes",
+      "direction": 1,
+      "weight": 5,
+      "remaining": true,
+      "sourceJudgments": [
+        {
+          "reviewer": "Michelle",
+          "direction": 1,
+          "status": "rated",
+          "importance": 0.65
+        },
+        {
+          "reviewer": "Katie",
+          "direction": 1,
+          "status": "rated",
+          "importance": 0.35
+        }
+      ],
+      "medicalSource": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9249281/",
+      "source": "Clinically reviewed current question; Michelle/Katie directions weighted 65/35; no Ali vote",
+      "minimum": 5,
+      "maximum": 5,
+      "priorMagnitude": 5,
+      "frozenForInsufficientCases": false
+    },
+    {
+      "category": "Cardiovascular / Orthostatic",
+      "questionId": "259371",
+      "answer": "sitting up",
+      "direction": 1,
+      "weight": 5,
+      "remaining": true,
+      "sourceJudgments": [
+        {
+          "reviewer": "Michelle",
+          "direction": 1,
+          "status": "rated",
+          "importance": 0.65
+        },
+        {
+          "reviewer": "Katie",
+          "direction": 1,
+          "status": "rated",
+          "importance": 0.35
+        }
+      ],
+      "medicalSource": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9249281/",
+      "source": "Clinically reviewed current question; Michelle/Katie directions weighted 65/35; no Ali vote",
+      "minimum": 5,
+      "maximum": 5,
+      "priorMagnitude": 5,
+      "frozenForInsufficientCases": false
+    },
+    {
+      "category": "Cardiovascular / Orthostatic",
+      "questionId": "259371",
+      "answer": "standing up",
+      "direction": 1,
+      "weight": 5,
+      "remaining": true,
+      "sourceJudgments": [
+        {
+          "reviewer": "Michelle",
+          "direction": 1,
+          "status": "rated",
+          "importance": 0.65
+        },
+        {
+          "reviewer": "Katie",
+          "direction": 1,
+          "status": "rated",
+          "importance": 0.35
+        }
+      ],
+      "medicalSource": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9249281/",
+      "source": "Clinically reviewed current question; Michelle/Katie directions weighted 65/35; no Ali vote",
+      "minimum": 5,
+      "maximum": 5,
+      "priorMagnitude": 5,
+      "frozenForInsufficientCases": false
+    },
+    {
+      "category": "Cardiovascular / Orthostatic",
+      "questionId": "259380",
+      "answer": "fainted or light-headed",
+      "direction": 1,
+      "weight": 9,
+      "remaining": true,
+      "sourceJudgments": [
+        {
+          "reviewer": "Michelle",
+          "direction": 1,
+          "status": "rated",
+          "importance": 0.65
+        },
+        {
+          "reviewer": "Katie",
+          "direction": 1,
+          "status": "rated",
+          "importance": 0.35
+        }
+      ],
+      "medicalSource": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9249281/",
+      "source": "Clinically reviewed current question; Michelle/Katie directions weighted 65/35; no Ali vote",
+      "minimum": 5,
+      "maximum": 9,
+      "priorMagnitude": 7,
+      "frozenForInsufficientCases": false
+    },
+    {
+      "category": "Cardiovascular / Orthostatic",
+      "questionId": "259381",
+      "answer": "heart racing",
+      "direction": 1,
+      "weight": 9,
+      "remaining": true,
+      "sourceJudgments": [
+        {
+          "reviewer": "Michelle",
+          "direction": 1,
+          "status": "rated",
+          "importance": 0.65
+        },
+        {
+          "reviewer": "Katie",
+          "direction": 1,
+          "status": "rated",
+          "importance": 0.35
+        }
+      ],
+      "medicalSource": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9249281/",
+      "source": "Clinically reviewed current question; Michelle/Katie directions weighted 65/35; no Ali vote",
+      "minimum": 5,
+      "maximum": 9,
+      "priorMagnitude": 7,
+      "frozenForInsufficientCases": false
+    },
+    {
+      "category": "Anxiety without PPPD",
+      "questionId": "259357",
+      "answer": "light-headed",
+      "direction": 1,
+      "weight": 5,
+      "remaining": true,
+      "sourceJudgments": [
+        {
+          "reviewer": "Michelle",
+          "direction": 1,
+          "status": "rated",
+          "importance": 0.65
+        },
+        {
+          "reviewer": "Katie",
+          "direction": 1,
+          "status": "rated",
+          "importance": 0.35
+        }
+      ],
+      "medicalSource": "https://www.nimh.nih.gov/health/publications/panic-disorder-when-fear-overwhelms",
+      "source": "Clinically reviewed current question; Michelle/Katie directions weighted 65/35; no Ali vote",
+      "minimum": 5,
+      "maximum": 5,
+      "priorMagnitude": 5,
+      "frozenForInsufficientCases": true
+    },
+    {
+      "category": "Anxiety without PPPD",
+      "questionId": "259372",
+      "answer": "stress, nerves, or anxiety",
+      "direction": 1,
+      "weight": 8,
+      "remaining": true,
+      "sourceJudgments": [
+        {
+          "reviewer": "Michelle",
+          "direction": 1,
+          "status": "rated",
+          "importance": 0.65
+        },
+        {
+          "reviewer": "Katie",
+          "direction": 1,
+          "status": "rated",
+          "importance": 0.35
+        }
+      ],
+      "medicalSource": "https://www.nimh.nih.gov/health/publications/panic-disorder-when-fear-overwhelms",
+      "source": "Clinically reviewed current question; Michelle/Katie directions weighted 65/35; no Ali vote",
+      "minimum": 8,
+      "maximum": 8,
+      "priorMagnitude": 8,
+      "frozenForInsufficientCases": true
+    },
+    {
+      "category": "Anxiety without PPPD",
+      "questionId": "259381",
+      "answer": "heart racing",
+      "direction": 1,
+      "weight": 5,
+      "remaining": true,
+      "sourceJudgments": [
+        {
+          "reviewer": "Michelle",
+          "direction": 1,
+          "status": "rated",
+          "importance": 0.65
+        },
+        {
+          "reviewer": "Katie",
+          "direction": 1,
+          "status": "rated",
+          "importance": 0.35
+        }
+      ],
+      "medicalSource": "https://www.nimh.nih.gov/health/publications/panic-disorder-when-fear-overwhelms",
+      "source": "Clinically reviewed current question; Michelle/Katie directions weighted 65/35; no Ali vote",
+      "minimum": 5,
+      "maximum": 5,
+      "priorMagnitude": 5,
+      "frozenForInsufficientCases": true
+    },
+    {
+      "category": "Anxiety without PPPD",
+      "questionId": "259381",
+      "answer": "panic feeling or sudden need to leave a place",
+      "direction": 1,
+      "weight": 5,
+      "remaining": true,
+      "sourceJudgments": [
+        {
+          "reviewer": "Michelle",
+          "direction": 1,
+          "status": "rated",
+          "importance": 0.65
+        },
+        {
+          "reviewer": "Katie",
+          "direction": 1,
+          "status": "rated",
+          "importance": 0.35
+        }
+      ],
+      "medicalSource": "https://www.nimh.nih.gov/health/publications/panic-disorder-when-fear-overwhelms",
+      "source": "Clinically reviewed current question; Michelle/Katie directions weighted 65/35; no Ali vote",
+      "minimum": 5,
+      "maximum": 5,
+      "priorMagnitude": 5,
+      "frozenForInsufficientCases": true
+    },
+    {
+      "category": "Anxiety without PPPD",
+      "questionId": "259382",
+      "answer": "anxiety or depression",
+      "direction": 1,
+      "weight": 7,
+      "remaining": true,
+      "sourceJudgments": [
+        {
+          "reviewer": "Michelle",
+          "direction": 1,
+          "status": "rated",
+          "importance": 0.65
+        },
+        {
+          "reviewer": "Katie",
+          "direction": 1,
+          "status": "rated",
+          "importance": 0.35
+        }
+      ],
+      "medicalSource": "https://www.nimh.nih.gov/health/publications/panic-disorder-when-fear-overwhelms",
+      "source": "Clinically reviewed current question; Michelle/Katie directions weighted 65/35; no Ali vote",
+      "minimum": 7,
+      "maximum": 7,
+      "priorMagnitude": 7,
+      "frozenForInsufficientCases": true
     }
   ],
   "constraints": {
@@ -1749,5 +2143,23 @@ window.NEBULA_BANDS = {
     "leftRightHearingWeightsTied": true,
     "sourceWorkbook": "AI data  pull_11.20.xlsx",
     "evaluation": "Same fitting cohort, no held-out validation. Clinical shortlist is a research proposal, not diagnostic criteria."
+  },
+  "remainingFit": {
+    "patients": 102,
+    "diagnoses": 113,
+    "reviewerWeights": {
+      "Michelle": 0.65,
+      "Katie": 0.35
+    },
+    "existingNineFrozen": true,
+    "newClasses": [
+      "Cardiovascular / Orthostatic",
+      "Anxiety without PPPD"
+    ],
+    "futureQuestionsUsed": false,
+    "anxietyPriorOnly": true,
+    "sourceWorkbook": "AI data  pull_11.20.xlsx",
+    "method": "Clinically bounded prior-anchored point adjustment; survey directions only; three Cardio cases fit and one Anxiety case descriptive only",
+    "evaluation": "All-data descriptive results, not held-out validation; unrecorded labels are proxy negatives."
   }
 };
