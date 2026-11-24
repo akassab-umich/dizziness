@@ -1,3 +1,23 @@
+# Current model: nine classes (November 24)
+
+The seven November 20 workshop scorecards are frozen. Labyrinthitis Hypofunction and Schwannoma Hypofunction use only current-question answer options where Katie and Michelle share a direction. Future questions and one-reviewer-only classes are excluded. Neutral agreement contributes exactly zero, including untouched-center matches. Nonzero magnitudes use whole points: 5–25 for single choices and 5–10 for checkbox choices, with fixed signs.
+
+The authoritative November 20 workbook yields 99 supported patients and 109 recorded diagnoses for these nine classes. Do not add older deliveries. Training uses all supported cases, with class-balanced pairwise ranking loss and shrinkage toward the reviewers’ mean magnitudes. Continuous bounded optimization is followed by integer local refinement. No intercept is learned. The seven original categories never move. Missing questions add zero. Training results are not held-out validation.
+
+```bash
+node tools/export_consensus_training.cjs /absolute/path/to/all-current-cases
+python3 tools/train_consensus_model.py
+node tools/evaluate_current_model.cjs
+node tools/check_site.cjs
+node tools/test_assessment.cjs
+```
+
+Use the all-profile JSON folder as input; the importer excludes unsupported-only patients and retains supported labels on mixed cases. Exported `consensus-rules.js` records the agreed directions and raw reviewer judgments for auditing. Patient features, scores and local comparisons stay in ignored `private-results/`. The Assignment page remains editable for reviewers; using judgments in a test scorecard does not remove their assessment questions.
+
+The earlier seven-class method below is retained for reference. Do not run its trainer over the expanded model.
+
+---
+
 # Local processing and model tools
 
 Run commands from the repository root. Patient inputs and outputs stay local.

@@ -13,6 +13,8 @@
     "Neuritis",
     "PPPD",
     "Third Window",
+    "Labyrinthitis Hypofunction",
+    "Schwannoma Hypofunction",
   ]);
   function parse(value, questions, filename = "case.json") {
     if (
@@ -111,6 +113,8 @@
       NeuritisHypofunction: "Neuritis",
       NeuritisHypo: "Neuritis",
       ScCD: "Third Window",
+      LabyrinthitisHypo: "Labyrinthitis Hypofunction",
+      SchwannomaHypo: "Schwannoma Hypofunction",
       "Bilateral wkns": "Bilateral",
     };
     const age =

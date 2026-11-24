@@ -45,12 +45,12 @@ const synthetic = {
 };
 assert.deepEqual(
   importer.parse(synthetic, window.NEBULA_DATA.questions).recorded,
-  ["Neuritis"],
+  ["Neuritis", "Schwannoma Hypofunction"],
 );
 assert.throws(
   () =>
     importer.parse(
-      { ...synthetic, Diagnoses: ["SchwannomaHypo"] },
+      { ...synthetic, Diagnoses: ["UnspecifiedHypo"] },
       window.NEBULA_DATA.questions,
     ),
   /no diagnosis with current scoring rules/,
@@ -73,7 +73,41 @@ if (model.constraints?.radiusFraction === 0.25) {
     window.NEBULA_NOTES.rules.map((rule) => [key(rule), rule]),
   );
   assert.equal(model.basedOnVersion, window.NEBULA_NOTES.version);
+  require(path.join(web, "consensus-rules.js"));
+  const consensus = new Map(
+    window.NEBULA_CONSENSUS.rules.map((r) => [key(r), r]),
+  );
+  const reviews = require(path.join(web, "assessment-reviews.js"));
+  const ids = {
+    "Labyrinthitis Hypofunction": "labyrinthitis-hypofunction",
+    "Schwannoma Hypofunction": "schwannoma-hypofunction",
+  };
   for (const rule of model.rules) {
+    if (rule.consensus) {
+      const reference = consensus.get(key(rule));
+      assert(reference && questionKinds.has(rule.questionId));
+      const votes = ["Katie", "Michelle"].map((name) =>
+        reviews
+          .find(
+            (r) => r.reviewer === name && r.diagnosisId === ids[rule.category],
+          )
+          .ratings.find(
+            (a) => a.questionId === rule.questionId && a.answer === rule.answer,
+          ),
+      );
+      assert(
+        votes.every((v) => v && Math.sign(v.significance) === rule.direction),
+      );
+      assert.equal(Math.sign(rule.weight), rule.direction);
+      assert(Number.isInteger(rule.weight));
+      assert(
+        rule.direction === 0
+          ? rule.weight === 0
+          : Math.abs(rule.weight) >= 5 &&
+              Math.abs(rule.weight) <= reference.maximum,
+      );
+      continue;
+    }
     const anchor = anchors.get(key(rule));
     assert(anchor, "New scoring link was not in the workshop model");
     assert(

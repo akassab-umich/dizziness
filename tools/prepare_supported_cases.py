@@ -15,6 +15,8 @@ SUPPORTED = {
     "Menieres",
     "PPPD",
     "ScCD",
+    "LabyrinthitisHypo",
+    "SchwannomaHypo",
 }
 
 

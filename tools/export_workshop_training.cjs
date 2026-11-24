@@ -23,6 +23,8 @@ const cases = fs
   }));
 const categories = [...new Set(cases.flatMap((p) => p.recorded))].sort();
 const anchor = window.NEBULA_NOTES;
+if (categories.some((category) => !anchor.rules.some((r) => r.category === category)))
+  throw Error("New categories require export_consensus_training.cjs and train_consensus_model.py.");
 const rules = anchor.rules
   .filter((r) => categories.includes(r.category))
   .map((r) => ({
