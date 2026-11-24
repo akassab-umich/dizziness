@@ -438,20 +438,17 @@
   line-height: 1.4;
 }
 
-.assessment-slider:has(.model-dot) {
-  margin-bottom: calc(34px + var(--model-lanes) * 12px);
-}
 .model-dot {
   position: absolute;
-  top: calc(100% + 16px + var(--dot-lane) * 12px);
+  top: 50%;
   width: 9px;
   height: 9px;
   border-radius: 50%;
   background: var(--dot-color);
   border: 1px solid white;
-  transform: translateX(-50%);
+  transform: translate(-50%, -50%);
   z-index: 2;
-  cursor: help;
+  pointer-events: none;
 }
 .model-dot-legend {
   display: flex;
