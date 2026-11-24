@@ -132,6 +132,19 @@
       : questions.length;
     detail.textContent = `${count} ${diagnosis.modelCategory ? "proposed questions" : "questions"}`;
     tile.append(name, detail);
+    const completed = document.createElement("span");
+    completed.className = "diagnosis-tile-completed";
+    const reviewers = [
+      ...new Set(
+        (window.NEBULA_ASSESSMENT_REVIEWS || [])
+          .filter((review) => review.diagnosisId === diagnosis.id)
+          .map((review) => review.reviewer),
+      ),
+    ].sort();
+    completed.textContent = reviewers.length
+      ? `Completed: ${reviewers.join(", ")}`
+      : "No submissions yet";
+    tile.append(completed);
     tile.addEventListener("click", () => startAssessment(diagnosis.id));
     byId("diagnosis-tiles").append(tile);
   }

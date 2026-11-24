@@ -430,3 +430,10 @@
   pointer-events: auto;
   cursor: help;
 }
+
+.diagnosis-tile-completed {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--um-blue);
+  line-height: 1.4;
+}
