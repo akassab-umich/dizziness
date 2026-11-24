@@ -146,3 +146,51 @@ for (const review of reviews) {
 console.log(
   "PASS: all team reference ratings match current diagnosis/question/answer identities.",
 );
+
+const qMain = data.questions.find((q) => q.id === "259356");
+const dots = core.modelReferences(qMain, "dizziness", window.NEBULA_BANDS);
+assert(
+  dots.some((r) => r.name === "Bilateral" && r.points < 0 && r.fraction < 0.5),
+);
+assert(dots.every((r) => r.fraction > 0 && r.fraction < 1));
+assert.equal(
+  core.modelReferences(
+    questions.find((q) => q.future),
+    "Yes",
+    window.NEBULA_BANDS,
+  ).length,
+  0,
+);
+assert.equal(
+  core.modelReferences(qMain, "missing option", window.NEBULA_BANDS).length,
+  0,
+);
+const dotModel = {
+  rules: [
+    { category: "BPPV", questionId: "259356", answer: "dizziness", weight: 10 },
+    {
+      category: "Bilateral",
+      questionId: "259356",
+      answer: "dizziness",
+      weight: 10,
+    },
+    {
+      category: "Migraine",
+      questionId: "259356",
+      answer: "dizziness",
+      weight: 100,
+    },
+  ],
+};
+const stacked = core.modelReferences(qMain, "dizziness", dotModel);
+assert.equal(
+  new Set(stacked.filter((r) => r.points === 10).map((r) => r.lane)).size,
+  2,
+);
+assert(
+  stacked.find((r) => r.points === 100).fraction >
+    stacked.find((r) => r.points === 10).fraction,
+);
+console.log(
+  "PASS: model reference directions, scaling, missing rules and overlap lanes.",
+);

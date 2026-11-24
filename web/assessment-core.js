@@ -76,6 +76,55 @@
           .replace(/^_+|_+$/g, "");
       return `${safe(firstName) || "Reviewer"}_${safe(diagnosis.name)}.json`;
     }
+    function modelReferences(question, answer, model) {
+      if (question.future) return [];
+      const colors = [
+        "#0072b2",
+        "#d55e00",
+        "#009e73",
+        "#8e44ad",
+        "#a66f00",
+        "#cc3377",
+        "#333333",
+      ];
+      const references = diagnoses
+        .filter((d) => d.modelCategory)
+        .flatMap((d, index) => {
+          const rules = model.rules.filter(
+            (r) =>
+              r.category === d.modelCategory &&
+              r.questionId === question.id &&
+              scoring.norm(r.answer) === scoring.norm(answer),
+          );
+          if (!rules.length) return [];
+          const points = rules.reduce((sum, r) => sum + r.weight, 0);
+          // Symmetric compression keeps zero centered and preserves magnitude order.
+          const fraction = (1 + points / (Math.abs(points) + 10)) / 2;
+          return [
+            {
+              name: d.name,
+              color: colors[index],
+              points,
+              fraction,
+              conditional: rules.some((r) => r.unless),
+              lane: 0,
+            },
+          ];
+        });
+      for (const [index, ref] of references.entries()) {
+        while (
+          references
+            .slice(0, index)
+            .some(
+              (other) =>
+                other.lane === ref.lane &&
+                Math.abs(other.fraction - ref.fraction) < 0.06,
+            )
+        )
+          ref.lane++;
+      }
+      return references;
+    }
     function exportAssessment({
       firstName,
       diagnosisId,
@@ -152,6 +201,7 @@
       value,
       reference,
       filename,
+      modelReferences,
       exportAssessment,
     };
   },

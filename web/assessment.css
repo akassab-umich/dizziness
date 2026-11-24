@@ -437,3 +437,41 @@
   color: var(--um-blue);
   line-height: 1.4;
 }
+
+.assessment-slider:has(.model-dot) {
+  margin-bottom: calc(34px + var(--model-lanes) * 12px);
+}
+.model-dot {
+  position: absolute;
+  top: calc(100% + 16px + var(--dot-lane) * 12px);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--dot-color);
+  border: 1px solid white;
+  transform: translateX(-50%);
+  z-index: 2;
+  cursor: help;
+}
+.model-dot-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 12px;
+  font-size: 12px;
+  line-height: 1.4;
+}
+.model-dot-legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.model-dot-legend i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.model-dot-legend small {
+  flex-basis: 100%;
+  color: var(--muted);
+}

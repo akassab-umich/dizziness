@@ -105,11 +105,26 @@
               ? fixed.significance
               : core.value(state.ratings, q, index);
             const id = `rating-${q.id}-${index}`;
+            const refs = existing ? [] : core.modelReferences(q, answer, model);
+            const lanes = refs.length
+              ? Math.max(...refs.map((r) => r.lane))
+              : 0;
+            const refTitle = (r) =>
+              `${r.name}: ${r.points > 0 ? "+" : ""}${r.points} model points${r.conditional ? " (conditional rule)" : ""}`;
+            const dots = refs
+              .map(
+                (r) =>
+                  `<span class="model-dot" style="left:calc(${r.fraction * 100}% + ${11 - 22 * r.fraction}px);--dot-color:${r.color};--dot-lane:${r.lane}" title="${escape(refTitle(r))}" aria-label="${escape(refTitle(r))}"></span>`,
+              )
+              .join("");
+            const legend = refs.length
+              ? `<div class="model-dot-legend"><span>Model classes:</span>${refs.map((r) => `<span title="${escape(refTitle(r))}"><i style="background:${r.color}"></i>${escape(r.name)}${r.conditional ? "*" : ""}</span>`).join("")}<small>Compressed points scale · hover for points${refs.some((r) => r.conditional) ? " · * conditional rule" : ""}</small></div>`
+              : "";
             return `<div class="assessment-answer">
             <label for="${id}">${escape(answer)}</label>
             <div class="assessment-rating">
               <div class="assessment-slider-labels" id="${id}-direction"><span>Less likely ${diagnosisName}</span><span>More likely ${diagnosisName}</span></div>
-              <div class="assessment-slider"><input ${fixed ? "disabled" : ""} id="${id}" type="range" min="-10" max="10" step="1" value="${value}" data-question="${q.id}" data-index="${index}" aria-label="${escape(answer)} — question ${number + 1}" aria-valuetext="${fixed ? "Fixed. " : ""}${meaning(value)}" aria-describedby="${id}-direction" />${reviewerMarks(q, answer)}</div>
+              <div class="assessment-slider" style="--model-lanes:${lanes}"><input ${fixed ? "disabled" : ""} id="${id}" type="range" min="-10" max="10" step="1" value="${value}" data-question="${q.id}" data-index="${index}" aria-label="${escape(answer)} — question ${number + 1}" aria-valuetext="${fixed ? "Fixed. " : ""}${meaning(value)}" aria-describedby="${id}-direction" />${reviewerMarks(q, answer)}${dots}</div>${legend}
               ${fixed?.conditional ? '<p class="assessment-hint">Conditional model rule</p>' : ""}
             </div>
           </div>`;
