@@ -1,3 +1,28 @@
+# Current model: patient-supported sparse points (November 24)
+
+The current website uses `train_sparse_model.py`. It screens all nine classes; it no longer freezes the seven older scorecards. Candidate clinical links and their signs are preserved. Links may be disabled with exactly zero weight. The two new classes must also agree in direction with the latest Ali assessment round; future questions remain excluded. Cardio and Anxiety remain assessment-only. The Hypofunction parent/subtype workflow has not been activated.
+
+A rule needs at least three usable recorded cases and ten usable other cases, a smoothed signed answer-rate difference of at least 0.15, and directional support in at least 80% of 2,000 stratified bootstrap resamples. Positive rules must match at least two recorded cases. Negative rules must be absent in at least two recorded cases and match at least three other cases. These are exploratory inclusion gates, not calibrated probabilities or confidence guarantees. Unrecorded diagnoses are proxy negatives; normal/control patients are not established here.
+
+At most eight questions per class are retained. For each checkbox question, only the strongest qualifying option per direction remains; each direction contributes at most ten points even when many options are checked. Nonzero magnitudes are integers: 5–25 for single choices, 5–10 for checkboxes. Class-balanced ranking, a weak points-band objective and shrinkage tune the amounts, followed by integer refinement. No intercept, new clinical link or sign reversal is allowed.
+
+All 99 supported patients from the November 20 workbook are used for fitting and descriptive evaluation. Bootstrap screening and fitting on the same patients are not held-out validation. Sparse scores can be substantially lower; the earlier 40/50-point interpretations are not calibrated to this version and cannot be treated as clinical safety thresholds. Some classes cannot reach 50 points with the retained evidence; weights are not inflated to manufacture that threshold.
+
+Prerequisites are the local consensus training input, current expert rule candidates, the Ali assessment round in `private-results/ali-assessments.json`, and the pre-sparse baseline in `private-results/sparse-baseline-model.js` (automatically saved on first fitting). Original patient sources and assessments stay outside public Git. Candidate directions live in `web/sparse-rule-candidates.js`; detailed patient rates and per-case outputs stay private.
+
+```bash
+python3 tools/train_sparse_model.py
+node tools/evaluate_current_model.cjs
+node tools/check_site.cjs
+node tools/test_assessment.cjs
+```
+
+Do not run the older workshop or consensus trainers over this model unless explicitly restoring the previous method. The pre-sparse deployment is locally backed up under `archive/pre-sparse-2026-11-24/` in the parent research folder.
+
+---
+
+## Previous methods (reference only)
+
 # Current model: nine classes (November 24)
 
 The seven November 20 workshop scorecards are frozen. Labyrinthitis Hypofunction and Schwannoma Hypofunction use only current-question answer options where Katie and Michelle share a direction. Future questions and one-reviewer-only classes are excluded. Neutral agreement contributes exactly zero, including untouched-center matches. Nonzero magnitudes use whole points: 5–25 for single choices and 5–10 for checkbox choices, with fixed signs.

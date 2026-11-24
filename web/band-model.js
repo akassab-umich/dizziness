@@ -1,8 +1,8 @@
 window.NEBULA_BANDS = {
-  "version": "consensus-expanded-2026-11-24",
+  "version": "patient-supported-sparse-2026-11-24",
   "name": "Model",
   "basedOnVersion": "meeting-2-severity-2026-10-28",
-  "method": "Frozen workshop scorecard plus sign-constrained, regularized consensus calibration for two new classes",
+  "method": "Expert-sign-constrained sparse scorecard with stratified-bootstrap stability screening",
   "scoringMode": "net-points",
   "trainedCategories": [
     "BPPV",
@@ -20,71 +20,78 @@ window.NEBULA_BANDS = {
       "category": "BPPV",
       "questionId": "259364",
       "answer": "Yes",
-      "weight": 15,
+      "weight": 22,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 15
+      "anchorWeight": 15,
+      "patientSelected": true
     },
     {
       "category": "BPPV",
       "questionId": "259369",
       "answer": "Seconds",
-      "weight": 8,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 7
+      "anchorWeight": 7,
+      "patientSelected": false
     },
     {
       "category": "BPPV",
       "questionId": "259369",
       "answer": "Minutes",
-      "weight": 8,
+      "weight": 6,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 7
+      "anchorWeight": 7,
+      "patientSelected": true
     },
     {
       "category": "BPPV",
       "questionId": "259370",
       "answer": "once a day",
-      "weight": 8,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 7
+      "anchorWeight": 7,
+      "patientSelected": false
     },
     {
       "category": "BPPV",
       "questionId": "259370",
       "answer": "several times a day",
-      "weight": 5,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 7
+      "anchorWeight": 7,
+      "patientSelected": false
     },
     {
       "category": "BPPV",
       "questionId": "259371",
       "answer": "looking up",
-      "weight": 3,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 3
+      "anchorWeight": 3,
+      "patientSelected": false
     },
     {
       "category": "BPPV",
       "questionId": "259371",
       "answer": "lying down",
-      "weight": 4,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 3
+      "anchorWeight": 3,
+      "patientSelected": false
     },
     {
       "category": "BPPV",
@@ -92,259 +99,285 @@ window.NEBULA_BANDS = {
       "answer": "rolling over",
       "weight": 10,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 8
+      "anchorWeight": 8,
+      "patientSelected": true
     },
     {
       "category": "BPPV",
       "questionId": "259371",
       "answer": "getting into or out of bed",
-      "weight": 10,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 8
+      "anchorWeight": 8,
+      "patientSelected": false
     },
     {
       "category": "BPPV",
       "questionId": "259371",
       "answer": "sitting up",
-      "weight": 4,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 4
+      "anchorWeight": 4,
+      "patientSelected": false
     },
     {
       "category": "BPPV",
       "questionId": "259371",
       "answer": "reaching or bending",
-      "weight": 1,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 2
+      "anchorWeight": 2,
+      "patientSelected": false
     },
     {
       "category": "BPPV",
       "questionId": "259362",
       "answer": "No",
-      "weight": 11,
+      "weight": 5,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 15
+      "anchorWeight": 15,
+      "patientSelected": true
     },
     {
       "category": "Neuritis",
       "questionId": "259361",
       "answer": "Sudden",
-      "weight": 19,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 25
+      "anchorWeight": 25,
+      "patientSelected": false
     },
     {
       "category": "Neuritis",
       "questionId": "259362",
       "answer": "Yes",
-      "weight": 15,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 13
+      "anchorWeight": 13,
+      "patientSelected": false
     },
     {
       "category": "Neuritis",
       "questionId": "259367",
       "answer": "Only 1 episode",
-      "weight": 19,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 20
+      "anchorWeight": 20,
+      "patientSelected": false
     },
     {
       "category": "Neuritis",
       "questionId": "259371",
       "answer": "walking in the dark",
-      "weight": 13,
+      "weight": 10,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 10
+      "anchorWeight": 10,
+      "patientSelected": true
     },
     {
       "category": "Neuritis",
       "questionId": "259371",
       "answer": "any kind of head movement",
-      "weight": 9,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 10
+      "anchorWeight": 10,
+      "patientSelected": false
     },
     {
       "category": "Neuritis",
       "questionId": "260451",
       "answer": "Yes",
-      "weight": 9,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 12
+      "anchorWeight": 12,
+      "patientSelected": false
     },
     {
       "category": "Neuritis",
       "questionId": "260451",
       "answer": "No",
-      "weight": -13,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": -1,
-      "anchorWeight": -13
+      "anchorWeight": -13,
+      "patientSelected": false
     },
     {
       "category": "Meniere's",
       "questionId": "259369",
       "answer": "Hours",
-      "weight": 6,
+      "weight": 10,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 5
+      "anchorWeight": 5,
+      "patientSelected": true
     },
     {
       "category": "Meniere's",
       "questionId": "259369",
       "answer": "Days",
-      "weight": 5,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 5
+      "anchorWeight": 5,
+      "patientSelected": false
     },
     {
       "category": "Meniere's",
       "questionId": "259369",
       "answer": "Days and can last continuously for weeks",
-      "weight": 5,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 5
+      "anchorWeight": 5,
+      "patientSelected": false
     },
     {
       "category": "Meniere's",
       "questionId": "259381",
       "answer": "Nausea or vomiting",
-      "weight": 19,
+      "weight": 10,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 16
+      "anchorWeight": 16,
+      "patientSelected": true
     },
     {
       "category": "Meniere's",
       "questionId": "259417",
       "answer": "Yes, right ear only",
-      "weight": 9,
+      "weight": 23,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 9
+      "anchorWeight": 9,
+      "patientSelected": true
     },
     {
       "category": "Meniere's",
       "questionId": "259417",
       "answer": "Yes, left ear only",
-      "weight": 10,
+      "weight": 16,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 8
+      "anchorWeight": 8,
+      "patientSelected": true
     },
     {
       "category": "Meniere's",
       "questionId": "259418",
       "answer": "Yes, right ear only",
-      "weight": 18,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 16
+      "anchorWeight": 16,
+      "patientSelected": false
     },
     {
       "category": "Meniere's",
       "questionId": "259418",
+      "answer": "Yes, left ear only",
+      "weight": 0,
+      "editable": true,
+      "source": "Expert direction with patient stability screening and sparse point calibration",
+      "direction": 1,
+      "anchorWeight": 16,
+      "patientSelected": false
+    },
+    {
+      "category": "Meniere's",
+      "questionId": "259416",
+      "answer": "Yes, right ear only",
+      "weight": 0,
+      "editable": true,
+      "source": "Expert direction with patient stability screening and sparse point calibration",
+      "direction": 1,
+      "anchorWeight": 16,
+      "patientSelected": false
+    },
+    {
+      "category": "Meniere's",
+      "questionId": "259416",
       "answer": "Yes, left ear only",
       "weight": 20,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 16
-    },
-    {
-      "category": "Meniere's",
-      "questionId": "259416",
-      "answer": "Yes, right ear only",
-      "weight": 12,
-      "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
-      "direction": 1,
-      "anchorWeight": 16
-    },
-    {
-      "category": "Meniere's",
-      "questionId": "259416",
-      "answer": "Yes, left ear only",
-      "weight": 15,
-      "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
-      "direction": 1,
-      "anchorWeight": 16
+      "anchorWeight": 16,
+      "patientSelected": true
     },
     {
       "category": "Meniere's",
       "questionId": "260450",
       "answer": "changes in the weather",
-      "weight": 5,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 5
+      "anchorWeight": 5,
+      "patientSelected": false
     },
     {
       "category": "Meniere's",
       "questionId": "260450",
       "answer": "certain foods",
-      "weight": 5,
+      "weight": 6,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 5
+      "anchorWeight": 5,
+      "patientSelected": true
     },
     {
       "category": "Meniere's",
       "questionId": "260450",
       "answer": "certain beverages",
-      "weight": 4,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 4
+      "anchorWeight": 4,
+      "patientSelected": false
     },
     {
       "category": "Meniere's",
       "questionId": "259363",
       "answer": "No",
-      "weight": 10,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 13
+      "anchorWeight": 13,
+      "patientSelected": false
     },
     {
       "category": "Meniere's",
@@ -352,7 +385,7 @@ window.NEBULA_BANDS = {
       "answer": "no",
       "weight": -8,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "unless": {
         "questionId": "259416",
         "answers": [
@@ -361,17 +394,19 @@ window.NEBULA_BANDS = {
         ]
       },
       "direction": -1,
-      "anchorWeight": -8
+      "anchorWeight": -8,
+      "patientSelected": true
     },
     {
       "category": "Meniere's",
       "questionId": "259416",
       "answer": "No",
-      "weight": -15,
+      "weight": -5,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": -1,
-      "anchorWeight": -16
+      "anchorWeight": -16,
+      "patientSelected": true
     },
     {
       "category": "Meniere's",
@@ -379,19 +414,21 @@ window.NEBULA_BANDS = {
       "answer": "No",
       "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 0,
-      "anchorWeight": 0
+      "anchorWeight": 0,
+      "patientSelected": false
     },
     {
       "category": "Meniere's",
       "questionId": "259418",
       "answer": "No",
-      "weight": -13,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": -1,
-      "anchorWeight": -13
+      "anchorWeight": -13,
+      "patientSelected": false
     },
     {
       "category": "Meniere's",
@@ -399,69 +436,76 @@ window.NEBULA_BANDS = {
       "answer": "none of the above",
       "weight": -5,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": -1,
-      "anchorWeight": -4
+      "anchorWeight": -4,
+      "patientSelected": true
     },
     {
       "category": "Third Window",
       "questionId": "259369",
       "answer": "Seconds",
-      "weight": 30,
+      "weight": 10,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 25
+      "anchorWeight": 25,
+      "patientSelected": true
     },
     {
       "category": "Third Window",
       "questionId": "259372",
       "answer": "blowing your nose",
-      "weight": 13,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 13
+      "anchorWeight": 13,
+      "patientSelected": false
     },
     {
       "category": "Third Window",
       "questionId": "259372",
       "answer": "loud sounds",
-      "weight": 26,
+      "weight": 10,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 26
+      "anchorWeight": 26,
+      "patientSelected": true
     },
     {
       "category": "Third Window",
       "questionId": "259372",
       "answer": "lifting or straining",
-      "weight": 7,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 10
+      "anchorWeight": 10,
+      "patientSelected": false
     },
     {
       "category": "Third Window",
       "questionId": "259372",
       "answer": "coughing",
-      "weight": 7,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 10
+      "anchorWeight": 10,
+      "patientSelected": false
     },
     {
       "category": "Third Window",
       "questionId": "259421",
       "answer": "Yes",
-      "weight": 26,
+      "weight": 25,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 25
+      "anchorWeight": 25,
+      "patientSelected": true
     },
     {
       "category": "Third Window",
@@ -469,179 +513,197 @@ window.NEBULA_BANDS = {
       "answer": "No",
       "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 0,
-      "anchorWeight": 0
+      "anchorWeight": 0,
+      "patientSelected": false
     },
     {
       "category": "Migraine",
       "questionId": "259369",
       "answer": "Hours",
-      "weight": 4,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 4
+      "anchorWeight": 4,
+      "patientSelected": false
     },
     {
       "category": "Migraine",
       "questionId": "259369",
       "answer": "Days",
-      "weight": 1,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 2
+      "anchorWeight": 2,
+      "patientSelected": false
     },
     {
       "category": "Migraine",
       "questionId": "259369",
       "answer": "Days and can last continuously for weeks",
-      "weight": 4,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 4
+      "anchorWeight": 4,
+      "patientSelected": false
     },
     {
       "category": "Migraine",
       "questionId": "259372",
       "answer": "hot bath or shower",
-      "weight": 4,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 4
+      "anchorWeight": 4,
+      "patientSelected": false
     },
     {
       "category": "Migraine",
       "questionId": "259372",
       "answer": "menstrual cycle",
-      "weight": 4,
+      "weight": 10,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 4
+      "anchorWeight": 4,
+      "patientSelected": true
     },
     {
       "category": "Migraine",
       "questionId": "259372",
       "answer": "exercise",
-      "weight": 5,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 4
+      "anchorWeight": 4,
+      "patientSelected": false
     },
     {
       "category": "Migraine",
       "questionId": "259383",
       "answer": "Yes",
-      "weight": 7,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 7
+      "anchorWeight": 7,
+      "patientSelected": false
     },
     {
       "category": "Migraine",
       "questionId": "259384",
       "answer": "Yes",
-      "weight": 13,
+      "weight": 22,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 13
+      "anchorWeight": 13,
+      "patientSelected": true
     },
     {
       "category": "Migraine",
       "questionId": "259385",
       "answer": "Yes",
-      "weight": 8,
+      "weight": 5,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 7
+      "anchorWeight": 7,
+      "patientSelected": true
     },
     {
       "category": "Migraine",
       "questionId": "259386",
       "answer": "Yes",
-      "weight": 10,
+      "weight": 5,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 12
+      "anchorWeight": 12,
+      "patientSelected": true
     },
     {
       "category": "Migraine",
       "questionId": "259387",
       "answer": "Yes",
-      "weight": 13,
+      "weight": 7,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 13
+      "anchorWeight": 13,
+      "patientSelected": true
     },
     {
       "category": "Migraine",
       "questionId": "259389",
       "answer": "increased sensitivity to light during a headache",
-      "weight": 3,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 3
+      "anchorWeight": 3,
+      "patientSelected": false
     },
     {
       "category": "Migraine",
       "questionId": "259389",
       "answer": "increased sensitivity to sound during a headache",
-      "weight": 3,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 3
+      "anchorWeight": 3,
+      "patientSelected": false
     },
     {
       "category": "Migraine",
       "questionId": "259389",
       "answer": "increased sensitivity to smell during a headache",
-      "weight": 3,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 3
+      "anchorWeight": 3,
+      "patientSelected": false
     },
     {
       "category": "Migraine",
       "questionId": "259389",
       "answer": "headaches that happen when you are feeling dizzy or off balance",
-      "weight": 4,
+      "weight": 10,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 3
+      "anchorWeight": 3,
+      "patientSelected": true
     },
     {
       "category": "Migraine",
       "questionId": "259389",
       "answer": "certain foods or beverages increase the chance of getting a headache",
-      "weight": 1,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 1
+      "anchorWeight": 1,
+      "patientSelected": false
     },
     {
       "category": "Migraine",
       "questionId": "259389",
       "answer": "headaches where the pain throbs or pulses",
-      "weight": 4,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 3
+      "anchorWeight": 3,
+      "patientSelected": false
     },
     {
       "category": "Migraine",
@@ -649,575 +711,634 @@ window.NEBULA_BANDS = {
       "answer": "changes in the weather",
       "weight": 5,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 4
+      "anchorWeight": 4,
+      "patientSelected": true
     },
     {
       "category": "Migraine",
       "questionId": "260450",
       "answer": "certain foods",
-      "weight": 2,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 2
+      "anchorWeight": 2,
+      "patientSelected": false
     },
     {
       "category": "Migraine",
       "questionId": "260450",
       "answer": "certain beverages",
-      "weight": 2,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 2
+      "anchorWeight": 2,
+      "patientSelected": false
     },
     {
       "category": "Migraine",
       "questionId": "259363",
       "answer": "No",
-      "weight": 5,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 7
+      "anchorWeight": 7,
+      "patientSelected": false
     },
     {
       "category": "Migraine",
       "questionId": "259383",
       "answer": "No",
-      "weight": -13,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": -1,
-      "anchorWeight": -13
+      "anchorWeight": -13,
+      "patientSelected": false
     },
     {
       "category": "Migraine",
       "questionId": "259384",
       "answer": "No",
-      "weight": -12,
+      "weight": -5,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": -1,
-      "anchorWeight": -13
+      "anchorWeight": -13,
+      "patientSelected": true
     },
     {
       "category": "Migraine",
       "questionId": "259386",
       "answer": "No",
-      "weight": -4,
+      "weight": -5,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": -1,
-      "anchorWeight": -6
+      "anchorWeight": -6,
+      "patientSelected": true
     },
     {
       "category": "Migraine",
       "questionId": "260450",
       "answer": "none of the above",
-      "weight": -8,
+      "weight": -5,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": -1,
-      "anchorWeight": -6
+      "anchorWeight": -6,
+      "patientSelected": true
     },
     {
       "category": "PPPD",
       "questionId": "259361",
       "answer": "Gradual",
-      "weight": 11,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 15
+      "anchorWeight": 15,
+      "patientSelected": false
     },
     {
       "category": "PPPD",
       "questionId": "259363",
       "answer": "Yes",
-      "weight": 11,
+      "weight": 25,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 15
+      "anchorWeight": 15,
+      "patientSelected": true
     },
     {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "car rides",
-      "weight": 2,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 1
+      "anchorWeight": 1,
+      "patientSelected": false
     },
     {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "reading",
-      "weight": 2,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 1
+      "anchorWeight": 1,
+      "patientSelected": false
     },
     {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "stress, nerves, or anxiety",
-      "weight": 3,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 3
+      "anchorWeight": 3,
+      "patientSelected": false
     },
     {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "windshield wipers",
-      "weight": 2,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 1
+      "anchorWeight": 1,
+      "patientSelected": false
     },
     {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "supermarket aisles, malls, or tunnels",
-      "weight": 2,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 2
+      "anchorWeight": 2,
+      "patientSelected": false
     },
     {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "restaurants or movie theaters",
-      "weight": 3,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 3
+      "anchorWeight": 3,
+      "patientSelected": false
     },
     {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "turning your head while walking",
-      "weight": 3,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 2
+      "anchorWeight": 2,
+      "patientSelected": false
     },
     {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "large crowds/social gatherings",
-      "weight": 1,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 1
+      "anchorWeight": 1,
+      "patientSelected": false
     },
     {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "watching TV",
-      "weight": 1,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 1
+      "anchorWeight": 1,
+      "patientSelected": false
     },
     {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "walking on carpeting with a complex pattern",
-      "weight": 2,
+      "weight": 10,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 2
+      "anchorWeight": 2,
+      "patientSelected": true
     },
     {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "working on the computer",
-      "weight": 2,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 1
+      "anchorWeight": 1,
+      "patientSelected": false
     },
     {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "traffic",
-      "weight": 1,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 1
+      "anchorWeight": 1,
+      "patientSelected": false
     },
     {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "movement of things around you",
-      "weight": 2,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 1
+      "anchorWeight": 1,
+      "patientSelected": false
     },
     {
       "category": "PPPD",
       "questionId": "259372",
       "answer": "your own movement",
-      "weight": 2,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 2
+      "anchorWeight": 2,
+      "patientSelected": false
     },
     {
       "category": "PPPD",
       "questionId": "259374",
       "answer": "unsteady when standing",
-      "weight": 12,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 13
+      "anchorWeight": 13,
+      "patientSelected": false
     },
     {
       "category": "PPPD",
       "questionId": "259374",
       "answer": "unsteady when walking",
-      "weight": 10,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 9
+      "anchorWeight": 9,
+      "patientSelected": false
     },
     {
       "category": "PPPD",
       "questionId": "259381",
       "answer": "heart racing",
-      "weight": 16,
+      "weight": 10,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 13
+      "anchorWeight": 13,
+      "patientSelected": true
     },
     {
       "category": "PPPD",
       "questionId": "259381",
       "answer": "panic feeling or sudden need to leave a place",
-      "weight": 12,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 13
+      "anchorWeight": 13,
+      "patientSelected": false
     },
     {
       "category": "PPPD",
       "questionId": "259363",
       "answer": "No",
-      "weight": -15,
+      "weight": -5,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": -1,
-      "anchorWeight": -15
+      "anchorWeight": -15,
+      "patientSelected": true
     },
     {
       "category": "Bilateral",
       "questionId": "259356",
       "answer": "dizziness",
-      "weight": -7,
+      "weight": -10,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": -1,
-      "anchorWeight": -6
+      "anchorWeight": -6,
+      "patientSelected": true
     },
     {
       "category": "Bilateral",
       "questionId": "259356",
       "answer": "imbalance",
-      "weight": 11,
+      "weight": 5,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 12
+      "anchorWeight": 12,
+      "patientSelected": true
     },
     {
       "category": "Bilateral",
       "questionId": "259356",
       "answer": "dizziness and imbalance",
-      "weight": 4,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 6
+      "anchorWeight": 6,
+      "patientSelected": false
     },
     {
       "category": "Bilateral",
       "questionId": "259371",
       "answer": "any kind of head movement",
-      "weight": 15,
+      "weight": 0,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 19
+      "anchorWeight": 19,
+      "patientSelected": false
     },
     {
       "category": "Bilateral",
       "questionId": "259362",
       "answer": "No",
-      "weight": 22,
+      "weight": 12,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 19
+      "anchorWeight": 19,
+      "patientSelected": true
     },
     {
       "category": "Bilateral",
       "questionId": "259381",
       "answer": "Vision \"jumping\" or \"bouncing\" when walking or riding",
-      "weight": 23,
+      "weight": 10,
       "editable": true,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 19
+      "anchorWeight": 19,
+      "patientSelected": true
     },
     {
       "category": "BPPV",
       "questionId": "259369",
       "answer": "Hours",
-      "weight": -7,
-      "source": "Conservative recalibration of final October workshop points",
+      "weight": -5,
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": -1,
-      "anchorWeight": -7
+      "anchorWeight": -7,
+      "patientSelected": true
     },
     {
       "category": "BPPV",
       "questionId": "259362",
       "answer": "Yes",
-      "weight": -15,
-      "source": "Conservative recalibration of final October workshop points",
+      "weight": -6,
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": -1,
-      "anchorWeight": -15
+      "anchorWeight": -15,
+      "patientSelected": true
     },
     {
       "category": "Neuritis",
       "questionId": "259416",
       "answer": "Yes, right ear only",
-      "weight": -10,
-      "source": "Conservative recalibration of final October workshop points",
+      "weight": 0,
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": -1,
-      "anchorWeight": -10
+      "anchorWeight": -10,
+      "patientSelected": false
     },
     {
       "category": "Neuritis",
       "questionId": "259416",
       "answer": "Yes, left ear only",
-      "weight": -13,
-      "source": "Conservative recalibration of final October workshop points",
+      "weight": 0,
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": -1,
-      "anchorWeight": -10
+      "anchorWeight": -10,
+      "patientSelected": false
     },
     {
       "category": "Neuritis",
       "questionId": "259381",
       "answer": "Nausea or vomiting",
-      "weight": 15,
-      "source": "Conservative recalibration of final October workshop points",
+      "weight": 0,
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 12
+      "anchorWeight": 12,
+      "patientSelected": false
     },
     {
       "category": "Bilateral",
       "questionId": "259374",
       "answer": "unsteady when standing",
-      "weight": 4,
-      "source": "Conservative recalibration of final October workshop points",
+      "weight": 0,
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 6
+      "anchorWeight": 6,
+      "patientSelected": false
     },
     {
       "category": "Bilateral",
       "questionId": "259374",
       "answer": "unsteady when walking",
-      "weight": 4,
-      "source": "Conservative recalibration of final October workshop points",
+      "weight": 0,
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 6
+      "anchorWeight": 6,
+      "patientSelected": false
     },
     {
       "category": "Bilateral",
       "questionId": "259374",
       "answer": "stumbling or falling when walking",
-      "weight": 7,
-      "source": "Conservative recalibration of final October workshop points",
+      "weight": 5,
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 6
+      "anchorWeight": 6,
+      "patientSelected": true
     },
     {
       "category": "Migraine",
       "questionId": "259369",
       "answer": "Seconds",
-      "weight": -5,
-      "source": "Conservative recalibration of final October workshop points",
+      "weight": 0,
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": -1,
-      "anchorWeight": -4
+      "anchorWeight": -4,
+      "patientSelected": false
     },
     {
       "category": "PPPD",
       "questionId": "259371",
       "answer": "lying down",
-      "weight": 4,
-      "source": "Conservative recalibration of final October workshop points",
+      "weight": 0,
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 4
+      "anchorWeight": 4,
+      "patientSelected": false
     },
     {
       "category": "PPPD",
       "questionId": "259371",
       "answer": "sitting up",
-      "weight": 4,
-      "source": "Conservative recalibration of final October workshop points",
+      "weight": 0,
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 4
+      "anchorWeight": 4,
+      "patientSelected": false
     },
     {
       "category": "PPPD",
       "questionId": "259371",
       "answer": "standing up",
-      "weight": 4,
-      "source": "Conservative recalibration of final October workshop points",
+      "weight": 0,
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 4
+      "anchorWeight": 4,
+      "patientSelected": false
     },
     {
       "category": "PPPD",
       "questionId": "259371",
       "answer": "any kind of head movement",
-      "weight": 4,
-      "source": "Conservative recalibration of final October workshop points",
+      "weight": 0,
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 4
+      "anchorWeight": 4,
+      "patientSelected": false
     },
     {
       "category": "Bilateral",
       "questionId": "259415",
       "answer": "Yes, hearing loss in the right ear only",
-      "weight": -13,
-      "source": "Conservative recalibration of final October workshop points",
+      "weight": 0,
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": -1,
-      "anchorWeight": -10
+      "anchorWeight": -10,
+      "patientSelected": false
     },
     {
       "category": "Bilateral",
       "questionId": "259415",
       "answer": "Yes, hearing loss in the left ear only",
-      "weight": -10,
-      "source": "Conservative recalibration of final October workshop points",
+      "weight": 0,
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": -1,
-      "anchorWeight": -10
+      "anchorWeight": -10,
+      "patientSelected": false
     },
     {
       "category": "Bilateral",
       "questionId": "259361",
       "answer": "Gradual",
-      "weight": 13,
-      "source": "Conservative recalibration of final October workshop points",
+      "weight": 18,
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 10
+      "anchorWeight": 10,
+      "patientSelected": true
     },
     {
       "category": "Bilateral",
       "questionId": "259361",
       "answer": "Sudden",
-      "weight": -10,
-      "source": "Conservative recalibration of final October workshop points",
+      "weight": -5,
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": -1,
-      "anchorWeight": -10
+      "anchorWeight": -10,
+      "patientSelected": true
     },
     {
       "category": "Neuritis",
       "questionId": "259361",
       "answer": "Gradual",
-      "weight": -7,
-      "source": "Conservative recalibration of final October workshop points",
+      "weight": 0,
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": -1,
-      "anchorWeight": -10
+      "anchorWeight": -10,
+      "patientSelected": false
     },
     {
       "category": "Neuritis",
       "questionId": "259366",
       "answer": "mild",
-      "weight": 12,
-      "source": "Conservative recalibration of final October workshop points",
+      "weight": 0,
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 12
+      "anchorWeight": 12,
+      "patientSelected": false
     },
     {
       "category": "Neuritis",
       "questionId": "259366",
       "answer": "moderate",
-      "weight": 6,
-      "source": "Conservative recalibration of final October workshop points",
+      "weight": 23,
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 6
+      "anchorWeight": 6,
+      "patientSelected": true
     },
     {
       "category": "Neuritis",
       "questionId": "259366",
       "answer": "severe",
       "weight": 0,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 0,
-      "anchorWeight": 0
+      "anchorWeight": 0,
+      "patientSelected": false
     },
     {
       "category": "Bilateral",
       "questionId": "259366",
       "answer": "mild",
       "weight": 0,
-      "source": "Conservative recalibration of final October workshop points",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 0,
-      "anchorWeight": 0
+      "anchorWeight": 0,
+      "patientSelected": false
     },
     {
       "category": "Bilateral",
       "questionId": "259366",
       "answer": "moderate",
-      "weight": 6,
-      "source": "Conservative recalibration of final October workshop points",
+      "weight": 0,
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 6
+      "anchorWeight": 6,
+      "patientSelected": false
     },
     {
       "category": "Bilateral",
       "questionId": "259366",
       "answer": "severe",
-      "weight": 12,
-      "source": "Conservative recalibration of final October workshop points",
+      "weight": 17,
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "direction": 1,
-      "anchorWeight": 12
+      "anchorWeight": 12,
+      "patientSelected": true
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259356",
       "answer": "dizziness",
       "direction": 1,
-      "weight": 5,
+      "weight": 0,
       "maximum": 25,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         10,
         8
@@ -1225,17 +1346,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 10,
+      "patientSelected": false
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259356",
       "answer": "imbalance",
       "direction": 1,
-      "weight": 5,
+      "weight": 0,
       "maximum": 25,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         5,
         8
@@ -1243,17 +1366,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 7,
+      "patientSelected": false
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259356",
       "answer": "dizziness and imbalance",
       "direction": 1,
-      "weight": 5,
+      "weight": 0,
       "maximum": 25,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         5,
         10
@@ -1261,17 +1386,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 8,
+      "patientSelected": false
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259357",
       "answer": "sensation of rocking or swaying",
       "direction": 1,
-      "weight": 5,
+      "weight": 0,
       "maximum": 10,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         5,
         7
@@ -1279,17 +1406,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 6,
+      "patientSelected": false
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259357",
       "answer": "sensation of tilting",
       "direction": 1,
-      "weight": 5,
+      "weight": 10,
       "maximum": 10,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         5,
         6
@@ -1297,17 +1426,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 6,
+      "patientSelected": true
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259361",
       "answer": "Sudden",
       "direction": 1,
-      "weight": 5,
+      "weight": 9,
       "maximum": 25,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         10,
         10
@@ -1315,17 +1446,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 10,
+      "patientSelected": true
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259361",
       "answer": "Gradual",
       "direction": -1,
-      "weight": -25,
+      "weight": -11,
       "maximum": 25,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         -6,
         -10
@@ -1333,17 +1466,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": -8,
+      "patientSelected": true
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259366",
       "answer": "moderate",
       "direction": 1,
-      "weight": 5,
+      "weight": 11,
       "maximum": 25,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         4,
         5
@@ -1351,17 +1486,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 5,
+      "patientSelected": true
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259366",
       "answer": "severe",
       "direction": 1,
-      "weight": 5,
+      "weight": 0,
       "maximum": 25,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         4,
         10
@@ -1369,17 +1506,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 10,
+      "patientSelected": false
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259367",
       "answer": "Only 1 episode",
       "direction": 1,
-      "weight": 5,
+      "weight": 0,
       "maximum": 25,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         3,
         10
@@ -1387,17 +1526,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 7,
+      "patientSelected": false
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259367",
       "answer": "2-4 episodes",
       "direction": 1,
-      "weight": 5,
+      "weight": 0,
       "maximum": 25,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         3,
         4
@@ -1405,17 +1546,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 4,
+      "patientSelected": false
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259369",
       "answer": "Hours",
       "direction": 1,
-      "weight": 5,
+      "weight": 0,
       "maximum": 10,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         6,
         7
@@ -1423,17 +1566,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 7,
+      "patientSelected": false
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259369",
       "answer": "Days",
       "direction": 1,
-      "weight": 5,
+      "weight": 0,
       "maximum": 10,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         4,
         9
@@ -1441,17 +1586,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 9,
+      "patientSelected": false
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259371",
       "answer": "rolling over",
       "direction": 1,
-      "weight": 5,
+      "weight": 0,
       "maximum": 10,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         6,
         9
@@ -1459,17 +1606,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 8,
+      "patientSelected": false
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259371",
       "answer": "getting into or out of bed",
       "direction": 1,
-      "weight": 5,
+      "weight": 0,
       "maximum": 10,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         6,
         8
@@ -1477,17 +1626,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 7,
+      "patientSelected": false
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259371",
       "answer": "walking in the dark",
       "direction": 1,
-      "weight": 5,
+      "weight": 0,
       "maximum": 10,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         7,
         3
@@ -1495,17 +1646,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 0,
+      "patientSelected": false
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259371",
       "answer": "any kind of head movement",
       "direction": 1,
-      "weight": 5,
+      "weight": 0,
       "maximum": 10,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         7,
         9
@@ -1513,17 +1666,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 9,
+      "patientSelected": false
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259372",
       "answer": "car rides",
       "direction": 1,
-      "weight": 5,
+      "weight": 10,
       "maximum": 10,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         6,
         4
@@ -1531,17 +1686,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 5,
+      "patientSelected": true
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259372",
       "answer": "turning your head while walking",
       "direction": 1,
-      "weight": 5,
+      "weight": 0,
       "maximum": 10,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         6,
         4
@@ -1549,17 +1706,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 5,
+      "patientSelected": false
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259372",
       "answer": "working on the computer",
       "direction": 1,
-      "weight": 5,
+      "weight": 0,
       "maximum": 10,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         6,
         2
@@ -1567,17 +1726,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 0,
+      "patientSelected": false
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259372",
       "answer": "movement of things around you",
       "direction": 1,
-      "weight": 5,
+      "weight": 0,
       "maximum": 10,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         3,
         3
@@ -1585,17 +1746,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 3,
+      "patientSelected": false
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259372",
       "answer": "your own movement",
       "direction": 1,
-      "weight": 5,
+      "weight": 0,
       "maximum": 10,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         6,
         9
@@ -1603,17 +1766,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 8,
+      "patientSelected": false
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259374",
       "answer": "unsteady when walking",
       "direction": 1,
-      "weight": 5,
+      "weight": 0,
       "maximum": 10,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         5,
         8
@@ -1621,17 +1786,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 8,
+      "patientSelected": false
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259381",
       "answer": "Nausea or vomiting",
       "direction": 1,
-      "weight": 5,
+      "weight": 0,
       "maximum": 10,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         5,
         9
@@ -1639,17 +1806,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 9,
+      "patientSelected": false
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259400",
       "answer": "Yes",
       "direction": 1,
-      "weight": 5,
+      "weight": 0,
       "maximum": 25,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         10,
         9
@@ -1657,17 +1826,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 10,
+      "patientSelected": false
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259415",
       "answer": "Yes, hearing loss in the right ear only",
       "direction": 1,
-      "weight": 5,
+      "weight": 0,
       "maximum": 25,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         10,
         8
@@ -1675,17 +1846,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 10,
+      "patientSelected": false
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259415",
       "answer": "Yes, hearing loss in the left ear only",
       "direction": 1,
-      "weight": 5,
+      "weight": 0,
       "maximum": 25,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         10,
         8
@@ -1693,17 +1866,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 10,
+      "patientSelected": false
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259416",
       "answer": "No",
       "direction": 1,
-      "weight": 5,
+      "weight": 0,
       "maximum": 25,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         10,
         9
@@ -1711,17 +1886,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 10,
+      "patientSelected": false
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259417",
       "answer": "Yes, right ear only",
       "direction": 1,
-      "weight": 5,
+      "weight": 0,
       "maximum": 25,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         6,
         6
@@ -1729,17 +1906,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 6,
+      "patientSelected": false
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259417",
       "answer": "Yes, left ear only",
       "direction": 1,
-      "weight": 5,
+      "weight": 0,
       "maximum": 25,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         6,
         7
@@ -1747,17 +1926,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 7,
+      "patientSelected": false
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259421",
       "answer": "Yes",
       "direction": -1,
-      "weight": -25,
+      "weight": 0,
       "maximum": 25,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         -10,
         -10
@@ -1765,17 +1946,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": -10,
+      "patientSelected": false
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259421",
       "answer": "No",
       "direction": 1,
-      "weight": 5,
+      "weight": 0,
       "maximum": 25,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         10,
         10
@@ -1783,17 +1966,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 10,
+      "patientSelected": false
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "260450",
       "answer": "changes in the weather",
       "direction": -1,
-      "weight": -10,
+      "weight": 0,
       "maximum": 10,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         -5,
         -3
@@ -1801,17 +1986,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": -4,
+      "patientSelected": false
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "260450",
       "answer": "certain foods",
       "direction": -1,
-      "weight": -10,
+      "weight": 0,
       "maximum": 10,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         -5,
         -8
@@ -1819,17 +2006,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": -7,
+      "patientSelected": false
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "260450",
       "answer": "certain beverages",
       "direction": -1,
-      "weight": -7,
+      "weight": 0,
       "maximum": 10,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         -5,
         -9
@@ -1837,17 +2026,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": -7,
+      "patientSelected": false
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "260450",
       "answer": "none of the above",
       "direction": 1,
-      "weight": 5,
+      "weight": 0,
       "maximum": 10,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         10,
         10
@@ -1855,17 +2046,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 10,
+      "patientSelected": false
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "260451",
       "answer": "Yes",
       "direction": 1,
-      "weight": 5,
+      "weight": 0,
       "maximum": 25,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         10,
         7
@@ -1873,7 +2066,9 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 9,
+      "patientSelected": false
     },
     {
       "category": "Schwannoma Hypofunction",
@@ -1883,7 +2078,7 @@ window.NEBULA_BANDS = {
       "weight": 0,
       "maximum": 25,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         0,
         0
@@ -1891,7 +2086,9 @@ window.NEBULA_BANDS = {
       "adjusted": [
         false,
         false
-      ]
+      ],
+      "thirdRoundJudgment": 0,
+      "patientSelected": false
     },
     {
       "category": "Schwannoma Hypofunction",
@@ -1901,7 +2098,7 @@ window.NEBULA_BANDS = {
       "weight": 0,
       "maximum": 10,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         0,
         0
@@ -1909,7 +2106,9 @@ window.NEBULA_BANDS = {
       "adjusted": [
         false,
         false
-      ]
+      ],
+      "thirdRoundJudgment": 0,
+      "patientSelected": false
     },
     {
       "category": "Schwannoma Hypofunction",
@@ -1919,7 +2118,7 @@ window.NEBULA_BANDS = {
       "weight": 25,
       "maximum": 25,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         6,
         5
@@ -1927,17 +2126,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 6,
+      "patientSelected": true
     },
     {
       "category": "Schwannoma Hypofunction",
       "questionId": "259415",
       "answer": "Yes, hearing loss in both ears",
       "direction": -1,
-      "weight": -5,
+      "weight": 0,
       "maximum": 25,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         -5,
         -9
@@ -1945,17 +2146,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": -9,
+      "patientSelected": false
     },
     {
       "category": "Schwannoma Hypofunction",
       "questionId": "259415",
       "answer": "Yes, hearing loss in the right ear only",
       "direction": 1,
-      "weight": 5,
+      "weight": 0,
       "maximum": 25,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         6,
         7
@@ -1963,17 +2166,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 7,
+      "patientSelected": false
     },
     {
       "category": "Schwannoma Hypofunction",
       "questionId": "259415",
       "answer": "Yes, hearing loss in the left ear only",
       "direction": 1,
-      "weight": 10,
+      "weight": 12,
       "maximum": 25,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         6,
         7
@@ -1981,17 +2186,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 7,
+      "patientSelected": true
     },
     {
       "category": "Schwannoma Hypofunction",
       "questionId": "259417",
       "answer": "Yes, right ear only",
       "direction": -1,
-      "weight": -7,
+      "weight": 0,
       "maximum": 25,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         -10,
         -4
@@ -1999,17 +2206,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": -9,
+      "patientSelected": false
     },
     {
       "category": "Schwannoma Hypofunction",
       "questionId": "259417",
       "answer": "Yes, left ear only",
       "direction": -1,
-      "weight": -7,
+      "weight": 0,
       "maximum": 25,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         -10,
         -4
@@ -2017,17 +2226,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": -9,
+      "patientSelected": false
     },
     {
       "category": "Schwannoma Hypofunction",
       "questionId": "259418",
       "answer": "Yes, right ear only",
       "direction": -1,
-      "weight": -10,
+      "weight": 0,
       "maximum": 25,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         -10,
         -9
@@ -2035,17 +2246,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": -10,
+      "patientSelected": false
     },
     {
       "category": "Schwannoma Hypofunction",
       "questionId": "259418",
       "answer": "Yes, left ear only",
       "direction": -1,
-      "weight": -10,
+      "weight": 0,
       "maximum": 25,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         -10,
         -9
@@ -2053,17 +2266,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": -10,
+      "patientSelected": false
     },
     {
       "category": "Schwannoma Hypofunction",
       "questionId": "260450",
       "answer": "none of the above",
       "direction": 1,
-      "weight": 5,
+      "weight": 0,
       "maximum": 10,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         5,
         9
@@ -2071,17 +2286,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 9,
+      "patientSelected": false
     },
     {
       "category": "Schwannoma Hypofunction",
       "questionId": "260451",
       "answer": "Yes",
       "direction": -1,
-      "weight": -10,
+      "weight": 0,
       "maximum": 25,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         -10,
         -9
@@ -2089,17 +2306,19 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": -10,
+      "patientSelected": false
     },
     {
       "category": "Schwannoma Hypofunction",
       "questionId": "260451",
       "answer": "No",
       "direction": 1,
-      "weight": 11,
+      "weight": 0,
       "maximum": 25,
       "consensus": true,
-      "source": "Katie and Michelle: same direction on a current question",
+      "source": "Expert direction with patient stability screening and sparse point calibration",
       "judgments": [
         4,
         8
@@ -2107,45 +2326,22 @@ window.NEBULA_BANDS = {
       "adjusted": [
         true,
         true
-      ]
+      ],
+      "thirdRoundJudgment": 8,
+      "patientSelected": false
     }
   ],
-  "constraints": {
-    "radiusFraction": 0.25,
-    "minimumRadius": 1,
-    "zeroRulesFrozen": true,
-    "unobservedRulesFrozen": true,
-    "signsPreserved": true,
-    "positiveBudgetRange": [
-      0.75,
-      1.25
-    ],
-    "classMeanSupportGuard": true,
-    "workshopOrderingsPreserved": true
-  },
-  "fit": {
-    "patients": 92,
-    "diagnoses": 100,
-    "sourceWorkbook": "AI data  pull_11.20.xlsx",
-    "evaluation": "Training data only; unrecorded diagnoses are not confirmed negatives",
-    "inputSHA256": "6c3270fade59bb1afa844ae49a487e14f77059b261f203d63c8f1bb109104e07",
-    "objectiveBefore": 0.016524476650461674,
-    "objectiveAfter": 0.011992951764859913,
-    "acceptedMoves": 77,
-    "method": "Deterministic bounded local search; not a claim of global optimality"
-  },
-  "consensusFit": {
+  "sparseFit": {
     "patients": 99,
     "diagnoses": 109,
     "sourceWorkbook": "AI data  pull_11.20.xlsx",
-    "newClasses": [
-      "Labyrinthitis Hypofunction",
-      "Schwannoma Hypofunction"
-    ],
-    "existingWeightsFrozen": true,
-    "consensusDirectionsFixed": true,
-    "neutralWeights": 0,
-    "bounds": {
+    "bootstrapResamples": 2000,
+    "minimumStability": 0.8,
+    "minimumDirectionalSeparation": 0.15,
+    "maximumQuestionsPerClass": 8,
+    "maximumCheckboxOptionsPerDirectionPerQuestion": 1,
+    "neutralWeight": 0,
+    "nonzeroBounds": {
       "single": [
         5,
         25
@@ -2155,9 +2351,9 @@ window.NEBULA_BANDS = {
         10
       ]
     },
-    "objectiveBefore": 0.045874606626838774,
-    "objectiveAfter": 0.014665381737591644,
-    "optimizerSuccess": true,
-    "evaluation": "All fitting cases; no held-out validation. Unrecorded labels are proxy negatives."
+    "activeRules": 49,
+    "objectiveBefore": 0.038509861958613015,
+    "objectiveAfter": 0.0235024870992934,
+    "evaluation": "Same fitting cases. Bootstrap stability is not held-out validation or diagnostic probability."
   }
 };

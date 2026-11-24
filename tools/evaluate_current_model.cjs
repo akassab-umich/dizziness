@@ -7,6 +7,10 @@ const scoring = require("../web/model-core.js");
 global.window = {};
 require("../web/band-model.js");
 const model = window.NEBULA_BANDS;
+if (model.sparseFit) {
+  require("./evaluate_sparse_model.cjs");
+  process.exit(0);
+}
 if (model.consensusFit) {
   require("./evaluate_consensus_model.cjs");
   process.exit(0);

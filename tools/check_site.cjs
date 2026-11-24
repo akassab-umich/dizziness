@@ -60,7 +60,49 @@ const questionKinds = new Map(
   window.NEBULA_DATA.questions.map((question) => [question.id, question.kind]),
 );
 const model = window.NEBULA_BANDS;
-if (model.constraints?.radiusFraction === 0.25) {
+if (model.sparseFit) {
+  const candidates = require("../web/sparse-rule-candidates.js");
+  const byKey = (r) =>
+    JSON.stringify([r.category, r.questionId, r.answer, r.unless || null]);
+  const allowed = new Map(candidates.map((r) => [byKey(r), r]));
+  const counts = new Map();
+  for (const rule of model.rules) {
+    const source = allowed.get(byKey(rule));
+    assert(source && questionKinds.has(rule.questionId));
+    assert.equal(rule.direction, source.direction);
+    assert(Number.isInteger(rule.weight));
+    assert(rule.weight === 0 || Math.sign(rule.weight) === rule.direction);
+    if (rule.weight) {
+      assert(rule.patientSelected);
+      assert(
+        Math.abs(rule.weight) >= 5 &&
+          Math.abs(rule.weight) <=
+            (questionKinds.get(rule.questionId) === "multi" ? 10 : 25),
+      );
+      if (rule.consensus)
+        assert.equal(Math.sign(rule.thirdRoundJudgment), rule.direction);
+      const k = JSON.stringify([
+        rule.category,
+        rule.questionId,
+        Math.sign(rule.weight),
+      ]);
+      counts.set(k, (counts.get(k) || 0) + 1);
+      if (questionKinds.get(rule.questionId) === "multi")
+        assert.equal(counts.get(k), 1);
+    }
+  }
+  for (const category of model.trainedCategories)
+    assert(
+      new Set(
+        model.rules
+          .filter((r) => r.category === category && r.weight)
+          .map((r) => r.questionId),
+      ).size <= 8,
+    );
+  console.log(
+    "PASS: sparse rule identities, directions, checkbox budgets and eight-question limit.",
+  );
+} else if (model.constraints?.radiusFraction === 0.25) {
   require(path.join(web, "notes-model.js"));
   const key = (rule) =>
     JSON.stringify([
