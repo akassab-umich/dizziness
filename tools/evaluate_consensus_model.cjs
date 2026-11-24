@@ -38,3 +38,20 @@ console.log(
     2,
   ),
 );
+
+if (model.consensusFit?.clinicalShortlistRetained) {
+  for (const c of ["Labyrinthitis Hypofunction", "Schwannoma Hypofunction"]) {
+    const hearing = model.rules.filter(
+      (r) => r.category === c && r.questionId === "259415",
+    );
+    assert.equal(hearing.length, 2);
+    assert.equal(hearing[0].weight, hearing[1].weight);
+    const byQuestion = new Map();
+    for (const r of model.rules.filter((r) => r.category === c)) {
+      const key = JSON.stringify([r.questionId, Math.sign(r.weight)]);
+      byQuestion.set(key, (byQuestion.get(key) || 0) + Math.abs(r.weight));
+    }
+    for (const [key, sum] of byQuestion)
+      if (JSON.parse(key)[0] === "259371") assert(sum <= 10);
+  }
+}

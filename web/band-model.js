@@ -1,8 +1,8 @@
 window.NEBULA_BANDS = {
-  "version": "stable-new-classes-2026-11-24",
+  "version": "reviewed-new-classes-2026-11-24",
   "name": "Model",
   "basedOnVersion": "meeting-2-severity-2026-10-28",
-  "method": "Frozen original seven scorecards plus compact patient-calibrated new-class rules",
+  "method": "Original seven scorecards unchanged; clinically reviewed shared-direction current-question priors with regularized patient calibration for two new classes",
   "scoringMode": "net-points",
   "trainedCategories": [
     "BPPV",
@@ -1211,223 +1211,87 @@ window.NEBULA_BANDS = {
     },
     {
       "category": "Labyrinthitis Hypofunction",
-      "questionId": "259356",
-      "answer": "dizziness",
-      "direction": 1,
-      "weight": 0,
-      "maximum": 25,
-      "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        10,
-        8
-      ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 10,
-      "patientSelected": false
-    },
-    {
-      "category": "Labyrinthitis Hypofunction",
-      "questionId": "259356",
-      "answer": "imbalance",
-      "direction": 1,
-      "weight": 0,
-      "maximum": 25,
-      "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        5,
-        8
-      ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 7,
-      "patientSelected": false
-    },
-    {
-      "category": "Labyrinthitis Hypofunction",
-      "questionId": "259356",
-      "answer": "dizziness and imbalance",
-      "direction": 1,
-      "weight": 0,
-      "maximum": 25,
-      "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        5,
-        10
-      ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 8,
-      "patientSelected": false
-    },
-    {
-      "category": "Labyrinthitis Hypofunction",
-      "questionId": "259357",
-      "answer": "sensation of rocking or swaying",
-      "direction": 1,
-      "weight": 0,
-      "maximum": 10,
-      "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        5,
-        7
-      ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 6,
-      "patientSelected": false
-    },
-    {
-      "category": "Labyrinthitis Hypofunction",
-      "questionId": "259357",
-      "answer": "sensation of tilting",
-      "direction": 1,
-      "weight": 0,
-      "maximum": 10,
-      "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        5,
-        6
-      ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 6,
-      "patientSelected": false
-    },
-    {
-      "category": "Labyrinthitis Hypofunction",
       "questionId": "259361",
       "answer": "Sudden",
       "direction": 1,
-      "weight": 23,
-      "maximum": 25,
+      "weight": 20,
       "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        10,
-        10
+      "source": "Current-question clinical shortlist and shared explicit survey direction; patient-calibrated points",
+      "reviewLevel": "core",
+      "sourceJudgments": [
+        {
+          "reviewer": "Katie",
+          "direction": 1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Michelle",
+          "direction": 1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Ali",
+          "direction": 1,
+          "status": "rated"
+        }
       ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 10,
-      "patientSelected": true
+      "medicalSource": "https://www.hopkinsmedicine.org/health/conditions-and-diseases/labyrinthitis-and-vestibular-neuritis"
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259361",
       "answer": "Gradual",
       "direction": -1,
-      "weight": -9,
-      "maximum": 25,
+      "weight": -4,
       "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        -6,
-        -10
+      "source": "Current-question clinical shortlist and shared explicit survey direction; patient-calibrated points",
+      "reviewLevel": "secondary",
+      "sourceJudgments": [
+        {
+          "reviewer": "Katie",
+          "direction": -1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Michelle",
+          "direction": -1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Ali",
+          "direction": -1,
+          "status": "rated"
+        }
       ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": -8,
-      "patientSelected": true
-    },
-    {
-      "category": "Labyrinthitis Hypofunction",
-      "questionId": "259366",
-      "answer": "moderate",
-      "direction": 1,
-      "weight": 22,
-      "maximum": 25,
-      "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        4,
-        5
-      ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 5,
-      "patientSelected": true
-    },
-    {
-      "category": "Labyrinthitis Hypofunction",
-      "questionId": "259366",
-      "answer": "severe",
-      "direction": 1,
-      "weight": 0,
-      "maximum": 25,
-      "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        4,
-        10
-      ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 10,
-      "patientSelected": false
+      "medicalSource": "https://www.hopkinsmedicine.org/health/conditions-and-diseases/labyrinthitis-and-vestibular-neuritis"
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259367",
       "answer": "Only 1 episode",
       "direction": 1,
-      "weight": 0,
-      "maximum": 25,
+      "weight": 10,
       "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        3,
-        10
+      "source": "Current-question clinical shortlist and shared explicit survey direction; patient-calibrated points",
+      "reviewLevel": "supporting",
+      "sourceJudgments": [
+        {
+          "reviewer": "Katie",
+          "direction": 1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Michelle",
+          "direction": 1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Ali",
+          "direction": 1,
+          "status": "rated"
+        }
       ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 7,
-      "patientSelected": false
-    },
-    {
-      "category": "Labyrinthitis Hypofunction",
-      "questionId": "259367",
-      "answer": "2-4 episodes",
-      "direction": 1,
-      "weight": 0,
-      "maximum": 25,
-      "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        3,
-        4
-      ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 4,
-      "patientSelected": false
+      "medicalSource": "https://www.hopkinsmedicine.org/health/conditions-and-diseases/labyrinthitis-and-vestibular-neuritis"
     },
     {
       "category": "Labyrinthitis Hypofunction",
@@ -1435,779 +1299,419 @@ window.NEBULA_BANDS = {
       "answer": "Hours",
       "direction": 1,
       "weight": 0,
-      "maximum": 10,
       "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        6,
-        7
+      "source": "Current-question clinical shortlist and shared explicit survey direction; patient-calibrated points",
+      "reviewLevel": "secondary",
+      "sourceJudgments": [
+        {
+          "reviewer": "Katie",
+          "direction": 1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Michelle",
+          "direction": 1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Ali",
+          "direction": 1,
+          "status": "rated"
+        }
       ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 7,
-      "patientSelected": false
+      "medicalSource": "https://www.hopkinsmedicine.org/health/conditions-and-diseases/labyrinthitis-and-vestibular-neuritis"
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259369",
       "answer": "Days",
       "direction": 1,
-      "weight": 0,
-      "maximum": 10,
+      "weight": 10,
       "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        4,
-        9
+      "source": "Current-question clinical shortlist and shared explicit survey direction; patient-calibrated points",
+      "reviewLevel": "core",
+      "sourceJudgments": [
+        {
+          "reviewer": "Katie",
+          "direction": 1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Michelle",
+          "direction": 1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Ali",
+          "direction": 1,
+          "status": "rated"
+        }
       ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 9,
-      "patientSelected": false
-    },
-    {
-      "category": "Labyrinthitis Hypofunction",
-      "questionId": "259371",
-      "answer": "rolling over",
-      "direction": 1,
-      "weight": 0,
-      "maximum": 10,
-      "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        6,
-        9
-      ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 8,
-      "patientSelected": false
-    },
-    {
-      "category": "Labyrinthitis Hypofunction",
-      "questionId": "259371",
-      "answer": "getting into or out of bed",
-      "direction": 1,
-      "weight": 0,
-      "maximum": 10,
-      "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        6,
-        8
-      ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 7,
-      "patientSelected": false
+      "medicalSource": "https://www.hopkinsmedicine.org/health/conditions-and-diseases/labyrinthitis-and-vestibular-neuritis"
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259371",
       "answer": "walking in the dark",
       "direction": 1,
-      "weight": 0,
-      "maximum": 10,
+      "weight": 5,
       "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        7,
-        3
+      "source": "Current-question clinical shortlist and shared explicit survey direction; patient-calibrated points",
+      "reviewLevel": "supporting",
+      "sourceJudgments": [
+        {
+          "reviewer": "Katie",
+          "direction": 1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Michelle",
+          "direction": 1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Ali",
+          "direction": 0,
+          "status": "rated"
+        }
       ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 0,
-      "patientSelected": false
+      "medicalSource": "https://www.hopkinsmedicine.org/health/conditions-and-diseases/labyrinthitis-and-vestibular-neuritis"
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259371",
       "answer": "any kind of head movement",
       "direction": 1,
-      "weight": 0,
-      "maximum": 10,
+      "weight": 5,
       "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        7,
-        9
+      "source": "Current-question clinical shortlist and shared explicit survey direction; patient-calibrated points",
+      "reviewLevel": "supporting",
+      "sourceJudgments": [
+        {
+          "reviewer": "Katie",
+          "direction": 1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Michelle",
+          "direction": 1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Ali",
+          "direction": 1,
+          "status": "rated"
+        }
       ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 9,
-      "patientSelected": false
-    },
-    {
-      "category": "Labyrinthitis Hypofunction",
-      "questionId": "259372",
-      "answer": "car rides",
-      "direction": 1,
-      "weight": 0,
-      "maximum": 10,
-      "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        6,
-        4
-      ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 5,
-      "patientSelected": false
-    },
-    {
-      "category": "Labyrinthitis Hypofunction",
-      "questionId": "259372",
-      "answer": "turning your head while walking",
-      "direction": 1,
-      "weight": 0,
-      "maximum": 10,
-      "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        6,
-        4
-      ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 5,
-      "patientSelected": false
-    },
-    {
-      "category": "Labyrinthitis Hypofunction",
-      "questionId": "259372",
-      "answer": "working on the computer",
-      "direction": 1,
-      "weight": 0,
-      "maximum": 10,
-      "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        6,
-        2
-      ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 0,
-      "patientSelected": false
-    },
-    {
-      "category": "Labyrinthitis Hypofunction",
-      "questionId": "259372",
-      "answer": "movement of things around you",
-      "direction": 1,
-      "weight": 0,
-      "maximum": 10,
-      "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        3,
-        3
-      ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 3,
-      "patientSelected": false
-    },
-    {
-      "category": "Labyrinthitis Hypofunction",
-      "questionId": "259372",
-      "answer": "your own movement",
-      "direction": 1,
-      "weight": 0,
-      "maximum": 10,
-      "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        6,
-        9
-      ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 8,
-      "patientSelected": false
+      "medicalSource": "https://www.hopkinsmedicine.org/health/conditions-and-diseases/labyrinthitis-and-vestibular-neuritis"
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259374",
       "answer": "unsteady when walking",
       "direction": 1,
-      "weight": 0,
-      "maximum": 10,
+      "weight": 5,
       "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        5,
-        8
+      "source": "Current-question clinical shortlist and shared explicit survey direction; patient-calibrated points",
+      "reviewLevel": "supporting",
+      "sourceJudgments": [
+        {
+          "reviewer": "Katie",
+          "direction": 1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Michelle",
+          "direction": 1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Ali",
+          "direction": 1,
+          "status": "rated"
+        }
       ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 8,
-      "patientSelected": false
+      "medicalSource": "https://www.hopkinsmedicine.org/health/conditions-and-diseases/labyrinthitis-and-vestibular-neuritis"
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259381",
       "answer": "Nausea or vomiting",
       "direction": 1,
-      "weight": 0,
-      "maximum": 10,
+      "weight": 5,
       "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        5,
-        9
+      "source": "Current-question clinical shortlist and shared explicit survey direction; patient-calibrated points",
+      "reviewLevel": "supporting",
+      "sourceJudgments": [
+        {
+          "reviewer": "Katie",
+          "direction": 1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Michelle",
+          "direction": 1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Ali",
+          "direction": 1,
+          "status": "rated"
+        }
       ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 9,
-      "patientSelected": false
+      "medicalSource": "https://www.hopkinsmedicine.org/health/conditions-and-diseases/labyrinthitis-and-vestibular-neuritis"
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259400",
       "answer": "Yes",
       "direction": 1,
-      "weight": 0,
-      "maximum": 25,
+      "weight": 10,
       "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        10,
-        9
+      "source": "Current-question clinical shortlist and shared explicit survey direction; patient-calibrated points",
+      "reviewLevel": "core",
+      "sourceJudgments": [
+        {
+          "reviewer": "Katie",
+          "direction": 1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Michelle",
+          "direction": 1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Ali",
+          "direction": 1,
+          "status": "rated"
+        }
       ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 10,
-      "patientSelected": false
+      "medicalSource": "https://www.hopkinsmedicine.org/health/conditions-and-diseases/labyrinthitis-and-vestibular-neuritis"
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259415",
       "answer": "Yes, hearing loss in the right ear only",
       "direction": 1,
-      "weight": 0,
-      "maximum": 25,
+      "weight": 5,
       "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        10,
-        8
+      "source": "Current-question clinical shortlist and shared explicit survey direction; patient-calibrated points",
+      "reviewLevel": "core",
+      "sourceJudgments": [
+        {
+          "reviewer": "Katie",
+          "direction": 1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Michelle",
+          "direction": 1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Ali",
+          "direction": 1,
+          "status": "rated"
+        }
       ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 10,
-      "patientSelected": false
+      "medicalSource": "https://www.hopkinsmedicine.org/health/conditions-and-diseases/labyrinthitis-and-vestibular-neuritis"
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "259415",
       "answer": "Yes, hearing loss in the left ear only",
       "direction": 1,
-      "weight": 0,
-      "maximum": 25,
+      "weight": 5,
       "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        10,
-        8
+      "source": "Current-question clinical shortlist and shared explicit survey direction; patient-calibrated points",
+      "reviewLevel": "core",
+      "sourceJudgments": [
+        {
+          "reviewer": "Katie",
+          "direction": 1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Michelle",
+          "direction": 1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Ali",
+          "direction": 1,
+          "status": "rated"
+        }
       ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 10,
-      "patientSelected": false
-    },
-    {
-      "category": "Labyrinthitis Hypofunction",
-      "questionId": "259416",
-      "answer": "No",
-      "direction": 1,
-      "weight": 0,
-      "maximum": 25,
-      "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        10,
-        9
-      ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 10,
-      "patientSelected": false
-    },
-    {
-      "category": "Labyrinthitis Hypofunction",
-      "questionId": "259417",
-      "answer": "Yes, right ear only",
-      "direction": 1,
-      "weight": 0,
-      "maximum": 25,
-      "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        6,
-        6
-      ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 6,
-      "patientSelected": false
-    },
-    {
-      "category": "Labyrinthitis Hypofunction",
-      "questionId": "259417",
-      "answer": "Yes, left ear only",
-      "direction": 1,
-      "weight": 0,
-      "maximum": 25,
-      "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        6,
-        7
-      ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 7,
-      "patientSelected": false
-    },
-    {
-      "category": "Labyrinthitis Hypofunction",
-      "questionId": "259421",
-      "answer": "Yes",
-      "direction": -1,
-      "weight": 0,
-      "maximum": 25,
-      "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        -10,
-        -10
-      ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": -10,
-      "patientSelected": false
-    },
-    {
-      "category": "Labyrinthitis Hypofunction",
-      "questionId": "259421",
-      "answer": "No",
-      "direction": 1,
-      "weight": 0,
-      "maximum": 25,
-      "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        10,
-        10
-      ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 10,
-      "patientSelected": false
-    },
-    {
-      "category": "Labyrinthitis Hypofunction",
-      "questionId": "260450",
-      "answer": "changes in the weather",
-      "direction": -1,
-      "weight": 0,
-      "maximum": 10,
-      "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        -5,
-        -3
-      ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": -4,
-      "patientSelected": false
-    },
-    {
-      "category": "Labyrinthitis Hypofunction",
-      "questionId": "260450",
-      "answer": "certain foods",
-      "direction": -1,
-      "weight": 0,
-      "maximum": 10,
-      "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        -5,
-        -8
-      ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": -7,
-      "patientSelected": false
-    },
-    {
-      "category": "Labyrinthitis Hypofunction",
-      "questionId": "260450",
-      "answer": "certain beverages",
-      "direction": -1,
-      "weight": 0,
-      "maximum": 10,
-      "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        -5,
-        -9
-      ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": -7,
-      "patientSelected": false
-    },
-    {
-      "category": "Labyrinthitis Hypofunction",
-      "questionId": "260450",
-      "answer": "none of the above",
-      "direction": 1,
-      "weight": 0,
-      "maximum": 10,
-      "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        10,
-        10
-      ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 10,
-      "patientSelected": false
+      "medicalSource": "https://www.hopkinsmedicine.org/health/conditions-and-diseases/labyrinthitis-and-vestibular-neuritis"
     },
     {
       "category": "Labyrinthitis Hypofunction",
       "questionId": "260451",
       "answer": "Yes",
       "direction": 1,
-      "weight": 0,
-      "maximum": 25,
+      "weight": 5,
       "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        10,
-        7
+      "source": "Current-question clinical shortlist and shared explicit survey direction; patient-calibrated points",
+      "reviewLevel": "supporting",
+      "sourceJudgments": [
+        {
+          "reviewer": "Katie",
+          "direction": 1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Michelle",
+          "direction": 1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Ali",
+          "direction": 1,
+          "status": "rated"
+        }
       ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 9,
-      "patientSelected": false
+      "medicalSource": "https://www.hopkinsmedicine.org/health/conditions-and-diseases/labyrinthitis-and-vestibular-neuritis"
     },
     {
       "category": "Schwannoma Hypofunction",
-      "questionId": "259387",
-      "answer": "N/A. Don't experience headaches",
-      "direction": 0,
-      "weight": 0,
-      "maximum": 25,
+      "questionId": "259361",
+      "answer": "Gradual",
+      "direction": 1,
+      "weight": 10,
       "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        0,
-        0
+      "source": "Current-question clinical shortlist and shared explicit survey direction; patient-calibrated points",
+      "reviewLevel": "supporting",
+      "sourceJudgments": [
+        {
+          "reviewer": "Katie",
+          "direction": null,
+          "status": "untouched center"
+        },
+        {
+          "reviewer": "Michelle",
+          "direction": 1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Ali",
+          "direction": 1,
+          "status": "rated"
+        }
       ],
-      "adjusted": [
-        false,
-        false
-      ],
-      "thirdRoundJudgment": 0,
-      "patientSelected": false
+      "medicalSource": "https://www.nidcd.nih.gov/health/vestibular-schwannoma-acoustic-neuroma-and-neurofibromatosis"
     },
     {
       "category": "Schwannoma Hypofunction",
-      "questionId": "259389",
-      "answer": "none of the above",
-      "direction": 0,
-      "weight": 0,
-      "maximum": 10,
+      "questionId": "259374",
+      "answer": "unsteady when walking",
+      "direction": 1,
+      "weight": 10,
       "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        0,
-        0
+      "source": "Current-question clinical shortlist and shared explicit survey direction; patient-calibrated points",
+      "reviewLevel": "supporting",
+      "sourceJudgments": [
+        {
+          "reviewer": "Katie",
+          "direction": null,
+          "status": "untouched center"
+        },
+        {
+          "reviewer": "Michelle",
+          "direction": 1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Ali",
+          "direction": 1,
+          "status": "rated"
+        }
       ],
-      "adjusted": [
-        false,
-        false
-      ],
-      "thirdRoundJudgment": 0,
-      "patientSelected": false
+      "medicalSource": "https://www.nidcd.nih.gov/health/vestibular-schwannoma-acoustic-neuroma-and-neurofibromatosis"
     },
     {
       "category": "Schwannoma Hypofunction",
       "questionId": "259400",
       "answer": "Yes",
       "direction": 1,
-      "weight": 22,
-      "maximum": 25,
+      "weight": 10,
       "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        6,
-        5
+      "source": "Current-question clinical shortlist and shared explicit survey direction; patient-calibrated points",
+      "reviewLevel": "core",
+      "sourceJudgments": [
+        {
+          "reviewer": "Katie",
+          "direction": 1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Michelle",
+          "direction": 1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Ali",
+          "direction": 1,
+          "status": "rated"
+        }
       ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 6,
-      "patientSelected": true
-    },
-    {
-      "category": "Schwannoma Hypofunction",
-      "questionId": "259415",
-      "answer": "Yes, hearing loss in both ears",
-      "direction": -1,
-      "weight": 0,
-      "maximum": 25,
-      "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        -5,
-        -9
-      ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": -9,
-      "patientSelected": false
+      "medicalSource": "https://www.nidcd.nih.gov/health/vestibular-schwannoma-acoustic-neuroma-and-neurofibromatosis"
     },
     {
       "category": "Schwannoma Hypofunction",
       "questionId": "259415",
       "answer": "Yes, hearing loss in the right ear only",
       "direction": 1,
-      "weight": 0,
-      "maximum": 25,
+      "weight": 20,
       "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        6,
-        7
+      "source": "Current-question clinical shortlist and shared explicit survey direction; patient-calibrated points",
+      "reviewLevel": "core",
+      "sourceJudgments": [
+        {
+          "reviewer": "Katie",
+          "direction": 1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Michelle",
+          "direction": 1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Ali",
+          "direction": 1,
+          "status": "rated"
+        }
       ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 7,
-      "patientSelected": false
+      "medicalSource": "https://www.nidcd.nih.gov/health/vestibular-schwannoma-acoustic-neuroma-and-neurofibromatosis"
     },
     {
       "category": "Schwannoma Hypofunction",
       "questionId": "259415",
       "answer": "Yes, hearing loss in the left ear only",
       "direction": 1,
-      "weight": 0,
-      "maximum": 25,
+      "weight": 20,
       "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        6,
-        7
+      "source": "Current-question clinical shortlist and shared explicit survey direction; patient-calibrated points",
+      "reviewLevel": "core",
+      "sourceJudgments": [
+        {
+          "reviewer": "Katie",
+          "direction": 1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Michelle",
+          "direction": 1,
+          "status": "rated"
+        },
+        {
+          "reviewer": "Ali",
+          "direction": 1,
+          "status": "rated"
+        }
       ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 7,
-      "patientSelected": false
-    },
-    {
-      "category": "Schwannoma Hypofunction",
-      "questionId": "259417",
-      "answer": "Yes, right ear only",
-      "direction": -1,
-      "weight": 0,
-      "maximum": 25,
-      "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        -10,
-        -4
-      ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": -9,
-      "patientSelected": false
-    },
-    {
-      "category": "Schwannoma Hypofunction",
-      "questionId": "259417",
-      "answer": "Yes, left ear only",
-      "direction": -1,
-      "weight": 0,
-      "maximum": 25,
-      "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        -10,
-        -4
-      ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": -9,
-      "patientSelected": false
-    },
-    {
-      "category": "Schwannoma Hypofunction",
-      "questionId": "259418",
-      "answer": "Yes, right ear only",
-      "direction": -1,
-      "weight": 0,
-      "maximum": 25,
-      "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        -10,
-        -9
-      ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": -10,
-      "patientSelected": false
-    },
-    {
-      "category": "Schwannoma Hypofunction",
-      "questionId": "259418",
-      "answer": "Yes, left ear only",
-      "direction": -1,
-      "weight": 0,
-      "maximum": 25,
-      "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        -10,
-        -9
-      ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": -10,
-      "patientSelected": false
-    },
-    {
-      "category": "Schwannoma Hypofunction",
-      "questionId": "260450",
-      "answer": "none of the above",
-      "direction": 1,
-      "weight": 0,
-      "maximum": 10,
-      "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        5,
-        9
-      ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 9,
-      "patientSelected": false
-    },
-    {
-      "category": "Schwannoma Hypofunction",
-      "questionId": "260451",
-      "answer": "Yes",
-      "direction": -1,
-      "weight": -5,
-      "maximum": 25,
-      "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        -10,
-        -9
-      ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": -10,
-      "patientSelected": true
-    },
-    {
-      "category": "Schwannoma Hypofunction",
-      "questionId": "260451",
-      "answer": "No",
-      "direction": 1,
-      "weight": 21,
-      "maximum": 25,
-      "consensus": true,
-      "source": "Shared survey direction only; patient-calibrated compact new-class scorecard",
-      "judgments": [
-        4,
-        8
-      ],
-      "adjusted": [
-        true,
-        true
-      ],
-      "thirdRoundJudgment": 8,
-      "patientSelected": true
+      "medicalSource": "https://www.nidcd.nih.gov/health/vestibular-schwannoma-acoustic-neuroma-and-neurofibromatosis"
     }
   ],
   "constraints": {
@@ -2237,19 +1741,13 @@ window.NEBULA_BANDS = {
   "consensusFit": {
     "patients": 99,
     "diagnoses": 109,
-    "sourceWorkbook": "AI data  pull_11.20.xlsx",
     "existingWeightsFrozen": true,
+    "scope": "Current questions for Labyrinthitis and Schwannoma only",
     "surveyMagnitudesUsedAsPoints": false,
     "fixedStabilityCutoff": null,
-    "selection": "Patient separation, soft resampling reliability, sample-size-dependent question penalty and bounded forward selection",
-    "newClasses": [
-      "Labyrinthitis Hypofunction",
-      "Schwannoma Hypofunction"
-    ],
-    "maximumQuestionsPerNewClass": 6,
-    "checkboxQuestionBudgetPerDirection": 10,
-    "objectiveBefore": 0.09452858050890836,
-    "objectiveAfter": 0.01361802418040254,
-    "evaluation": "All fitting patients; not held-out validation. Unrecorded labels are proxy negatives."
+    "clinicalShortlistRetained": true,
+    "leftRightHearingWeightsTied": true,
+    "sourceWorkbook": "AI data  pull_11.20.xlsx",
+    "evaluation": "Same fitting cohort, no held-out validation. Clinical shortlist is a research proposal, not diagnostic criteria."
   }
 };

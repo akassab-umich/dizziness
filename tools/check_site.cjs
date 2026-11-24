@@ -125,6 +125,28 @@ if (model.sparseFit) {
     "Schwannoma Hypofunction": "schwannoma-hypofunction",
   };
   for (const rule of model.rules) {
+    if (rule.consensus && model.consensusFit?.clinicalShortlistRetained) {
+      require(path.join(web, "reviewed-rule-policy.js"));
+      const proposal = window.NEBULA_REVIEWED_POLICY.rules.find(
+        (r) => key(r) === key(rule),
+      );
+      assert(proposal && questionKinds.has(rule.questionId));
+      const votes = rule.sourceJudgments.filter((v) => v.status === "rated");
+      assert(votes.filter((v) => v.direction === rule.direction).length >= 2);
+      assert(!votes.some((v) => v.direction === -rule.direction));
+      assert(Number.isInteger(rule.weight));
+      assert(rule.weight === 0 || Math.sign(rule.weight) === rule.direction);
+      assert(
+        Math.abs(rule.weight) >= proposal.minimum &&
+          Math.abs(rule.weight) <= proposal.maximum,
+      );
+      assert(
+        ["Labyrinthitis Hypofunction", "Schwannoma Hypofunction"].includes(
+          rule.category,
+        ),
+      );
+      continue;
+    }
     if (rule.consensus) {
       const reference = consensus.get(key(rule));
       assert(reference && questionKinds.has(rule.questionId));

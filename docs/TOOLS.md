@@ -1,3 +1,33 @@
+# Current method — reviewed existing questions for the two new classes
+
+The original seven November 20 scorecards remain EXACTLY unchanged. Only Labyrinthitis Hypofunction and Schwannoma Hypofunction are reviewed and recalibrated. Use `train_reviewed_new_classes.py`; the two-question-only forward-selection experiment is superseded. Future/proposed questions, Cardio, Anxiety and the Hypofunction parent/subtype workflow are not activated.
+
+A declared clinical shortlist retains nine current questions for Labyrinthitis and four for Schwannoma. These are research judgments for clinician review, not new diagnostic criteria. Hearing involvement, duration and onset receive priority for Labyrinthitis; hearing/asymmetry, gradual onset and balance for Schwannoma. Generic symptom severity, absence of triggers, absence of hearing-eyes-move and attack-linked hearing/ringing interpretations are held neutral for the new classes. Broad generic symptoms do not accumulate independent points. The current hearing questions do not establish that hearing loss began with vertigo; the report flags that limitation.
+
+Each permitted rule needs two explicit same-direction current-question ratings and no explicit opposite rating. An untouched slider is missing judgment, not an explicit neutral. The available files under Katie/Michelle/Ali are assessed separately; independence of those submissions is not assumed. Existing-class model references inside exports are not counted as new clinical votes. Slider magnitudes are never point values. Original seven-category rule signs and values are unchanged.
+
+The declared shortlist and sign constraints stay fixed during regularized fitting. Stronger priors protect the three-case and six-case groups from being reduced to only a couple of data-correlated questions. Nonzero core/supporting bounds are declared per rule; optional weak rules may become zero. Patient data tune magnitudes against class-balanced ranking and weak common point-band targets; values are refined to integers. The study's 99 fitting cases come only from the November 20 workbook. Unrecorded diagnoses are proxy negatives, not confirmed absences. No held-out validation is claimed. The clinical shortlist may fit the current cases less well than a more aggressive data-selected model; that trade-off is reported rather than hidden.
+
+Left/right hearing-test weights are tied. Shared hearing-complaint plus unilateral-test evidence is bounded to 25 points for Labyrinthitis and 30 for Schwannoma on a patient (one ear choice per single-select). The two selected Labyrinthitis movement options jointly contribute no more than ten points. The original seven scoring equations and explanation logic do not change.
+
+```bash
+python3 tools/train_reviewed_new_classes.py
+node tools/evaluate_current_model.cjs
+node tools/check_site.cjs
+node tools/test_assessment.cjs
+```
+
+Prerequisites: local consensus training input, pre-sparse baseline, November 24 assessment ZIPs and `Desktop/Ali_Bilateral.zip`. These remain outside Git; the script reads them without extracting executable content. Public `reviewed-rule-policy.js` contains only permitted directions, rule limits, first-name survey directions and clinical source links. No patient records or individual case results are published. The local HTML report covers every current answer option for the two new classes, with directions, patient counts, decisions and reasons. The evaluator verifies original-scorecard identity and all browser scores against fitted results.
+
+Clinical references:
+
+- https://www.hopkinsmedicine.org/health/conditions-and-diseases/labyrinthitis-and-vestibular-neuritis
+- https://www.nidcd.nih.gov/health/vestibular-schwannoma-acoustic-neuroma-and-neurofibromatosis
+
+---
+
+## Superseded methods — reference only
+
 # Current method — stabilize only the two new classes
 
 The original seven November 20 scorecards are restored exactly. `train_stable_new_classes.py` adjusts only Labyrinthitis Hypofunction and Schwannoma Hypofunction. It uses current Epic questionnaire questions only. Future/proposed questions are excluded. Cardio and Anxiety remain assessment-only. The Hypofunction parent/subtype workflow is not activated.

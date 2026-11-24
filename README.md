@@ -24,7 +24,7 @@ Open http://127.0.0.1:8765/. Use the project access code. You can answer questio
 
 Start with `web/app.js` to understand question navigation and scoring. `web/case-import.js` maps patient JSON into answers. `web/model-core.js` computes points. `web/research.js` builds the explanation dialogs. `web/question-viewer.js` handles the second viewer.
 
-The website uses **Model** in `web/band-model.js`: the original seven scorecards unchanged, plus two compact new-class scorecards using only current questions and shared survey directions. Patient data selects questions and tunes point magnitudes; survey slider magnitudes are not points. Future questions do not score patients. See `docs/TOOLS.md` for the current nine-class training commands.
+The website uses **Model** in `web/band-model.js`: the original seven scorecards unchanged, plus two clinically reviewed new-class scorecards using only current questions and shared explicit survey directions. The clinical shortlist is retained while patient data tunes point magnitudes; survey slider magnitudes are not points. Future questions do not score patients. See `docs/TOOLS.md` for the current nine-class training commands.
 
 Model definition files are generated artifacts. Edit their training tools or expert rule sources rather than manually reformatting their arrays.
 
