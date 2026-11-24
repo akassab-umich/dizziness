@@ -372,3 +372,61 @@
     padding: 22px;
   }
 }
+
+/* Reviewer labels use separate lanes; overlays never intercept slider input. */
+.assessment-slider:has(.reviewer-mark) {
+  margin: 22px 0;
+}
+.reviewer-mark {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  pointer-events: none;
+  color: #00274c;
+}
+.reviewer-dash {
+  position: absolute;
+  width: 12px;
+  height: 0;
+  border-top: 3px solid currentColor;
+  left: -6px;
+}
+.reviewer-above .reviewer-dash {
+  top: -9px;
+}
+.reviewer-below .reviewer-dash {
+  top: 7px;
+}
+.reviewer-name {
+  position: absolute;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+.reviewer-above .reviewer-name {
+  bottom: 12px;
+}
+.reviewer-below .reviewer-name {
+  top: 12px;
+}
+.reviewer-start .reviewer-name {
+  transform: none;
+  left: -6px;
+}
+.reviewer-end .reviewer-name {
+  transform: translateX(-100%);
+  left: 6px;
+}
+.reviewer-untouched {
+  color: #626b73;
+}
+.reviewer-untouched .reviewer-dash {
+  border-top-style: dashed;
+}
+
+.reviewer-name {
+  pointer-events: auto;
+  cursor: help;
+}

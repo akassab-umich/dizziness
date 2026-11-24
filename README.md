@@ -62,3 +62,9 @@ Push website changes to `main`. GitHub Actions publishes **only `web/`** to GitH
 The access-code screen is a convenience gate; browser source and model files are public. Never commit patient workbooks, patient JSON files, patient results, tokens, or private model reference datasets. `.gitignore` helps avoid accidental additions but does not replace reviewing a commit.
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the editing and review workflow.
+
+### Team reference marks
+
+Assignment sliders display the returned assessments from Katie (above the track) and Michelle (below). These marks never initialize or modify the editable ratings or patient scoring. Dashed gray marks indicate a slider left at center without an adjustment; hover the name for that distinction. Missing assessments have no marks. Exports still contain only the current reviewer's ratings and fixed model references.
+
+Rebuild the display-only references with `python3 tools/build_assessment_reviews.py /path/to/first.zip /path/to/second.zip`. Only first names, diagnosis IDs and answer ratings are published; original ZIP files remain outside the repository.

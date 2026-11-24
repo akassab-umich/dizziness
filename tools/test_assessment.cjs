@@ -126,3 +126,23 @@ assert.equal(output.reviewerRatings.length, 194);
 console.log(
   "PASS: complete assessment exports, signed/zero ratings, bounds, names and diagnosis separation.",
 );
+
+const reviews = require("../web/assessment-reviews.js");
+assert.equal(reviews.length, 20);
+assert.equal(reviews.filter((r) => r.reviewer === "Katie").length, 11);
+assert.equal(reviews.filter((r) => r.reviewer === "Michelle").length, 9);
+for (const review of reviews) {
+  assert(core.diagnoses.some((d) => d.id === review.diagnosisId));
+  for (const rating of review.ratings) {
+    const question = questions.find((q) => q.id === rating.questionId);
+    assert(question && question.options.includes(rating.answer));
+    assert(
+      Number.isInteger(rating.significance) &&
+        Math.abs(rating.significance) <= 10,
+    );
+    assert.equal(typeof rating.sliderAdjusted, "boolean");
+  }
+}
+console.log(
+  "PASS: all team reference ratings match current diagnosis/question/answer identities.",
+);

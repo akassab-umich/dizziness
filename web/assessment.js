@@ -20,6 +20,26 @@
   const state = { firstName: "", diagnosisId: "", ratings: {}, adjusted: {} };
   const meaning = (number) =>
     number > 0 ? "Evidence for" : number < 0 ? "Evidence against" : "No effect";
+  function reviewerMarks(question, answer) {
+    return (window.NEBULA_ASSESSMENT_REVIEWS || [])
+      .filter((review) => review.diagnosisId === state.diagnosisId)
+      .flatMap((review) =>
+        review.ratings
+          .filter(
+            (rating) =>
+              rating.questionId === question.id && rating.answer === answer,
+          )
+          .map((rating) => {
+            const fraction = (rating.significance + 10) / 20;
+            const position = `calc(${fraction * 100}% + ${11 - 22 * fraction}px)`;
+            const status = rating.sliderAdjusted
+              ? meaning(rating.significance)
+              : "Left at center; slider was not adjusted";
+            return `<span class="reviewer-mark ${review.reviewer === "Katie" ? "reviewer-above" : "reviewer-below"} ${fraction < 0.15 ? "reviewer-start" : fraction > 0.85 ? "reviewer-end" : ""} ${rating.sliderAdjusted ? "" : "reviewer-untouched"}" style="left:${position}" title="${escape(review.reviewer + ": " + status)}"><span class="reviewer-name">${escape(review.reviewer)}</span><span class="reviewer-dash"></span></span>`;
+          }),
+      )
+      .join("");
+  }
   function initializeAssessment() {
     state.ratings = {};
     state.adjusted = {};
@@ -89,7 +109,7 @@
             <label for="${id}">${escape(answer)}</label>
             <div class="assessment-rating">
               <div class="assessment-slider-labels" id="${id}-direction"><span>Less likely ${diagnosisName}</span><span>More likely ${diagnosisName}</span></div>
-              <div class="assessment-slider"><input ${fixed ? "disabled" : ""} id="${id}" type="range" min="-10" max="10" step="1" value="${value}" data-question="${q.id}" data-index="${index}" aria-label="${escape(answer)} — question ${number + 1}" aria-valuetext="${fixed ? "Fixed. " : ""}${meaning(value)}" aria-describedby="${id}-direction" /></div>
+              <div class="assessment-slider"><input ${fixed ? "disabled" : ""} id="${id}" type="range" min="-10" max="10" step="1" value="${value}" data-question="${q.id}" data-index="${index}" aria-label="${escape(answer)} — question ${number + 1}" aria-valuetext="${fixed ? "Fixed. " : ""}${meaning(value)}" aria-describedby="${id}-direction" />${reviewerMarks(q, answer)}</div>
               ${fixed?.conditional ? '<p class="assessment-hint">Conditional model rule</p>' : ""}
             </div>
           </div>`;
