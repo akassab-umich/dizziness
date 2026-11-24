@@ -1,3 +1,26 @@
+# Current method — stabilize only the two new classes
+
+The original seven November 20 scorecards are restored exactly. `train_stable_new_classes.py` adjusts only Labyrinthitis Hypofunction and Schwannoma Hypofunction. It uses current Epic questionnaire questions only. Future/proposed questions are excluded. Cardio and Anxiety remain assessment-only. The Hypofunction parent/subtype workflow is not activated.
+
+Katie/Michelle/Ali-round agreement determines permitted directions only; slider magnitudes never become points or point targets. Neutral and unsupported links stay zero. Among permitted directions, smoothed patient answer-rate separation screens for a directionally consistent signal. Stratified resampling reliability ranks competing checkbox options softly, without an 80% cutoff. Penalized forward selection chooses questions using a class-balanced ranking loss, weak common score-band targets, regularization, and a question penalty that depends on the size of the recorded class. There is a six-question ceiling per new class, not a requirement to use six. Checkbox contributions are limited to ten points per direction per question; single-choice nonzero magnitudes are 5–25 points. Whole-point refinement follows bounded fitting. No intercept is added.
+
+The November 20 workbook supplies the same 99 supported patients and 109 recorded diagnoses. Unrecorded diagnoses are proxy negatives. Selection and fitting use the same patients; resampling reliability is not held-out validation. Three Labyrinthitis cases and six Schwannoma cases provide very limited evidence. Existing scores are restored on their previous scale; new-class thresholds are still exploratory.
+
+Local prerequisites: consensus training input, the Ali assessment round in `private-results/ali-assessments.json`, and `private-results/sparse-baseline-model.js` containing the pre-sparse nine-class baseline. Detailed audits and per-case results stay local. Original assessments remain in the parent research folder.
+
+```bash
+python3 tools/train_stable_new_classes.py
+node tools/evaluate_current_model.cjs
+node tools/check_site.cjs
+node tools/test_assessment.cjs
+```
+
+The evaluator checks that all original seven-category rules are byte-for-byte equal to the training baseline and that every browser score agrees with the fitted audit. Original-class rankings can still change because the two new categories compete in the same list; original-class point scores cannot change.
+
+---
+
+## Superseded all-class sparsity experiment — do not run over the current model
+
 # Current model: patient-supported sparse points (November 24)
 
 The current website uses `train_sparse_model.py`. It screens all nine classes; it no longer freezes the seven older scorecards. Candidate clinical links and their signs are preserved. Links may be disabled with exactly zero weight. The two new classes must also agree in direction with the latest Ali assessment round; future questions remain excluded. Cardio and Anxiety remain assessment-only. The Hypofunction parent/subtype workflow has not been activated.

@@ -140,14 +140,19 @@ if (model.sparseFit) {
       assert(
         votes.every((v) => v && Math.sign(v.significance) === rule.direction),
       );
-      assert.equal(Math.sign(rule.weight), rule.direction);
+      assert(rule.weight === 0 || Math.sign(rule.weight) === rule.direction);
       assert(Number.isInteger(rule.weight));
       assert(
-        rule.direction === 0
-          ? rule.weight === 0
+        rule.weight === 0
+          ? true
           : Math.abs(rule.weight) >= 5 &&
               Math.abs(rule.weight) <= reference.maximum,
       );
+      if (
+        rule.weight &&
+        model.consensusFit?.surveyMagnitudesUsedAsPoints === false
+      )
+        assert.equal(Math.sign(rule.thirdRoundJudgment), rule.direction);
       continue;
     }
     const anchor = anchors.get(key(rule));
